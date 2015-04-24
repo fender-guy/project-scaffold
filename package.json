@@ -1,0 +1,52 @@
+{
+  "name": "fidar",
+  "version": "1.0.0",
+  "description": "Project Scaffold",
+  "main": "/dev/index.html",
+  "scripts": {
+    "setup": "npm install -g jsxhint",
+    "start": "webpack --colors --progress --watch -d",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fender-guy/project-scaffold.git"
+  },
+  "keywords": [
+    "webpack",
+    "node",
+    "react"
+  ],
+  "author": "Jeremy Hitchcock",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fender-guy/project-scaffold/issues"
+  },
+  "homepage": "https://github.com/fender-guy/project-scaffold",
+  "devDependencies": {
+    "JSONStream": "^0.10.0",
+    "babel-core": "^4.3.0",
+    "babel-loader": "^4.0.0",
+    "classnames": "^1.1.4",
+    "css-loader": "^0.9.1",
+    "express": "^4.12.3",
+    "extract-text-webpack-plugin": "^0.4.0",
+    "file-loader": "^0.8.1",
+    "flux": "^2.0.1",
+    "jshint": "^2.6.3",
+    "jshint-loader": "^0.8.3",
+    "jsx-loader": "^0.12.2",
+    "keymirror": "^0.1.1",
+    "mongodb": "^2.0.25",
+    "node-bourbon": "^4.2.1-beta1",
+    "node-neat": "^1.7.1-beta1",
+    "node-sass": "^2.0.1",
+    "normalize.css": "^3.0.2",
+    "object-assign": "^2.0.0",
+    "react": "^0.13.0-rc2",
+    "sass-loader": "^0.4.2",
+    "style-loader": "^0.8.3",
+    "url-loader": "^0.5.5",
+    "webpack": "^1.5.3"
+  }
+}

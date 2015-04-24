@@ -1,0 +1,39 @@
+@import 'neat-helpers';
+
+/// sets desktop visual grid to be 960 pixels wide
+/// @group visual-grid
+$max-width: rem(940);
+
+/// mobile breakpoint with 6 columns
+/// @group breakpoints
+/// @example use:
+///   @include media($mobile){
+///     [stuff]
+///   }
+$mobile: new-breakpoint(max-width 767px 6);
+
+/// tablet breakpoint with 9 columns
+/// @group breakpoints
+/// @example use:
+///   @include media($tablet){
+///     [stuff]
+///   }
+$tablet: new-breakpoint(min-width 768px max-width 979px 9);
+
+/// tablet breakpoint with 12 columns
+/// @group breakpoints
+/// @example use:
+///   @include media($desktop){
+///     [stuff]
+///   }
+$desktop: new-breakpoint(min-width 980px 12);
+
+/// pass in the number of columns to kill the right margin on the last element
+/// @group breakpoints
+/// @example use:
+///   @include kill-last-margin(6);
+@mixin kill-last-margin($columnNumbers) {
+    &:nth-of-type(#{$columnNumbers}) {
+        margin-right: 0;
+    }
+}

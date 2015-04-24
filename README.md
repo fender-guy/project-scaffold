@@ -1,2 +1,6 @@
-# project-scaffold
-The current starting point for many of my projects.
+# Project Scaffold 
+
+webpack
+node 
+express
+react
