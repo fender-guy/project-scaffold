@@ -1,6 +1,6 @@
 import dispatcher from '../dispatcher.js';
 import EventEmitter from 'events';
-import Constants from '../constants/Constants';
+//import Constants from '../constants/Constants';
 import assign from 'object-assign';
 
 let CHANGE_EVENT = 'change';
@@ -10,30 +10,30 @@ let _store = {
 };
 
 let store = assign({}, EventEmitter.prototype, {
-    getAll: function() {
+    getAll : function () {
         return _store;
     },
 
-    emitChange: function() {
+    emitChange : function () {
         this.emit(CHANGE_EVENT);
     },
 
-    addChangeListener: function(callback) {
+    addChangeListener : function (callback) {
         this.on(CHANGE_EVENT, callback);
     },
 
-    removeChangeListener: function(callback) {
+    removeChangeListener : function (callback) {
         this.removeListener(CHANGE_EVENT, callback);
     }
 });
 
-dispatcher.register(function(payload) {
+dispatcher.register(function (payload) {
     let action = payload.action;
 
-    switch(action.actionType) {
+    switch (action.actionType) {
 
         //case chartConstants.LOAD_NEW_CANDLE_CHART:
-            //break;
+        //break;
 
         default:
             return true;

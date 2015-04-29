@@ -1,6 +1,6 @@
-import normalize from './globalStyles/normalize.css';
-import glyphs from './globalStyles/glyphs.css';
-import globalStyles from './global.scss';
+import './globalStyles/normalize.css';
+import './globalStyles/glyphs.css';
+import './global.scss';
 
 import React from 'react';
 import app from './components/app';
