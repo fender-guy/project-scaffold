@@ -1,4 +1,3 @@
-import React from 'react';
 import Store from '../stores/Store';
 
 class app extends React.Component {
@@ -19,7 +18,6 @@ class app extends React.Component {
 
     render() {
         return (
-            /* jshint ignore:start */
             <div>
                 <h1>Hello App</h1>
                 <div>
@@ -27,7 +25,6 @@ class app extends React.Component {
                     {this.state.testData}
                 </div>
             </div>
-            /* jshint ignore:end */
         );
     }
 
@@ -35,5 +32,7 @@ class app extends React.Component {
         this.setState(Store.getAll());
     }
 }
+
+app.displayName = 'App';
 
 export default app;

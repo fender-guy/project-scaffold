@@ -1,9 +1,14 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var webpack = require('webpack');
 var bourbon = require('node-bourbon').includePaths;
 var neat = require('node-neat').includePaths;
+var path = require('path');
 
 module.exports = {
-    entry: "./dev/app.js",
+    entry: {
+        index: "./dev/app.js",
+        vendor: ['react']
+    },
     output: {
         path: __dirname,
         filename: "./prod/bundle.js",
@@ -34,7 +39,26 @@ module.exports = {
 
         ]
     },
-    plugins: [ new ExtractTextPlugin('./prod/[name].css') ],
+    resolve: {
+        alias: {
+            'react': path.join(__dirname, 'node_modules/react/react.js'),
+            'react-addons': path.join(__dirname, 'node_modules/react/addons.js'),
+            'keyMirror' : path.join(__dirname, 'node_modules/keymirror/index.js')
+        },
+        extensions: ['', '.js', '.jsx', '.json', '.css'],
+        root: [
+            path.resolve(__dirname + '/dev'),
+            path.resolve(__dirname + '/dev/components')
+        ]
+    },
+    plugins: [ 
+        new ExtractTextPlugin('./prod/[name].css'),
+        new webpack.PrefetchPlugin('react'),
+        new webpack.ProvidePlugin({
+            React : 'react',
+            keyMirror : 'keyMirror'
+        })
+    ],
     jshint: {
         esnext: true
     }
