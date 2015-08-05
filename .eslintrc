@@ -27,7 +27,8 @@
   "parser": "babel-eslint",
   "globals": {
       "React": true,
-      "keyMirror": true
+      "keyMirror": true,
+      "appHOC": true
   },
   "rules": {
       // 2 is error 1 is warning

@@ -1,6 +1,6 @@
 import Store from '../stores/Store';
 
-class app extends React.Component {
+class app extends appHOC {
 
     constructor(props){
         super(props);
@@ -22,6 +22,7 @@ class app extends React.Component {
                 <h1>Hello App</h1>
                 <div>
                     <h2>Data from the store:</h2>
+                    <h3>{this.bpLT('DESKTOP') ? 'MOBILE' : 'DESKTOP'}</h3>
                     {this.state.testData}
                 </div>
             </div>

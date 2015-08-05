@@ -43,7 +43,8 @@ module.exports = {
         alias: {
             'react': path.join(__dirname, 'node_modules/react/react.js'),
             'react-addons': path.join(__dirname, 'node_modules/react/addons.js'),
-            'keyMirror' : path.join(__dirname, 'node_modules/keymirror/index.js')
+            'keyMirror' : path.join(__dirname, 'node_modules/keymirror/index.js'),
+            'appHOC' : path.join(__dirname, 'dev/components/appHOC.js')
         },
         extensions: ['', '.js', '.jsx', '.json', '.css'],
         root: [
@@ -56,7 +57,8 @@ module.exports = {
         new webpack.PrefetchPlugin('react'),
         new webpack.ProvidePlugin({
             React : 'react',
-            keyMirror : 'keyMirror'
+            keyMirror : 'keyMirror',
+            appHOC : 'appHOC'
         })
     ],
     jshint: {
