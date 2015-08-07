@@ -1,36 +1,33 @@
 import utils from '../utils';
 
+let makeRequest = (url, params, method) => {
+    return new Promise((resolve, reject) => {
+        let request = new XMLHttpRequest();
+        let pURL = url + '?' + utils.params(params);
 
-export default class request {
+        request.open(method, pURL, true);
 
-    constructor(url, params, callback) {
-        this.callback = callback;
-        this.request = new XMLHttpRequest();
 
-        this.url = url + '?' + utils.params(params);
-
-        this.request.open('GET', this.url, true);
-
-        this.request.onload = function () {
-            if (this.request.status >= 200 && this.request.status < 400) {
-                // Success!
-                if (callback) {
-                    this.callback(this.request.responseText);
-                }
+        request.onload = () => {
+            if (request.status >= 200 && request.status < 400) {
+                return resolve(request.responseText);
             } else {
-                console.error('We reached our target server, but it returned an error: ', this.request);
+                return reject('We reached our target server, but it returned an error: ', request);
             }
-        }.bind(this);
-
-        this.request.onerror = function () {
-            // There was a connection error of some sort
-            console.error('there was a connection error of some sort');
         };
 
-    }
+        request.onerror = () => {
+            return reject('there was a connection error of some sort');
+        };
 
-    sendRequest() {
-        this.request.send();
+        request.setRequestHeader('Api-User-Agent', 'this is a test');
+        request.send();
+    });
+};
+
+export default {
+    get(url, params) {
+        return makeRequest(url, params, 'GET');
     }
-}
+};
 

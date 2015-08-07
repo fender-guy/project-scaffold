@@ -6,8 +6,7 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        index: "./dev/app.js",
-        vendor: ['react']
+        index: "./dev/app.js"
     },
     output: {
         path: __dirname,

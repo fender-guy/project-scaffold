@@ -1,4 +1,5 @@
 import Store from '../stores/Store';
+import actions from '../actions/actions';
 
 class app extends appHOC {
 
@@ -10,6 +11,7 @@ class app extends appHOC {
     componentDidMount() {
         Store.addChangeListener(this._onChange.bind(this));
         this._onChange(); //comment out later
+        actions.testAction();
     }
 
     componentWillUnmount() {
