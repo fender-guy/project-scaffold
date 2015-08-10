@@ -21293,7 +21293,7 @@
 	
 	var Store = _interopRequire(__webpack_require__(/*! ../stores/Store */ 172));
 	
-	var actions = _interopRequire(__webpack_require__(/*! ../actions/actions */ 179));
+	var actions = _interopRequire(__webpack_require__(/*! ../actions/actions */ 173));
 	
 	var app = (function (_appHOC) {
 	    function app(props) {
@@ -21341,7 +21341,16 @@
 	                            null,
 	                            this.bpLT("DESKTOP") ? "MOBILE" : "DESKTOP"
 	                        ),
-	                        this.state.testData
+	                        React.createElement(
+	                            "p",
+	                            null,
+	                            this.state.testData
+	                        ),
+	                        React.createElement(
+	                            "p",
+	                            null,
+	                            this.state.testGetResponse
+	                        )
 	                    )
 	                );
 	            }
@@ -21688,19 +21697,23 @@
 	
 	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 	
-	var dispatcher = _interopRequire(__webpack_require__(/*! ../dispatcher.js */ 173));
+	var dispatcher = _interopRequire(__webpack_require__(/*! ../dispatcher.js */ 174));
 	
-	var EventEmitter = _interopRequire(__webpack_require__(/*! events */ 178));
+	var EventEmitter = _interopRequire(__webpack_require__(/*! events */ 182));
 	
-	//import Constants from '../constants/Constants';
+	var Constants = _interopRequire(__webpack_require__(/*! ../constants/Constants */ 180));
 	
-	var assign = _interopRequire(__webpack_require__(/*! object-assign */ 177));
+	var assign = _interopRequire(__webpack_require__(/*! object-assign */ 178));
 	
 	var CHANGE_EVENT = "change";
 	
 	var _store = {
 	    testData: "Test Data"
 	};
+	
+	function loadTestResponse(data) {
+	    _store.testGetResponse = data.testResponse;
+	}
 	
 	var store = assign({}, EventEmitter.prototype, {
 	    getAll: function getAll() {
@@ -21725,8 +21738,10 @@
 	
 	    switch (action.actionType) {
 	
-	        //case chartConstants.LOAD_NEW_CANDLE_CHART:
-	        //break;
+	        case Constants.LOAD_TEST_RESPONSE:
+	            console.log(action);
+	            loadTestResponse(action.data);
+	            break;
 	
 	        default:
 	            return true;
@@ -21745,6 +21760,39 @@
 
 /***/ },
 /* 173 */
+/*!********************************!*\
+  !*** ./dev/actions/actions.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+	
+	var dispatcher = _interopRequire(__webpack_require__(/*! ./../dispatcher.js */ 174));
+	
+	var Request = _interopRequire(__webpack_require__(/*! ./../services/Request.js */ 179));
+	
+	var Constants = _interopRequire(__webpack_require__(/*! ./../constants/Constants.js */ 180));
+	
+	//import assign from 'object-assign';
+	
+	module.exports = {
+	
+	    baseURL: "/testGet",
+	
+	    testAction: function testAction() {
+	        Request.get(this.baseURL, {}).then(function (data) {
+	            dispatcher.handleViewAction({
+	                actionType: Constants.LOAD_TEST_RESPONSE,
+	                data: JSON.parse(data)
+	            });
+	        });
+	    }
+	};
+
+/***/ },
+/* 174 */
 /*!***************************!*\
   !*** ./dev/dispatcher.js ***!
   \***************************/
@@ -21765,8 +21813,8 @@
 	
 	"use strict";
 	
-	var Dispatcher = __webpack_require__(/*! flux */ 174).Dispatcher;
-	var assign = __webpack_require__(/*! object-assign */ 177);
+	var Dispatcher = __webpack_require__(/*! flux */ 175).Dispatcher;
+	var assign = __webpack_require__(/*! object-assign */ 178);
 	
 	var AppDispatcher = assign(new Dispatcher(), {
 	
@@ -21794,7 +21842,7 @@
 	module.exports = AppDispatcher;
 
 /***/ },
-/* 174 */
+/* 175 */
 /*!*************************!*\
   !*** ./~/flux/index.js ***!
   \*************************/
@@ -21809,11 +21857,11 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 */
 	
-	module.exports.Dispatcher = __webpack_require__(/*! ./lib/Dispatcher */ 175)
+	module.exports.Dispatcher = __webpack_require__(/*! ./lib/Dispatcher */ 176)
 
 
 /***/ },
-/* 175 */
+/* 176 */
 /*!**********************************!*\
   !*** ./~/flux/lib/Dispatcher.js ***!
   \**********************************/
@@ -21833,7 +21881,7 @@
 	
 	"use strict";
 	
-	var invariant = __webpack_require__(/*! ./invariant */ 176);
+	var invariant = __webpack_require__(/*! ./invariant */ 177);
 	
 	var _lastID = 1;
 	var _prefix = 'ID_';
@@ -22072,7 +22120,7 @@
 
 
 /***/ },
-/* 176 */
+/* 177 */
 /*!*********************************!*\
   !*** ./~/flux/lib/invariant.js ***!
   \*********************************/
@@ -22134,7 +22182,7 @@
 
 
 /***/ },
-/* 177 */
+/* 178 */
 /*!**********************************!*\
   !*** ./~/object-assign/index.js ***!
   \**********************************/
@@ -22169,7 +22217,129 @@
 
 
 /***/ },
-/* 178 */
+/* 179 */
+/*!*********************************!*\
+  !*** ./dev/services/Request.js ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+	
+	var utils = _interopRequire(__webpack_require__(/*! ../utils */ 171));
+	
+	var makeRequest = function (url, params, method) {
+	    return new Promise(function (resolve, reject) {
+	        var request = new XMLHttpRequest();
+	        var pURL = url + "?" + utils.params(params);
+	
+	        request.open(method, pURL, true);
+	
+	        request.onload = function () {
+	            if (request.status >= 200 && request.status < 400) {
+	                return resolve(request.responseText);
+	            } else {
+	                return reject("We reached our target server, but it returned an error: ", request);
+	            }
+	        };
+	
+	        request.onerror = function () {
+	            return reject("there was a connection error of some sort");
+	        };
+	
+	        request.setRequestHeader("Api-User-Agent", "this is a test");
+	        request.send();
+	    });
+	};
+	
+	module.exports = {
+	    get: function get(url, params) {
+	        return makeRequest(url, params, "GET");
+	    }
+	};
+
+/***/ },
+/* 180 */
+/*!************************************!*\
+  !*** ./dev/constants/Constants.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+	
+	var keyMirror = _interopRequire(__webpack_require__(/*! keymirror */ 181));
+	
+	module.exports = keyMirror({
+	    LOAD_TEST_RESPONSE: null
+	});
+
+/***/ },
+/* 181 */
+/*!******************************!*\
+  !*** ./~/keymirror/index.js ***!
+  \******************************/
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-2014 Facebook, Inc.
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License");
+	 * you may not use this file except in compliance with the License.
+	 * You may obtain a copy of the License at
+	 *
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software
+	 * distributed under the License is distributed on an "AS IS" BASIS,
+	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 * See the License for the specific language governing permissions and
+	 * limitations under the License.
+	 *
+	 */
+	
+	"use strict";
+	
+	/**
+	 * Constructs an enumeration with keys equal to their value.
+	 *
+	 * For example:
+	 *
+	 *   var COLORS = keyMirror({blue: null, red: null});
+	 *   var myColor = COLORS.blue;
+	 *   var isColorValid = !!COLORS[myColor];
+	 *
+	 * The last line could not be performed if the values of the generated enum were
+	 * not equal to their keys.
+	 *
+	 *   Input:  {key1: val1, key2: val2}
+	 *   Output: {key1: key1, key2: key2}
+	 *
+	 * @param {object} obj
+	 * @return {object}
+	 */
+	var keyMirror = function(obj) {
+	  var ret = {};
+	  var key;
+	  if (!(obj instanceof Object && !Array.isArray(obj))) {
+	    throw new Error('keyMirror(...): Argument must be an object.');
+	  }
+	  for (key in obj) {
+	    if (!obj.hasOwnProperty(key)) {
+	      continue;
+	    }
+	    ret[key] = key;
+	  }
+	  return ret;
+	};
+	
+	module.exports = keyMirror;
+
+
+/***/ },
+/* 182 */
 /*!********************************************************!*\
   !*** (webpack)/~/node-libs-browser/~/events/events.js ***!
   \********************************************************/
@@ -22477,90 +22647,6 @@
 	  return arg === void 0;
 	}
 
-
-/***/ },
-/* 179 */
-/*!********************************!*\
-  !*** ./dev/actions/actions.js ***!
-  \********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-	
-	//import dispatcher from './../dispatcher.js';
-	
-	var Request = _interopRequire(__webpack_require__(/*! ./../services/Request.js */ 180));
-	
-	//import Constants from './../constants/Constants.js';
-	//import assign from 'object-assign';
-	
-	module.exports = {
-	
-	    baseURL: "http://www.bbc.co.uk/radio1/playlist.json",
-	
-	    testAction: function testAction() {
-	        Request.get(this.baseURL, {}).then(function (data) {
-	            console.log("data: ", data);
-	        });
-	    }
-	
-	    //loadNewCandleChart(settings) {
-	    //let request = new Request(settings, function(data){
-	    //dispatcher.handleViewAction({
-	    //actionType: chartConstants.LOAD_NEW_CANDLE_CHART,
-	    //data: assign(settings, data)
-	    //});
-	    //});
-	
-	    //request.sendRequest();
-	    //}
-	
-	};
-
-/***/ },
-/* 180 */
-/*!*********************************!*\
-  !*** ./dev/services/Request.js ***!
-  \*********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-	
-	var utils = _interopRequire(__webpack_require__(/*! ../utils */ 171));
-	
-	var makeRequest = function (url, params, method) {
-	    return new Promise(function (resolve, reject) {
-	        var request = new XMLHttpRequest();
-	        var pURL = url + "?" + utils.params(params);
-	
-	        request.open(method, pURL, true);
-	
-	        request.onload = function () {
-	            if (request.status >= 200 && request.status < 400) {
-	                return resolve(request.responseText);
-	            } else {
-	                return reject("We reached our target server, but it returned an error: ", request);
-	            }
-	        };
-	
-	        request.onerror = function () {
-	            return reject("there was a connection error of some sort");
-	        };
-	
-	        request.setRequestHeader("Api-User-Agent", "this is a test");
-	        request.send();
-	    });
-	};
-	
-	module.exports = {
-	    get: function get(url, params) {
-	        return makeRequest(url, params, "GET");
-	    }
-	};
 
 /***/ }
 /******/ ]);

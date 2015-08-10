@@ -25,7 +25,8 @@ class app extends appHOC {
                 <div>
                     <h2>Data from the store:</h2>
                     <h3>{this.bpLT('DESKTOP') ? 'MOBILE' : 'DESKTOP'}</h3>
-                    {this.state.testData}
+                    <p>{this.state.testData}</p>
+                    <p>{this.state.testGetResponse}</p>
                 </div>
             </div>
         );

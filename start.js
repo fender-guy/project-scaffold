@@ -26,8 +26,8 @@ ls.on('close', function (code) {
 // server
 app.use(express.static('prod'));
 
-app.get('/', function (req, res) {
-    res.send('Hello Worldsssss!')
+app.get('/testGet', function (req, res) {
+    res.send({testResponse : 'looks like the GET request worked'});
 });
 
 var server = app.listen(3031, function () {

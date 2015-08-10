@@ -1,27 +1,18 @@
-//import dispatcher from './../dispatcher.js';
+import dispatcher from './../dispatcher.js';
 import Request from './../services/Request.js';
-//import Constants from './../constants/Constants.js';
+import Constants from './../constants/Constants.js';
 //import assign from 'object-assign';
 
 export default {
 
-    baseURL : 'http://www.bbc.co.uk/radio1/playlist.json',
+    baseURL : '/testGet',
 
     testAction() {
         Request.get(this.baseURL, {}).then((data) => {
-            console.log('data: ', data);
+            dispatcher.handleViewAction({
+                actionType : Constants.LOAD_TEST_RESPONSE,
+                data       : JSON.parse(data)
+            });
         });
     }
-
-    //loadNewCandleChart(settings) {
-        //let request = new Request(settings, function(data){
-            //dispatcher.handleViewAction({
-                //actionType: chartConstants.LOAD_NEW_CANDLE_CHART,
-                //data: assign(settings, data)
-            //});
-        //});
-
-        //request.sendRequest();
-    //}
-
 };

@@ -1,6 +1,6 @@
 import dispatcher from '../dispatcher.js';
 import EventEmitter from 'events';
-//import Constants from '../constants/Constants';
+import Constants from '../constants/Constants';
 import assign from 'object-assign';
 
 let CHANGE_EVENT = 'change';
@@ -8,6 +8,10 @@ let CHANGE_EVENT = 'change';
 let _store = {
     testData : 'Test Data'
 };
+
+function loadTestResponse(data) {
+    _store.testGetResponse = data.testResponse;
+}
 
 let store = assign({}, EventEmitter.prototype, {
     getAll : function () {
@@ -32,8 +36,10 @@ dispatcher.register(function (payload) {
 
     switch (action.actionType) {
 
-        //case chartConstants.LOAD_NEW_CANDLE_CHART:
-        //break;
+        case Constants.LOAD_TEST_RESPONSE:
+            console.log(action);
+            loadTestResponse(action.data);
+            break;
 
         default:
             return true;
