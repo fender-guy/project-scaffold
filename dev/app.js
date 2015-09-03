@@ -4,5 +4,5 @@ import './global.scss';
 
 import app from './components/app';
 
-React.render(React.createElement(app), document.body);
+React.render(React.createElement(app), document.getElementById('app-container'));
 

@@ -19,12 +19,13 @@ class app extends appHOC {
     }
 
     render() {
+        console.log('render');
         return (
             <div>
                 <h1>Hello App</h1>
                 <div>
                     <h2>Data from the store:</h2>
-                    <h3>{this.bpLT('DESKTOP') ? 'MOBILE' : 'DESKTOP'}</h3>
+                    <h3>{this.bpE('DESKTOP') ? 'DESKTOP' : 'NOT DESKTOP'}</h3>
                     <p>{this.state.testData}</p>
                     <p>{this.state.testGetResponse}</p>
                 </div>

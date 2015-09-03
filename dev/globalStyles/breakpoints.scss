@@ -37,3 +37,15 @@ $desktop: new-breakpoint(min-width 980px 12);
         margin-right: 0;
     }
 }
+
+#resp-element {
+    content : "MOBILE";
+
+    @include media($tablet) {
+        content : "TABLET";
+    }
+
+    @include media($desktop) {
+        content : "DESKTOP";
+    }
+}

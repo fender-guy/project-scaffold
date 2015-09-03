@@ -1,4 +1,5 @@
 import utils from '../utils.js';
+import breakPointsCSS from '-!raw!../globalStyles/breakPoints.scss';
 
 /**
  * This is where you put the methods you want to share throughout the entire app.
@@ -13,13 +14,22 @@ class appHOC extends React.Component {
 
         this.windowWidth = window.innerWidth;
 
-        this.breakPoints = {
-            PHONE   : 0,
-            TABLET  : 768,
-            DESKTOP : 980
-        };
+        this.useMatchMedia = window.matchMedia != null;
 
+        this.createRespElement();
+
+        this.getBreakPoints();
+
+        // and array of all the breakpoint names
         this.breakNames = Object.keys(this.breakPoints);
+
+        // builds the media query object from the breakpoint object so you only
+        // need to update the breakpoint object
+        this.mediaQueries = {};
+
+        this.breakNames.map((name) => {
+            this.mediaQueries[name] = '(min-width: ' + this.breakPoints[name] + 'px)';
+        });
 
         this.currentBreak = null;
 
@@ -30,15 +40,41 @@ class appHOC extends React.Component {
             this.getOrientation();
         }, false);
 
-        window.addEventListener('resize', () => {
-            utils.debounce(() => {
-                this.getCurrentBreak();
-            }, 250)();
-        }, false);
+        if(this.useMatchMedia) {
+            this.breakNames.map((name) => {
+                window.matchMedia(this.mediaQueries[name]).addListener(this.getCurrentBreak.bind(this));
+            });
+        } else {
+            window.addEventListener('resize', () => {
+                utils.debounce(() => {
+                    this.getCurrentBreak();
+                }, 250)();
+            }, false);
+        }
 
         if ( 'onorientationchange' in window ) {
             window.addEventListener('orientationchange', this.getOrientation.bind(this), false);
         }
+    }
+
+    createRespElement() {
+        var el = document.createElement('div');
+        el.id = 'resp-element';
+        document.body.appendChild(el);
+    }
+
+    getBreakPoints() {
+        let keys = breakPointsCSS.match(/"(.*)"/g);
+        let values = breakPointsCSS.match(/min-width(.*?)px/g);
+        this.breakPoints = {};
+
+        keys.map((key, i) => {
+            if(i === 0) {
+                this.breakPoints[key.replace(/"/g, '')] = 0;
+            } else {
+                this.breakPoints[key.replace(/"/g, '')] = parseInt(values[i - 1].replace('min-width ', '').replace('px', ''));
+            }
+        });
     }
 
     getOrientation() {
@@ -57,25 +93,16 @@ class appHOC extends React.Component {
     }
 
     getCurrentBreak() {
-        let cachedBreak = this.currentBreak ? this.currentBreak : null;
+        let el = document.getElementById('resp-element');
+        let currentBreak = window.getComputedStyle(el).getPropertyValue('content');
 
-        this.updateWindowWidth();
+        this.currentBreak = currentBreak.replace(/"/g, '');
 
-        this.currentBreak = this.breakNames[this.breakNames.length - 1];
-
-        for(let bp in this.breakPoints) {
-            if(this.breakPoints[bp] <= this.windowWidth) {
-                this.currentBreak = bp;
-            }
-        }
-
-        // forces an update if the breakpoint has changed
-        if(cachedBreak !== this.currentBreak) {
-            this.forceUpdate();
-        }
+        this.forceUpdate();
     }
 
     bpLT(name) {
+        //console.log(this.breakPoints, this.currentBreak);
         return this.breakPoints[this.currentBreak] < this.breakPoints[name];
     }
 
@@ -92,13 +119,7 @@ class appHOC extends React.Component {
     }
 
     bpE(name) {
-        let index = this.breakNames.indexOf(name);
-        if(index === this.breakNames.length - 1) {
-            return this.breakPoints[this.currentBreak] >= this.breakPoints[name];
-        } else {
-            return this.breakPoints[this.currentBreak] >= this.breakPoints[name]
-                && this.breakPoints[this.currentBreak] < this.breakPoints[this.breakNames[index + 1]];
-        }
+        return this.currentBreak === name;
     }
 
     updateWindowWidth() {

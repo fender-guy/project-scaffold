@@ -6,7 +6,7 @@ const process = require('child_process');
 // webpack
 var ls = process.spawn('webpack', ['--colors', '--progress', '--watch', '-d']);
 
-ls.on('error', function(error) {
+ls.stderr.on('error', function(error) {
     console.log('error: ', error);
 });
 
@@ -14,9 +14,9 @@ ls.stdout.on('data', function (data) {
     console.log('stdout: ' + data);
 });
 
-ls.stderr.on('data', function (data) {
-    console.log('stderr: ' + data);
-});
+//ls.stderr.on('data', function (data) {
+    //console.log('stderr: ' + data);
+//});
 
 ls.on('close', function (code) {
     console.log('child process exited with code ' + code);

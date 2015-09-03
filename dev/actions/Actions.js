@@ -1,7 +1,12 @@
 import dispatcher from './../dispatcher.js';
 import Request from './../services/Request.js';
 import Constants from './../constants/Constants.js';
-//import assign from 'object-assign';
+import store from '../stores/Store.js';
+
+store.methods[Constants.LOAD_TEST_RESPONSE] = function(data) {
+    let _store = store.getStoreObj();
+    _store.testGetResponse = data.testResponse;
+};
 
 export default {
 

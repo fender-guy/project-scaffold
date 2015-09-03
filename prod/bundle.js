@@ -59,7 +59,7 @@
 	
 	var app = _interopRequire(__webpack_require__(/*! ./components/app */ 169));
 	
-	React.render(React.createElement(app), document.body);
+	React.render(React.createElement(app), document.getElementById("app-container"));
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! react */ 1)))
 
 /***/ },
@@ -21270,7 +21270,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(/*! ./~/css-loader/cssToString.js */ 159)();
-	exports.push([module.id, "html {\n  box-sizing: border-box; }\n\n*, *::after, *::before {\n  box-sizing: inherit; }\n\n/*# sourceMappingURL=sass.map */", "", {"version":3,"file":"/Users/jhitchco/sites/project-scaffold/node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/project-scaffold/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/project-scaffold/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!/Users/jhitchco/sites/project-scaffold/dev/global.scss","sources":["dev/global.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/_bourbon.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/_neat.scss","dev/globalStyles/breakpoints.scss","dev/globalStyles/helpers.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/settings/_prefixer.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/settings/_px-to-em.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/settings/_asset-pipeline.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_assign-inputs.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_contains.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_contains-falsy.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_is-length.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_is-light.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_is-number.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_is-size.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_px-to-em.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_px-to-rem.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_shade.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_strip-units.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_tint.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_transition-property-name.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_unpack.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_modular-scale.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_convert-units.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_directional-values.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_font-source-declaration.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_gradient-positions-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_linear-angle-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_linear-gradient-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_linear-positions-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_linear-side-corner-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_radial-arg-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_radial-positions-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_radial-gradient-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_render-gradients.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_shape-size-stripper.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_str-to-num.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_animation.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_appearance.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_backface-visibility.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_background.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_background-image.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_border-image.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_calc.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_columns.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_filter.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_flex-box.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_font-face.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_font-feature-settings.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_hidpi-media-query.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_hyphens.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_image-rendering.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_keyframes.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_linear-gradient.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_perspective.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_placeholder.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_radial-gradient.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_selection.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_text-decoration.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_transform.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_transition.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_user-select.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_border-color.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_border-radius.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_border-style.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_border-width.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_buttons.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_clearfix.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_ellipsis.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_font-stacks.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_hide-text.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_margin.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_padding.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_position.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_prefixer.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_retina-image.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_size.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_text-inputs.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_timing-functions.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_triangle.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_word-wrap.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/_bourbon-deprecated-upcoming.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/_neat-helpers.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_private.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_box-sizing.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_omega.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_outer-container.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_span-columns.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_row.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_shift.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_pad.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_fill-parent.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_media.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_to-deprecate.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_visual-grid.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_display-context.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_direction-context.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/functions/_private.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/functions/_new-breakpoint.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/settings/_grid.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/settings/_visual-grid.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/settings/_disable-warnings.scss"],"sourcesContent":[],"mappings":"AoFGA;EACI,AAAY;;AAIhB,AAAG,AAAC,AAAS,AAAC;EAGR,AAAY","names":[]}]);
+	exports.push([module.id, "html {\n  box-sizing: border-box; }\n\n*, *::after, *::before {\n  box-sizing: inherit; }\n\n#resp-element {\n  content: \"MOBILE\"; }\n  @media screen and (min-width: 768px) and (max-width: 979px)  {\n    #resp-element {\n      content: \"TABLET\"; } }\n  @media screen and (min-width: 980px)  {\n    #resp-element {\n      content: \"DESKTOP\"; } }\n\n/*# sourceMappingURL=sass.map */", "", {"version":3,"file":"/Users/jhitchco/sites/project-scaffold/node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/project-scaffold/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/project-scaffold/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!/Users/jhitchco/sites/project-scaffold/dev/global.scss","sources":["dev/global.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/_bourbon.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/_neat.scss","dev/globalStyles/breakpoints.scss","dev/globalStyles/helpers.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/settings/_prefixer.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/settings/_px-to-em.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/settings/_asset-pipeline.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_assign-inputs.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_contains.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_contains-falsy.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_is-length.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_is-light.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_is-number.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_is-size.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_px-to-em.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_px-to-rem.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_shade.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_strip-units.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_tint.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_transition-property-name.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_unpack.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_modular-scale.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_convert-units.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_directional-values.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_font-source-declaration.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_gradient-positions-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_linear-angle-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_linear-gradient-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_linear-positions-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_linear-side-corner-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_radial-arg-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_radial-positions-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_radial-gradient-parser.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_render-gradients.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_shape-size-stripper.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/helpers/_str-to-num.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_animation.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_appearance.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_backface-visibility.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_background.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_background-image.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_border-image.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_calc.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_columns.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_filter.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_flex-box.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_font-face.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_font-feature-settings.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_hidpi-media-query.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_hyphens.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_image-rendering.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_keyframes.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_linear-gradient.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_perspective.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_placeholder.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_radial-gradient.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_selection.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_text-decoration.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_transform.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_transition.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/css3/_user-select.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_border-color.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_border-radius.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_border-style.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_border-width.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_buttons.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_clearfix.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_ellipsis.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_font-stacks.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_hide-text.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_margin.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_padding.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_position.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_prefixer.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_retina-image.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_size.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_text-inputs.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_timing-functions.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_triangle.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_word-wrap.scss","node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/_bourbon-deprecated-upcoming.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/_neat-helpers.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_private.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_box-sizing.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_omega.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_outer-container.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_span-columns.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_row.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_shift.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_pad.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_fill-parent.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_media.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_to-deprecate.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_visual-grid.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_display-context.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_direction-context.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/functions/_private.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/functions/_new-breakpoint.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/settings/_grid.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/settings/_visual-grid.scss","node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/settings/_disable-warnings.scss"],"sourcesContent":[],"mappings":"AoFGA;EACI,AAAY;;AAIhB,AAAG,AAAC,AAAS,AAAC;EAGR,AAAY;;AjF6BlB;EACI,AAAU;EyF6CV;IzF9CJ;MAIQ,AAAU;EyF0Cd;IzF9CJ;MAQQ,AAAU","names":[]}]);
 
 /***/ },
 /* 169 */
@@ -21291,9 +21291,9 @@
 	
 	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 	
-	var Store = _interopRequire(__webpack_require__(/*! ../stores/Store */ 172));
+	var Store = _interopRequire(__webpack_require__(/*! ../stores/Store */ 173));
 	
-	var actions = _interopRequire(__webpack_require__(/*! ../actions/actions */ 173));
+	var actions = _interopRequire(__webpack_require__(/*! ../actions/actions */ 180));
 	
 	var app = (function (_appHOC) {
 	    function app(props) {
@@ -21320,6 +21320,7 @@
 	        },
 	        render: {
 	            value: function render() {
+	                console.log("render");
 	                return React.createElement(
 	                    "div",
 	                    null,
@@ -21339,7 +21340,7 @@
 	                        React.createElement(
 	                            "h3",
 	                            null,
-	                            this.bpLT("DESKTOP") ? "MOBILE" : "DESKTOP"
+	                            this.bpE("DESKTOP") ? "DESKTOP" : "NOT DESKTOP"
 	                        ),
 	                        React.createElement(
 	                            "p",
@@ -21391,6 +21392,8 @@
 	
 	var utils = _interopRequire(__webpack_require__(/*! ../utils.js */ 171));
 	
+	var breakPointsCSS = _interopRequire(__webpack_require__(/*! -!raw!../globalStyles/breakPoints.scss */ 172));
+	
 	/**
 	 * This is where you put the methods you want to share throughout the entire app.
 	 * AKA high order component.
@@ -21409,13 +21412,22 @@
 	
 	        this.windowWidth = window.innerWidth;
 	
-	        this.breakPoints = {
-	            PHONE: 0,
-	            TABLET: 768,
-	            DESKTOP: 980
-	        };
+	        this.useMatchMedia = window.matchMedia != null;
 	
+	        this.createRespElement();
+	
+	        this.getBreakPoints();
+	
+	        // and array of all the breakpoint names
 	        this.breakNames = Object.keys(this.breakPoints);
+	
+	        // builds the media query object from the breakpoint object so you only
+	        // need to update the breakpoint object
+	        this.mediaQueries = {};
+	
+	        this.breakNames.map(function (name) {
+	            _this.mediaQueries[name] = "(min-width: " + _this.breakPoints[name] + "px)";
+	        });
 	
 	        this.currentBreak = null;
 	
@@ -21426,11 +21438,17 @@
 	            _this.getOrientation();
 	        }, false);
 	
-	        window.addEventListener("resize", function () {
-	            utils.debounce(function () {
-	                _this.getCurrentBreak();
-	            }, 250)();
-	        }, false);
+	        if (this.useMatchMedia) {
+	            this.breakNames.map(function (name) {
+	                window.matchMedia(_this.mediaQueries[name]).addListener(_this.getCurrentBreak.bind(_this));
+	            });
+	        } else {
+	            window.addEventListener("resize", function () {
+	                utils.debounce(function () {
+	                    _this.getCurrentBreak();
+	                }, 250)();
+	            }, false);
+	        }
 	
 	        if ("onorientationchange" in window) {
 	            window.addEventListener("orientationchange", this.getOrientation.bind(this), false);
@@ -21440,6 +21458,30 @@
 	    _inherits(appHOC, _React$Component);
 	
 	    _createClass(appHOC, {
+	        createRespElement: {
+	            value: function createRespElement() {
+	                var el = document.createElement("div");
+	                el.id = "resp-element";
+	                document.body.appendChild(el);
+	            }
+	        },
+	        getBreakPoints: {
+	            value: function getBreakPoints() {
+	                var _this = this;
+	
+	                var keys = breakPointsCSS.match(/"(.*)"/g);
+	                var values = breakPointsCSS.match(/min-width(.*?)px/g);
+	                this.breakPoints = {};
+	
+	                keys.map(function (key, i) {
+	                    if (i === 0) {
+	                        _this.breakPoints[key.replace(/"/g, "")] = 0;
+	                    } else {
+	                        _this.breakPoints[key.replace(/"/g, "")] = parseInt(values[i - 1].replace("min-width ", "").replace("px", ""));
+	                    }
+	                });
+	            }
+	        },
 	        getOrientation: {
 	            value: function getOrientation() {
 	                var cachedOrientation = this.currentOrientation ? this.currentOrientation : null;
@@ -21458,26 +21500,17 @@
 	        },
 	        getCurrentBreak: {
 	            value: function getCurrentBreak() {
-	                var cachedBreak = this.currentBreak ? this.currentBreak : null;
+	                var el = document.getElementById("resp-element");
+	                var currentBreak = window.getComputedStyle(el).getPropertyValue("content");
 	
-	                this.updateWindowWidth();
+	                this.currentBreak = currentBreak.replace(/"/g, "");
 	
-	                this.currentBreak = this.breakNames[this.breakNames.length - 1];
-	
-	                for (var bp in this.breakPoints) {
-	                    if (this.breakPoints[bp] <= this.windowWidth) {
-	                        this.currentBreak = bp;
-	                    }
-	                }
-	
-	                // forces an update if the breakpoint has changed
-	                if (cachedBreak !== this.currentBreak) {
-	                    this.forceUpdate();
-	                }
+	                this.forceUpdate();
 	            }
 	        },
 	        bpLT: {
 	            value: function bpLT(name) {
+	                //console.log(this.breakPoints, this.currentBreak);
 	                return this.breakPoints[this.currentBreak] < this.breakPoints[name];
 	            }
 	        },
@@ -21498,12 +21531,7 @@
 	        },
 	        bpE: {
 	            value: function bpE(name) {
-	                var index = this.breakNames.indexOf(name);
-	                if (index === this.breakNames.length - 1) {
-	                    return this.breakPoints[this.currentBreak] >= this.breakPoints[name];
-	                } else {
-	                    return this.breakPoints[this.currentBreak] >= this.breakPoints[name] && this.breakPoints[this.currentBreak] < this.breakPoints[this.breakNames[index + 1]];
-	                }
+	                return this.currentBreak === name;
 	            }
 	        },
 	        updateWindowWidth: {
@@ -21688,6 +21716,15 @@
 
 /***/ },
 /* 172 */
+/*!**********************************************************!*\
+  !*** ./~/raw-loader!./dev/globalStyles/breakPoints.scss ***!
+  \**********************************************************/
+/***/ function(module, exports) {
+
+	module.exports = "@import 'neat-helpers';\n\n/// sets desktop visual grid to be 960 pixels wide\n/// @group visual-grid\n$max-width: rem(940);\n\n/// mobile breakpoint with 6 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($mobile){\n///     [stuff]\n///   }\n$mobile: new-breakpoint(max-width 767px 6);\n\n/// tablet breakpoint with 9 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($tablet){\n///     [stuff]\n///   }\n$tablet: new-breakpoint(min-width 768px max-width 979px 9);\n\n/// tablet breakpoint with 12 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($desktop){\n///     [stuff]\n///   }\n$desktop: new-breakpoint(min-width 980px 12);\n\n/// pass in the number of columns to kill the right margin on the last element\n/// @group breakpoints\n/// @example use:\n///   @include kill-last-margin(6);\n@mixin kill-last-margin($columnNumbers) {\n    &:nth-of-type(#{$columnNumbers}) {\n        margin-right: 0;\n    }\n}\n\n#resp-element {\n    content : \"MOBILE\";\n\n    @include media($tablet) {\n        content : \"TABLET\";\n    }\n\n    @include media($desktop) {\n        content : \"DESKTOP\";\n    }\n}\n"
+
+/***/ },
+/* 173 */
 /*!*****************************!*\
   !*** ./dev/stores/Store.js ***!
   \*****************************/
@@ -21699,9 +21736,9 @@
 	
 	var dispatcher = _interopRequire(__webpack_require__(/*! ../dispatcher.js */ 174));
 	
-	var EventEmitter = _interopRequire(__webpack_require__(/*! events */ 182));
+	var EventEmitter = _interopRequire(__webpack_require__(/*! events */ 179));
 	
-	var Constants = _interopRequire(__webpack_require__(/*! ../constants/Constants */ 180));
+	//import Constants from '../constants/Constants';
 	
 	var assign = _interopRequire(__webpack_require__(/*! object-assign */ 178));
 	
@@ -21711,11 +21748,17 @@
 	    testData: "Test Data"
 	};
 	
-	function loadTestResponse(data) {
-	    _store.testGetResponse = data.testResponse;
-	}
+	//function loadTestResponse(data) {
+	//_store.testGetResponse = data.testResponse;
+	//}
 	
 	var store = assign({}, EventEmitter.prototype, {
+	    methods: {},
+	
+	    getStoreObj: function getStoreObj() {
+	        return _store;
+	    },
+	
 	    getAll: function getAll() {
 	        return _store;
 	    },
@@ -21736,16 +21779,22 @@
 	dispatcher.register(function (payload) {
 	    var action = payload.action;
 	
-	    switch (action.actionType) {
-	
-	        case Constants.LOAD_TEST_RESPONSE:
-	            console.log(action);
-	            loadTestResponse(action.data);
-	            break;
-	
-	        default:
-	            return true;
+	    if (store.methods[action.actionType]) {
+	        store.methods[action.actionType](action.data);
+	    } else {
+	        throw "there is no " + action.actionType + " method in the store";
 	    }
+	
+	    //switch (action.actionType) {
+	
+	    //case Constants.LOAD_TEST_RESPONSE:
+	
+	    //loadTestResponse(action.data);
+	    //break;
+	
+	    //default:
+	    //return true;
+	    //}
 	
 	    // This often goes in each case that should trigger a UI change. This store
 	    // needs to trigger a UI change after every view action, so we can make the
@@ -21757,39 +21806,6 @@
 	});
 	
 	module.exports = store;
-
-/***/ },
-/* 173 */
-/*!********************************!*\
-  !*** ./dev/actions/actions.js ***!
-  \********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-	
-	var dispatcher = _interopRequire(__webpack_require__(/*! ./../dispatcher.js */ 174));
-	
-	var Request = _interopRequire(__webpack_require__(/*! ./../services/Request.js */ 179));
-	
-	var Constants = _interopRequire(__webpack_require__(/*! ./../constants/Constants.js */ 180));
-	
-	//import assign from 'object-assign';
-	
-	module.exports = {
-	
-	    baseURL: "/testGet",
-	
-	    testAction: function testAction() {
-	        Request.get(this.baseURL, {}).then(function (data) {
-	            dispatcher.handleViewAction({
-	                actionType: Constants.LOAD_TEST_RESPONSE,
-	                data: JSON.parse(data)
-	            });
-	        });
-	    }
-	};
 
 /***/ },
 /* 174 */
@@ -22218,128 +22234,6 @@
 
 /***/ },
 /* 179 */
-/*!*********************************!*\
-  !*** ./dev/services/Request.js ***!
-  \*********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-	
-	var utils = _interopRequire(__webpack_require__(/*! ../utils */ 171));
-	
-	var makeRequest = function (url, params, method) {
-	    return new Promise(function (resolve, reject) {
-	        var request = new XMLHttpRequest();
-	        var pURL = url + "?" + utils.params(params);
-	
-	        request.open(method, pURL, true);
-	
-	        request.onload = function () {
-	            if (request.status >= 200 && request.status < 400) {
-	                return resolve(request.responseText);
-	            } else {
-	                return reject("We reached our target server, but it returned an error: ", request);
-	            }
-	        };
-	
-	        request.onerror = function () {
-	            return reject("there was a connection error of some sort");
-	        };
-	
-	        request.setRequestHeader("Api-User-Agent", "this is a test");
-	        request.send();
-	    });
-	};
-	
-	module.exports = {
-	    get: function get(url, params) {
-	        return makeRequest(url, params, "GET");
-	    }
-	};
-
-/***/ },
-/* 180 */
-/*!************************************!*\
-  !*** ./dev/constants/Constants.js ***!
-  \************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-	
-	var keyMirror = _interopRequire(__webpack_require__(/*! keymirror */ 181));
-	
-	module.exports = keyMirror({
-	    LOAD_TEST_RESPONSE: null
-	});
-
-/***/ },
-/* 181 */
-/*!******************************!*\
-  !*** ./~/keymirror/index.js ***!
-  \******************************/
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-2014 Facebook, Inc.
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 * http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 *
-	 */
-	
-	"use strict";
-	
-	/**
-	 * Constructs an enumeration with keys equal to their value.
-	 *
-	 * For example:
-	 *
-	 *   var COLORS = keyMirror({blue: null, red: null});
-	 *   var myColor = COLORS.blue;
-	 *   var isColorValid = !!COLORS[myColor];
-	 *
-	 * The last line could not be performed if the values of the generated enum were
-	 * not equal to their keys.
-	 *
-	 *   Input:  {key1: val1, key2: val2}
-	 *   Output: {key1: key1, key2: key2}
-	 *
-	 * @param {object} obj
-	 * @return {object}
-	 */
-	var keyMirror = function(obj) {
-	  var ret = {};
-	  var key;
-	  if (!(obj instanceof Object && !Array.isArray(obj))) {
-	    throw new Error('keyMirror(...): Argument must be an object.');
-	  }
-	  for (key in obj) {
-	    if (!obj.hasOwnProperty(key)) {
-	      continue;
-	    }
-	    ret[key] = key;
-	  }
-	  return ret;
-	};
-	
-	module.exports = keyMirror;
-
-
-/***/ },
-/* 182 */
 /*!********************************************************!*\
   !*** (webpack)/~/node-libs-browser/~/events/events.js ***!
   \********************************************************/
@@ -22646,6 +22540,166 @@
 	function isUndefined(arg) {
 	  return arg === void 0;
 	}
+
+
+/***/ },
+/* 180 */
+/*!********************************!*\
+  !*** ./dev/actions/actions.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+	
+	var dispatcher = _interopRequire(__webpack_require__(/*! ./../dispatcher.js */ 174));
+	
+	var Request = _interopRequire(__webpack_require__(/*! ./../services/Request.js */ 181));
+	
+	var Constants = _interopRequire(__webpack_require__(/*! ./../constants/Constants.js */ 182));
+	
+	var store = _interopRequire(__webpack_require__(/*! ../stores/Store.js */ 173));
+	
+	store.methods[Constants.LOAD_TEST_RESPONSE] = function (data) {
+	    var _store = store.getStoreObj();
+	    _store.testGetResponse = data.testResponse;
+	};
+	
+	module.exports = {
+	
+	    baseURL: "/testGet",
+	
+	    testAction: function testAction() {
+	        Request.get(this.baseURL, {}).then(function (data) {
+	            dispatcher.handleViewAction({
+	                actionType: Constants.LOAD_TEST_RESPONSE,
+	                data: JSON.parse(data)
+	            });
+	        });
+	    }
+	};
+
+/***/ },
+/* 181 */
+/*!*********************************!*\
+  !*** ./dev/services/Request.js ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+	
+	var utils = _interopRequire(__webpack_require__(/*! ../utils */ 171));
+	
+	var makeRequest = function (url, params, method) {
+	    return new Promise(function (resolve, reject) {
+	        var request = new XMLHttpRequest();
+	        var pURL = url + "?" + utils.params(params);
+	
+	        request.open(method, pURL, true);
+	
+	        request.onload = function () {
+	            if (request.status >= 200 && request.status < 400) {
+	                return resolve(request.responseText);
+	            } else {
+	                return reject("We reached our target server, but it returned an error: ", request);
+	            }
+	        };
+	
+	        request.onerror = function () {
+	            return reject("there was a connection error of some sort");
+	        };
+	
+	        request.setRequestHeader("Api-User-Agent", "this is a test");
+	        request.send();
+	    });
+	};
+	
+	module.exports = {
+	    get: function get(url, params) {
+	        return makeRequest(url, params, "GET");
+	    }
+	};
+
+/***/ },
+/* 182 */
+/*!************************************!*\
+  !*** ./dev/constants/Constants.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+	
+	var keyMirror = _interopRequire(__webpack_require__(/*! keymirror */ 183));
+	
+	module.exports = keyMirror({
+	    LOAD_TEST_RESPONSE: null
+	});
+
+/***/ },
+/* 183 */
+/*!******************************!*\
+  !*** ./~/keymirror/index.js ***!
+  \******************************/
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-2014 Facebook, Inc.
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License");
+	 * you may not use this file except in compliance with the License.
+	 * You may obtain a copy of the License at
+	 *
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software
+	 * distributed under the License is distributed on an "AS IS" BASIS,
+	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 * See the License for the specific language governing permissions and
+	 * limitations under the License.
+	 *
+	 */
+	
+	"use strict";
+	
+	/**
+	 * Constructs an enumeration with keys equal to their value.
+	 *
+	 * For example:
+	 *
+	 *   var COLORS = keyMirror({blue: null, red: null});
+	 *   var myColor = COLORS.blue;
+	 *   var isColorValid = !!COLORS[myColor];
+	 *
+	 * The last line could not be performed if the values of the generated enum were
+	 * not equal to their keys.
+	 *
+	 *   Input:  {key1: val1, key2: val2}
+	 *   Output: {key1: key1, key2: key2}
+	 *
+	 * @param {object} obj
+	 * @return {object}
+	 */
+	var keyMirror = function(obj) {
+	  var ret = {};
+	  var key;
+	  if (!(obj instanceof Object && !Array.isArray(obj))) {
+	    throw new Error('keyMirror(...): Argument must be an object.');
+	  }
+	  for (key in obj) {
+	    if (!obj.hasOwnProperty(key)) {
+	      continue;
+	    }
+	    ret[key] = key;
+	  }
+	  return ret;
+	};
+	
+	module.exports = keyMirror;
 
 
 /***/ }
