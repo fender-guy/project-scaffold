@@ -19,13 +19,16 @@ class app extends appHOC {
     }
 
     render() {
-        console.log('render');
         return (
             <div>
                 <h1>Hello App</h1>
                 <div>
-                    <h2>Data from the store:</h2>
-                    <h3>{this.bpE('DESKTOP') ? 'DESKTOP' : 'NOT DESKTOP'}</h3>
+                    <h2>Current Breakpoint: {this.currentBreak}</h2>
+                    <h3>{'<='} Desktop: {this.bpLTE('DESKTOP') ? 'true' : 'false'}</h3>
+                    <h3>{'<'} Desktop: {this.bpLT('DESKTOP') ? 'true' : 'false'}</h3>
+                    <h3>{'==='} Desktop: {this.bpE('DESKTOP') ? 'true' : 'false'}</h3>
+                    <h3>{'>'} Tablet: {this.bpGT('TABLET') ? 'true' : 'false'}</h3>
+                    <h3>{'>='} Tablet: {this.bpGTE('TABLET') ? 'true' : 'false'}</h3>
                     <p>{this.state.testData}</p>
                     <p>{this.state.testGetResponse}</p>
                 </div>

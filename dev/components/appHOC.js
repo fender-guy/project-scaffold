@@ -102,7 +102,6 @@ class appHOC extends React.Component {
     }
 
     bpLT(name) {
-        //console.log(this.breakPoints, this.currentBreak);
         return this.breakPoints[this.currentBreak] < this.breakPoints[name];
     }
 

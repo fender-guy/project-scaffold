@@ -24,7 +24,6 @@
     "templateStrings": true,
     "modules": true
   },
-  "parser": "babel-eslint",
   "globals": {
       "React": true,
       "keyMirror": true,
