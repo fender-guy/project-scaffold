@@ -38,6 +38,7 @@
     "flux": "^2.0.1",
     "jsx-loader": "^0.12.2",
     "keymirror": "^0.1.1",
+    "mixin": "^0.2.0",
     "mongodb": "^2.0.25",
     "node-bourbon": "^4.2.1-beta1",
     "node-neat": "^1.7.1-beta1",
