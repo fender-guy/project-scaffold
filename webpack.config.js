@@ -6,7 +6,7 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        index: "./dev/app.js"
+        index: path.resolve(__dirname + '/dev/app.js')
     },
     output: {
         path: __dirname,
@@ -17,13 +17,12 @@ module.exports = {
         preLoaders: [
             {
                 test: /\.jsx?$/,
-                exclude: /node_modules/,
+                include: path.resolve(__dirname + '/dev'),
                 loader: 'eslint-loader'
             }
         ],
         loaders: [
-            { test: /\.less$/, exclude: /node_modules/, loader: "style-loader!css-loader!less-loader" },
-            { test: /\.scss$/, exclude: /node_modules/,
+            { test: /\.scss$/, include: path.resolve(__dirname + '/dev'),
                 loader:
                     'style-loader!css?sourceMap!' +
                     'sass?sourceMap&' +
@@ -32,8 +31,8 @@ module.exports = {
                     "&includePaths[]=" + neat[1]
 
             },
-            { test: /\.css$/, exclude: /node_modules/, loader: "style-loader!css-loader" },
-            { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
+            { test: /\.css$/, include: path.resolve(__dirname + '/dev'), loader: "style-loader!css-loader" },
+            { test: /\.js$/, include: path.resolve(__dirname + '/dev'), loader: 'babel-loader' },
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
 
         ]
@@ -52,15 +51,12 @@ module.exports = {
         ]
     },
     plugins: [ 
-        new ExtractTextPlugin('./prod/[name].css'),
+        new ExtractTextPlugin(path.resolve(__dirname + '/prod/[name].css')),
         new webpack.PrefetchPlugin('react'),
         new webpack.ProvidePlugin({
             React : 'react',
             keyMirror : 'keyMirror',
             appHOC : 'appHOC'
         })
-    ],
-    jshint: {
-        esnext: true
-    }
+    ]
 };

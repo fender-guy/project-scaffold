@@ -2,24 +2,52 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 const process = require('child_process');
+const webpack = require('webpack');
+const webpackConfig = require('./webpack.config.js');
+const colors = require('colors');
 
 // webpack
-var ls = process.spawn('webpack', ['--colors', '--progress', '--watch', '-d']);
+var handleFataError = function(err) {
+    console.log('fatal error: ', err);
+}
 
-ls.stderr.on('error', function(error) {
-    console.log('error: ', error);
-});
+var handleSoftErrors = function(errs) {
+    errs.map(function(err) {
+        console.log(err);
+    });
+}
 
-ls.stdout.on('data', function (data) {
-    console.log('stdout: ' + data);
-});
+var handleWarnings = function(warnings) {
+    warnings.map(function(warning) {
+        console.log(warning);
+    });
+}
 
-//ls.stderr.on('data', function (data) {
-    //console.log('stderr: ' + data);
-//});
+var successfullyCompiled = function() {
+    console.log('Your web was packed' .green);
+}
 
-ls.on('close', function (code) {
-    console.log('child process exited with code ' + code);
+var compiler = webpack(webpackConfig);
+
+compiler.watch({
+    poll: true
+}, function(err, stats){
+
+    if(err) {
+        return handleFatalError(err);
+    }
+
+    var jsonStats = stats.toJson();
+
+    if(jsonStats.errors.length > 0) {
+        return handleSoftErrors(jsonStats.errors);
+    }
+
+    if(jsonStats.warnings.length > 0) {
+        handleWarnings(jsonStats.warnings);
+    }
+
+    successfullyCompiled();
 });
 
 

@@ -4,11 +4,6 @@ import breakPointsCSS from '-!raw!../../globalStyles/breakPoints.scss';
 class RespState {
     constructor(props) {
         super(props);
-
-        let that = this;
-
-        console.log(that);
-
         this.isRetina = window.devicePixelRatio > 1;
 
         this.windowWidth = window.innerWidth;
