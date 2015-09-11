@@ -37,6 +37,7 @@
     "extract-text-webpack-plugin": "^0.4.0",
     "file-loader": "^0.8.1",
     "flux": "^2.0.1",
+    "immutable": "^3.7.5",
     "jsx-loader": "^0.12.2",
     "keymirror": "^0.1.1",
     "mixin": "^0.2.0",
@@ -53,7 +54,6 @@
     "style-loader": "^0.8.3",
     "url-loader": "^0.5.5",
     "webpack": "^1.11.0",
-    "webpack-dev-server": "^1.10.1",
     "whatwg-fetch": "^0.9.0"
   }
 }

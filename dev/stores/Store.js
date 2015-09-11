@@ -1,38 +1,38 @@
 import dispatcher from '../dispatcher.js';
 import EventEmitter from 'events';
-//import Constants from '../constants/Constants';
 import assign from 'object-assign';
+import Immutable from 'immutable';
 
 let CHANGE_EVENT = 'change';
 
-let _store = {
+let _store = Immutable.fromJS({
     testData : 'Test Data'
-};
-
-//function loadTestResponse(data) {
-    //_store.testGetResponse = data.testResponse;
-//}
+});
 
 let store = assign({}, EventEmitter.prototype, {
     methods : {},
 
-    getStoreObj : function() {
+    getAll() {
         return _store;
     },
 
-    getAll : function () {
-        return _store;
+    getAllJS() {
+        return _store.toJS();
     },
 
-    emitChange : function () {
+    replace(newStore) {
+        _store = newStore;
+    },
+
+    emitChange() {
         this.emit(CHANGE_EVENT);
     },
 
-    addChangeListener : function (callback) {
+    addChangeListener(callback) {
         this.on(CHANGE_EVENT, callback);
     },
 
-    removeChangeListener : function (callback) {
+    removeChangeListener(callback) {
         this.removeListener(CHANGE_EVENT, callback);
     }
 });

@@ -37,7 +37,7 @@ class app extends appHOC {
     }
 
     _onChange() {
-        this.setState(Store.getAll());
+        this.setState(Store.getAllJS());
     }
 }
 
