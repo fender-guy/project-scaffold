@@ -20785,6 +20785,10 @@
 
 	var actions = _interopRequire(__webpack_require__(186));
 
+	var Constants = _interopRequire(__webpack_require__(188));
+
+	var Immutable = _interopRequire(__webpack_require__(185));
+
 	var app = (function (_appHOC) {
 	    function app(props) {
 	        _classCallCheck(this, app);
@@ -20796,11 +20800,26 @@
 	    _inherits(app, _appHOC);
 
 	    _createClass(app, {
+	        _testAction: {
+	            value: function _testAction() {
+	                actions({
+	                    url: "/testGet",
+	                    type: Constants.LOAD_TEST_RESPONSE,
+	                    method: function (data, store) {
+	                        var _store = store.getAll();
+	                        store.replace(_store.setIn(["testGetResponse"], Immutable.fromJS(data.testResponse)));
+	                    }
+	                }).then(function () {
+	                    console.log("post action works");
+	                });
+	            }
+	        },
 	        componentDidMount: {
 	            value: function componentDidMount() {
 	                Store.addChangeListener(this._onChange.bind(this));
 	                this._onChange(); //comment out later
-	                actions.testAction();
+	                this._testAction();
+	                //actions.testAction();
 	            }
 	        },
 	        componentWillUnmount: {
@@ -27802,33 +27821,32 @@
 
 	var Request = _interopRequire(__webpack_require__(187));
 
-	var Constants = _interopRequire(__webpack_require__(188));
-
 	var store = _interopRequire(__webpack_require__(178));
 
-	var Immutable = _interopRequire(__webpack_require__(185));
-
-	//abstract these two into one file somehow
-
-	store.methods[Constants.LOAD_TEST_RESPONSE] = function (data) {
-	    var _store = store.getAll();
-	    console.log(_store, data);
-	    store.replace(_store.setIn(["testGetResponse"], Immutable.fromJS(data.testResponse)));
-	    //_store.testGetResponse = data.testResponse;
-	};
-
-	module.exports = {
-
-	    baseURL: "/testGet",
-
-	    testAction: function testAction() {
-	        Request.get(this.baseURL, {}).then(function (data) {
-	            dispatcher.handleViewAction({
-	                actionType: Constants.LOAD_TEST_RESPONSE,
-	                data: JSON.parse(data)
-	            });
-	        });
+	function getErrorStack(error) {
+	    if (error && error.stack) {
+	        console.error(error.stack);
+	    } else {
+	        console.error(error);
 	    }
+	}
+
+	module.exports = function (settings) {
+
+	    store.methods[settings.type] = function (data) {
+	        settings.method(data, store);
+	    };
+
+	    return Request.get(settings.url, {}).then(function (data) {
+	        dispatcher.handleViewAction({
+	            actionType: settings.type,
+	            data: JSON.parse(data)
+	        });
+	        return Promise.resolve();
+	    })["catch"](function (errorData) {
+	        getErrorStack(errorData);
+	        return Promise.reject(errorData);
+	    });
 	};
 
 /***/ },

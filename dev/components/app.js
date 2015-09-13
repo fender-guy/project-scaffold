@@ -1,5 +1,7 @@
 import Store from '../stores/Store';
 import actions from '../actions/actions';
+import Constants from './../constants/Constants.js';
+import Immutable from 'immutable';
 
 class app extends appHOC {
 
@@ -8,10 +10,24 @@ class app extends appHOC {
         this.state = {};
     }
 
+    _testAction() {
+        actions({
+            url    : '/testGet',
+            type   : Constants.LOAD_TEST_RESPONSE,
+            method : (data, store) => {
+                let _store = store.getAll();
+                store.replace(_store.setIn(['testGetResponse'], Immutable.fromJS(data.testResponse)));
+            }
+        }).then(() => {
+            console.log('post action works');
+        });
+    }
+
     componentDidMount() {
         Store.addChangeListener(this._onChange.bind(this));
         this._onChange(); //comment out later
-        actions.testAction();
+        this._testAction();
+        //actions.testAction();
     }
 
     componentWillUnmount() {
