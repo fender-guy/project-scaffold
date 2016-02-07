@@ -3,12 +3,11 @@ import breakPointsCSS from '-!raw!../../globalStyles/breakPoints.scss';
 
 class RespState {
     constructor(props) {
-        super(props);
         this.isRetina = window.devicePixelRatio > 1;
 
         this.windowWidth = window.innerWidth;
 
-        this.useMatchMedia = window.matchMedia != null;
+        this.useMatchMedia = window.matchMedia !== null;
 
         this.createRespElement();
 

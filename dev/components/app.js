@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import Store from '../stores/Store';
 import actions from '../actions/actions';
 import Constants from './../constants/Constants.js';

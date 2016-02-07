@@ -32,15 +32,23 @@ module.exports = {
 
             },
             { test: /\.css$/, include: path.resolve(__dirname + '/dev'), loader: "style-loader!css-loader" },
-            { test: /\.js$/, include: path.resolve(__dirname + '/dev'), loader: 'babel-loader' },
+            { test: /\.js$/, include: path.resolve(__dirname + '/dev'), loader: 'babel-loader', query: {
+                presets: [
+                    'react', 
+                    'es2015'
+                ],
+                plugins: [
+                    "transform-decorators-legacy",
+                    "transform-decorators",
+                    "syntax-decorators"
+                ] 
+            }},
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
 
         ]
     },
     resolve: {
         alias: {
-            'react': path.join(__dirname, 'node_modules/react/react.js'),
-            'react-addons': path.join(__dirname, 'node_modules/react/addons.js'),
             'keyMirror' : path.join(__dirname, 'node_modules/keymirror/index.js'),
             'appHOC' : path.join(__dirname, 'dev/components/appHOC.js')
         },
@@ -52,9 +60,7 @@ module.exports = {
     },
     plugins: [ 
         new ExtractTextPlugin(path.resolve(__dirname + '/prod/[name].css')),
-        new webpack.PrefetchPlugin('react'),
         new webpack.ProvidePlugin({
-            React : 'react',
             keyMirror : 'keyMirror',
             appHOC : 'appHOC'
         })
