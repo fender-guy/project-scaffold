@@ -4,12 +4,16 @@ import Store from '../stores/Store';
 import actions from '../actions/actions';
 import Constants from './../constants/Constants.js';
 import Immutable from 'immutable';
+import RespState from '../utils/RespState';
 
-class app extends appHOC {
+class app extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {};
+        this.rs = new RespState(this._updateCallback.bind(this));
+        this.state = {
+            rs : this.rs
+        };
     }
 
     _testAction() {
@@ -25,11 +29,14 @@ class app extends appHOC {
         });
     }
 
+    _updateCallback() {
+        this.forceUpdate();
+    }
+
     componentDidMount() {
         Store.addChangeListener(this._onChange.bind(this));
-        this._onChange(); //comment out later
+        //this._onChange(); //comment out later
         this._testAction();
-        //actions.testAction();
     }
 
     componentWillUnmount() {
@@ -41,12 +48,12 @@ class app extends appHOC {
             <div>
                 <h1>Hello App</h1>
                 <div>
-                    <h2>Current Breakpoint: {this.currentBreak}</h2>
-                    <h3>{'<='} Desktop: {this.bpLTE('DESKTOP') ? 'true' : 'false'}</h3>
-                    <h3>{'<'} Desktop: {this.bpLT('DESKTOP') ? 'true' : 'false'}</h3>
-                    <h3>{'==='} Desktop: {this.bpE('DESKTOP') ? 'true' : 'false'}</h3>
-                    <h3>{'>'} Tablet: {this.bpGT('TABLET') ? 'true' : 'false'}</h3>
-                    <h3>{'>='} Tablet: {this.bpGTE('TABLET') ? 'true' : 'false'}</h3>
+                    <h2>Current Breakpoint: {this.state.rs.currentBreak}</h2>
+                    <h3>{'<='} Desktop: {this.state.rs.bpLTE('DESKTOP') ? 'true' : 'false'}</h3>
+                    <h3>{'<'} Desktop: {this.state.rs.bpLT('DESKTOP') ? 'true' : 'false'}</h3>
+                    <h3>{'==='} Desktop: {this.state.rs.bpE('DESKTOP') ? 'true' : 'false'}</h3>
+                    <h3>{'>'} Tablet: {this.state.rs.bpGT('TABLET') ? 'true' : 'false'}</h3>
+                    <h3>{'>='} Tablet: {this.state.rs.bpGTE('TABLET') ? 'true' : 'false'}</h3>
                     <p>{this.state.testData}</p>
                     <p>{this.state.testGetResponse}</p>
                 </div>

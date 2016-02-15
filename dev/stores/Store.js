@@ -46,17 +46,6 @@ dispatcher.register(function (payload) {
         throw 'there is no ' + action.actionType + ' method in the store';
     }
 
-    //switch (action.actionType) {
-
-        //case Constants.LOAD_TEST_RESPONSE:
-
-            //loadTestResponse(action.data);
-            //break;
-
-        //default:
-            //return true;
-    //}
-
     // This often goes in each case that should trigger a UI change. This store
     // needs to trigger a UI change after every view action, so we can make the
     // code less repetitive by putting it here.  We need the default case,

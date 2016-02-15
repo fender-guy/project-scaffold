@@ -498,8 +498,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?sourceMap!./../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jeremyhitchcock/projects/project-scaffold/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jeremyhitchcock/projects/project-scaffold/node_modules/bourbon-neat/app/assets/stylesheets!./global.scss", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?sourceMap!./../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jeremyhitchcock/projects/project-scaffold/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jeremyhitchcock/projects/project-scaffold/node_modules/bourbon-neat/app/assets/stylesheets!./global.scss");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?sourceMap!./../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/Sites/project-scaffold/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/Sites/project-scaffold/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./global.scss", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?sourceMap!./../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/Sites/project-scaffold/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/Sites/project-scaffold/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./global.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -517,7 +517,7 @@
 
 
 	// module
-	exports.push([module.id, "html {\n  box-sizing: border-box; }\n\n*, *::after, *::before {\n  box-sizing: inherit; }\n\n#resp-element {\n  content: \"MOBILE\"; }\n  @media screen and (min-width: 768px) and (max-width: 979px) {\n    #resp-element {\n      content: \"TABLET\"; } }\n  @media screen and (min-width: 980px) {\n    #resp-element {\n      content: \"DESKTOP\"; } }\n", "", {"version":3,"sources":["/./dev/node_modules/bourbon-neat/app/assets/stylesheets/grid/_box-sizing.scss","/./dev/dev/globalStyles/breakpoints.scss","/./dev/node_modules/bourbon-neat/app/assets/stylesheets/grid/_media.scss"],"names":[],"mappings":"AAGE;EACE,uBAAuB,EACxB;;AAED;EAII,oBAAoB,EACrB;;AC4BL;EACI,kBAAmB,EAStB;ECoCG;ID9CJ;MAIQ,kBAAmB,EAM1B,EAAA;ECoCG;ID9CJ;MAQQ,mBAAoB,EAE3B,EAAA","file":"global.scss","sourcesContent":["@charset \"UTF-8\";\n\n@if $border-box-sizing == true {\n  html { // http://bit.ly/1qk2tVR\n    box-sizing: border-box;\n  }\n\n  * {\n    &,\n    &::after,\n    &::before {\n      box-sizing: inherit;\n    }\n  }\n}\n","@import 'neat-helpers';\n\n/// sets desktop visual grid to be 960 pixels wide\n/// @group visual-grid\n$max-width: rem(940);\n\n/// mobile breakpoint with 6 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($mobile){\n///     [stuff]\n///   }\n$mobile: new-breakpoint(max-width 767px 6);\n\n/// tablet breakpoint with 9 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($tablet){\n///     [stuff]\n///   }\n$tablet: new-breakpoint(min-width 768px max-width 979px 9);\n\n/// tablet breakpoint with 12 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($desktop){\n///     [stuff]\n///   }\n$desktop: new-breakpoint(min-width 980px 12);\n\n/// pass in the number of columns to kill the right margin on the last element\n/// @group breakpoints\n/// @example use:\n///   @include kill-last-margin(6);\n@mixin kill-last-margin($columnNumbers) {\n    &:nth-of-type(#{$columnNumbers}) {\n        margin-right: 0;\n    }\n}\n\n#resp-element {\n    content : \"MOBILE\";\n\n    @include media($tablet) {\n        content : \"TABLET\";\n    }\n\n    @include media($desktop) {\n        content : \"DESKTOP\";\n    }\n}\n","@charset \"UTF-8\";\n\n/// Outputs a media-query block with an optional grid context (the total number of columns used in the grid).\n///\n/// @param {List} $query\n///   A list of media query features and values, where each `$feature` should have a corresponding `$value`.\n///   For a list of valid values for `$feature`, click [here](http://www.w3.org/TR/css3-mediaqueries/#media1).\n///\n///   If there is only a single `$value` in `$query`, `$default-feature` is going to be used.\n///\n///   The number of total columns in the grid can be set by passing `$columns` at the end of the list (overrides `$total-columns`).\n///\n///\n/// @param {Number (unitless)} $total-columns [$grid-columns]\n///   - Number of columns to use in the new grid context. Can be set as a shorthand in the first parameter.\n///\n/// @example scss - Usage\n///   .responsive-element {\n///      @include media(769px) {\n///        @include span-columns(6);\n///      }\n///   }\n///\n///  .new-context-element {\n///    @include media(min-width 320px max-width 480px, 6) {\n///      @include span-columns(6);\n///    }\n///  }\n///\n/// @example css - CSS Output\n///  @media screen and (min-width: 769px) {\n///    .responsive-element {\n///      display: block;\n///      float: left;\n///      margin-right: 2.35765%;\n///      width: 48.82117%;\n///    }\n///\n///    .responsive-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n///\n///  @media screen and (min-width: 320px) and (max-width: 480px) {\n///    .new-context-element {\n///      display: block;\n///      float: left;\n///      margin-right: 4.82916%;\n///      width: 100%;\n///    }\n///\n///    .new-context-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n\n@mixin media($query: $feature $value $columns, $total-columns: $grid-columns) {\n  @if length($query) == 1 {\n    @media screen and ($default-feature: nth($query, 1)) {\n      $default-grid-columns: $grid-columns;\n      $grid-columns: $total-columns !global;\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  } @else {\n    $loop-to: length($query);\n    $media-query: \"screen and \";\n    $default-grid-columns: $grid-columns;\n    $grid-columns: $total-columns !global;\n\n    @if is-not(is-even(length($query))) {\n      $grid-columns: nth($query, $loop-to) !global;\n      $loop-to: $loop-to - 1;\n    }\n\n    $i: 1;\n    @while $i <= $loop-to {\n      $media-query: $media-query + \"(\" + nth($query, $i) + \": \" + nth($query, $i + 1) + \") \";\n\n      @if ($i + 1) != $loop-to {\n        $media-query: $media-query + \"and \";\n      }\n\n      $i: $i + 2;\n    }\n\n    @media #{$media-query} {\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  }\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "html {\n  box-sizing: border-box; }\n\n*, *::after, *::before {\n  box-sizing: inherit; }\n\n#resp-element {\n  content: \"MOBILE\"; }\n  @media screen and (min-width: 768px) and (max-width: 979px) {\n    #resp-element {\n      content: \"TABLET\"; } }\n  @media screen and (min-width: 980px) {\n    #resp-element {\n      content: \"DESKTOP\"; } }\n", "", {"version":3,"sources":["/./dev/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_box-sizing.scss","/./dev/dev/globalStyles/breakpoints.scss","/./dev/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_media.scss"],"names":[],"mappings":"AAGE;EACE,uBAAuB,EACxB;;AAED;EAII,oBAAoB,EACrB;;AC4BL;EACI,kBAAmB,EAStB;ECoCG;ID9CJ;MAIQ,kBAAmB,EAM1B,EAAA;ECoCG;ID9CJ;MAQQ,mBAAoB,EAE3B,EAAA","file":"global.scss","sourcesContent":["@charset \"UTF-8\";\n\n@if $border-box-sizing == true {\n  html { // http://bit.ly/1qk2tVR\n    box-sizing: border-box;\n  }\n\n  * {\n    &,\n    &::after,\n    &::before {\n      box-sizing: inherit;\n    }\n  }\n}\n","@import 'neat-helpers';\n\n/// sets desktop visual grid to be 960 pixels wide\n/// @group visual-grid\n$max-width: rem(940);\n\n/// mobile breakpoint with 6 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($mobile){\n///     [stuff]\n///   }\n$mobile: new-breakpoint(max-width 767px 6);\n\n/// tablet breakpoint with 9 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($tablet){\n///     [stuff]\n///   }\n$tablet: new-breakpoint(min-width 768px max-width 979px 9);\n\n/// tablet breakpoint with 12 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($desktop){\n///     [stuff]\n///   }\n$desktop: new-breakpoint(min-width 980px 12);\n\n/// pass in the number of columns to kill the right margin on the last element\n/// @group breakpoints\n/// @example use:\n///   @include kill-last-margin(6);\n@mixin kill-last-margin($columnNumbers) {\n    &:nth-of-type(#{$columnNumbers}) {\n        margin-right: 0;\n    }\n}\n\n#resp-element {\n    content : \"MOBILE\";\n\n    @include media($tablet) {\n        content : \"TABLET\";\n    }\n\n    @include media($desktop) {\n        content : \"DESKTOP\";\n    }\n}\n","@charset \"UTF-8\";\n\n/// Outputs a media-query block with an optional grid context (the total number of columns used in the grid).\n///\n/// @param {List} $query\n///   A list of media query features and values, where each `$feature` should have a corresponding `$value`.\n///   For a list of valid values for `$feature`, click [here](http://www.w3.org/TR/css3-mediaqueries/#media1).\n///\n///   If there is only a single `$value` in `$query`, `$default-feature` is going to be used.\n///\n///   The number of total columns in the grid can be set by passing `$columns` at the end of the list (overrides `$total-columns`).\n///\n///\n/// @param {Number (unitless)} $total-columns [$grid-columns]\n///   - Number of columns to use in the new grid context. Can be set as a shorthand in the first parameter.\n///\n/// @example scss - Usage\n///   .responsive-element {\n///      @include media(769px) {\n///        @include span-columns(6);\n///      }\n///   }\n///\n///  .new-context-element {\n///    @include media(min-width 320px max-width 480px, 6) {\n///      @include span-columns(6);\n///    }\n///  }\n///\n/// @example css - CSS Output\n///  @media screen and (min-width: 769px) {\n///    .responsive-element {\n///      display: block;\n///      float: left;\n///      margin-right: 2.35765%;\n///      width: 48.82117%;\n///    }\n///\n///    .responsive-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n///\n///  @media screen and (min-width: 320px) and (max-width: 480px) {\n///    .new-context-element {\n///      display: block;\n///      float: left;\n///      margin-right: 4.82916%;\n///      width: 100%;\n///    }\n///\n///    .new-context-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n\n@mixin media($query: $feature $value $columns, $total-columns: $grid-columns) {\n  @if length($query) == 1 {\n    @media screen and ($default-feature: nth($query, 1)) {\n      $default-grid-columns: $grid-columns;\n      $grid-columns: $total-columns !global;\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  } @else {\n    $loop-to: length($query);\n    $media-query: \"screen and \";\n    $default-grid-columns: $grid-columns;\n    $grid-columns: $total-columns !global;\n\n    @if is-not(is-even(length($query))) {\n      $grid-columns: nth($query, $loop-to) !global;\n      $loop-to: $loop-to - 1;\n    }\n\n    $i: 1;\n    @while $i <= $loop-to {\n      $media-query: $media-query + \"(\" + nth($query, $i) + \": \" + nth($query, $i + 1) + \") \";\n\n      @if ($i + 1) != $loop-to {\n        $media-query: $media-query + \"and \";\n      }\n\n      $i: $i + 2;\n    }\n\n    @media #{$media-query} {\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  }\n}\n"],"sourceRoot":"webpack://"}]);
 
 	// exports
 
@@ -20127,13 +20127,13 @@
 /* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(appHOC) {'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(13);
 
@@ -20143,21 +20143,25 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Store = __webpack_require__(180);
+	var _Store = __webpack_require__(172);
 
 	var _Store2 = _interopRequireDefault(_Store);
 
-	var _actions = __webpack_require__(188);
+	var _actions = __webpack_require__(180);
 
 	var _actions2 = _interopRequireDefault(_actions);
 
-	var _Constants = __webpack_require__(190);
+	var _Constants = __webpack_require__(183);
 
 	var _Constants2 = _interopRequireDefault(_Constants);
 
-	var _immutable = __webpack_require__(187);
+	var _immutable = __webpack_require__(179);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var _RespState = __webpack_require__(185);
+
+	var _RespState2 = _interopRequireDefault(_RespState);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20167,15 +20171,18 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var app = function (_appHOC) {
-	    _inherits(app, _appHOC);
+	var app = function (_React$Component) {
+	    _inherits(app, _React$Component);
 
 	    function app(props) {
 	        _classCallCheck(this, app);
 
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(app).call(this, props));
 
-	        _this.state = {};
+	        _this.rs = new _RespState2.default(_this._updateCallback.bind(_this));
+	        _this.state = {
+	            rs: _this.rs
+	        };
 	        return _this;
 	    }
 
@@ -20194,12 +20201,16 @@
 	            });
 	        }
 	    }, {
+	        key: '_updateCallback',
+	        value: function _updateCallback() {
+	            this.forceUpdate();
+	        }
+	    }, {
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            _Store2.default.addChangeListener(this._onChange.bind(this));
-	            this._onChange(); //comment out later
+	            //this._onChange(); //comment out later
 	            this._testAction();
-	            //actions.testAction();
 	        }
 	    }, {
 	        key: 'componentWillUnmount',
@@ -20224,42 +20235,42 @@
 	                        'h2',
 	                        null,
 	                        'Current Breakpoint: ',
-	                        this.currentBreak
+	                        this.state.rs.currentBreak
 	                    ),
 	                    _react2.default.createElement(
 	                        'h3',
 	                        null,
 	                        '<=',
 	                        ' Desktop: ',
-	                        this.bpLTE('DESKTOP') ? 'true' : 'false'
+	                        this.state.rs.bpLTE('DESKTOP') ? 'true' : 'false'
 	                    ),
 	                    _react2.default.createElement(
 	                        'h3',
 	                        null,
 	                        '<',
 	                        ' Desktop: ',
-	                        this.bpLT('DESKTOP') ? 'true' : 'false'
+	                        this.state.rs.bpLT('DESKTOP') ? 'true' : 'false'
 	                    ),
 	                    _react2.default.createElement(
 	                        'h3',
 	                        null,
 	                        '===',
 	                        ' Desktop: ',
-	                        this.bpE('DESKTOP') ? 'true' : 'false'
+	                        this.state.rs.bpE('DESKTOP') ? 'true' : 'false'
 	                    ),
 	                    _react2.default.createElement(
 	                        'h3',
 	                        null,
 	                        '>',
 	                        ' Tablet: ',
-	                        this.bpGT('TABLET') ? 'true' : 'false'
+	                        this.state.rs.bpGT('TABLET') ? 'true' : 'false'
 	                    ),
 	                    _react2.default.createElement(
 	                        'h3',
 	                        null,
 	                        '>=',
 	                        ' Tablet: ',
-	                        this.bpGTE('TABLET') ? 'true' : 'false'
+	                        this.state.rs.bpGTE('TABLET') ? 'true' : 'false'
 	                    ),
 	                    _react2.default.createElement(
 	                        'p',
@@ -20282,12 +20293,11 @@
 	    }]);
 
 	    return app;
-	}(appHOC);
+	}(_react2.default.Component);
 
 	app.displayName = 'App';
 
 	exports.default = app;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(172)))
 
 /***/ },
 /* 172 */
@@ -20295,1206 +20305,19 @@
 
 	'use strict';
 
-	var _class;
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = undefined;
-
-	var _RespState = __webpack_require__(173);
-
-	var _RespState2 = _interopRequireDefault(_RespState);
-
-	var _mixin = __webpack_require__(176);
-
-	var _mixin2 = _interopRequireDefault(_mixin);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	/**
-	 * This is where you put the methods you want to share throughout the entire app.
-	 * AKA high order component.
-	 */
-
-	/*eslint-disable */
-
-	/*eslint-enable */
-
-	var appHOC = (0, _RespState2.default)(_class = function (_React$Component) {
-	    _inherits(appHOC, _React$Component);
-
-	    function appHOC(props) {
-	        _classCallCheck(this, appHOC);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(appHOC).call(this, props));
-	    }
-
-	    return appHOC;
-	}(React.Component)) || _class;
-
-	exports.default = appHOC;
-
-	appHOC.displayName = 'appHOC';
-
-/***/ },
-/* 173 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _utils = __webpack_require__(174);
-
-	var _utils2 = _interopRequireDefault(_utils);
-
-	var _breakPoints = __webpack_require__(175);
-
-	var _breakPoints2 = _interopRequireDefault(_breakPoints);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var RespState = function () {
-	    function RespState(props) {
-	        var _this = this;
-
-	        _classCallCheck(this, RespState);
-
-	        this.isRetina = window.devicePixelRatio > 1;
-
-	        this.windowWidth = window.innerWidth;
-
-	        this.useMatchMedia = window.matchMedia !== null;
-
-	        this.createRespElement();
-
-	        this.getBreakPoints();
-
-	        // An array of all the breakpoint names
-	        this.breakNames = Object.keys(this.breakPoints);
-
-	        // Builds the media query object from the breakpoint object so you only
-	        // need to update the breakpoint object
-	        this.mediaQueries = {};
-
-	        this.breakNames.map(function (name) {
-	            _this.mediaQueries[name] = '(min-width: ' + _this.breakPoints[name] + 'px)';
-	        });
-
-	        this.currentBreak = null;
-
-	        // These must be called after load so that the force updates are called
-	        // after the component is mounted.
-	        window.addEventListener('load', function () {
-	            _this.getCurrentBreak();
-	            _this.getOrientation();
-	        }, false);
-
-	        if (this.useMatchMedia) {
-	            this.breakNames.map(function (name) {
-	                window.matchMedia(_this.mediaQueries[name]).addListener(_this.getCurrentBreak.bind(_this));
-	            });
-	        } else {
-	            window.addEventListener('resize', function () {
-	                _utils2.default.debounce(function () {
-	                    _this.getCurrentBreak();
-	                }, 250)();
-	            }, false);
-	        }
-
-	        if ('onorientationchange' in window) {
-	            window.addEventListener('orientationchange', this.getOrientation.bind(this), false);
-	        }
-	    }
-
-	    _createClass(RespState, [{
-	        key: 'createRespElement',
-	        value: function createRespElement() {
-	            var el = document.createElement('div');
-	            el.id = 'resp-element';
-	            document.body.appendChild(el);
-	        }
-	    }, {
-	        key: 'getBreakPoints',
-	        value: function getBreakPoints() {
-	            var _this2 = this;
-
-	            var keys = _breakPoints2.default.match(/"(.*)"/g);
-	            var values = _breakPoints2.default.match(/min-width(.*?)px/g);
-	            this.breakPoints = {};
-
-	            keys.map(function (key, i) {
-	                if (i === 0) {
-	                    _this2.breakPoints[key.replace(/"/g, '')] = 0;
-	                } else {
-	                    _this2.breakPoints[key.replace(/"/g, '')] = parseInt(values[i - 1].replace('min-width ', '').replace('px', ''));
-	                }
-	            });
-	        }
-	    }, {
-	        key: 'getOrientation',
-	        value: function getOrientation() {
-	            var cachedOrientation = this.currentOrientation ? this.currentOrientation : null;
-
-	            if (window.innerWidth > window.innerHeight) {
-	                this.currentOrientation = 'LANDSCAPE';
-	            } else {
-	                this.currentOrientation = 'PORTRAIT';
-	            }
-
-	            // forces an update if the orientation has changed
-	            if (cachedOrientation !== this.currentOrientation) {
-	                this.forceUpdate();
-	            }
-	        }
-	    }, {
-	        key: 'getCurrentBreak',
-	        value: function getCurrentBreak() {
-	            var el = document.getElementById('resp-element');
-	            var currentBreak = window.getComputedStyle(el).getPropertyValue('content');
-
-	            this.currentBreak = currentBreak.replace(/"/g, '');
-
-	            this.forceUpdate();
-	        }
-	    }, {
-	        key: 'bpLT',
-	        value: function bpLT(name) {
-	            return this.breakPoints[this.currentBreak] < this.breakPoints[name];
-	        }
-	    }, {
-	        key: 'bpLTE',
-	        value: function bpLTE(name) {
-	            return this.breakPoints[this.currentBreak] <= this.breakPoints[name];
-	        }
-	    }, {
-	        key: 'bpGT',
-	        value: function bpGT(name) {
-	            return this.breakPoints[this.currentBreak] > this.breakPoints[name];
-	        }
-	    }, {
-	        key: 'bpGTE',
-	        value: function bpGTE(name) {
-	            return this.breakPoints[this.currentBreak] >= this.breakPoints[name];
-	        }
-	    }, {
-	        key: 'bpE',
-	        value: function bpE(name) {
-	            return this.currentBreak === name;
-	        }
-	    }, {
-	        key: 'updateWindowWidth',
-	        value: function updateWindowWidth() {
-	            this.windowWidth = window.innerWidth;
-	        }
-	    }]);
-
-	    return RespState;
-	}();
-
-	exports.default = RespState;
-
-/***/ },
-/* 174 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = {
-
-	    /**
-	     * Capitalizes the first letter of a string based on this perf:
-	     * http://jsperf.com/capitalize-javascript-string
-	     * @param str
-	     * @returns {string}
-	     */
-
-	    capitalize: function capitalize(s) {
-	        return s[0].toUpperCase() + s.slice(1);
-	    },
-
-	    /**
-	     * Checks if a given element has a class
-	     * @param  {object} element - the html element to check
-	     * @param  {string} class - the class to check for
-	     * @return {Boolean} - True if user the element has the class.
-	     */
-	    hasClass: function hasClass(element, cls) {
-	        return element.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
-	    },
-
-	    /**
-	     * Removes a given class from a given element.
-	     * @param  {object} el - the html element to remove class from
-	     * @param  {string} cls - the class to remove from the element
-	     */
-	    removeClass: function removeClass(el, cls) {
-	        if (el.classList) {
-	            el.classList.remove(cls);
-	        } else {
-	            el.className = el.className.replace(new RegExp('(^|\\b)' + cls.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-	        }
-	    },
-
-	    /**
-	     * Adds a given class from a given element.
-	     * @param  {object} el - the html element to add class to
-	     * @param  {string} cls - the class to add to the element
-	     */
-	    addClass: function addClass(el, cls) {
-	        if (el.classList) {
-	            el.classList.add(cls);
-	        } else {
-	            el.className += ' ' + cls;
-	        }
-	    },
-
-	    /**
-	     * IE detection
-	     * @returns {*}
-	     * @private
-	     */
-	    detectIE: function detectIE() {
-	        var ua = window.navigator.userAgent,
-	            msie = ua.indexOf('MSIE '),
-	            trident = ua.indexOf('Trident/'),
-	            edge = ua.indexOf('Edge/');
-
-	        if (msie > 0) {
-	            // IE 10 or older => return version number
-	            return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-	        }
-
-	        if (trident > 0) {
-	            // IE 11 => return version number
-	            var rv = ua.indexOf('rv:');
-	            return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
-	        }
-
-	        if (edge > 0) {
-	            // IE 12 => return version number
-	            return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
-	        }
-
-	        // other browser
-	        return false;
-	    },
-	    params: function params(obj) {
-	        return Object.keys(obj).map(function (key) {
-	            return key + '=' + obj[key];
-	        }).join('&');
-	    },
-
-	    /**
-	     * returns parsed query string.
-	     * @param str
-	     * @returns {object}
-	     */
-	    parseParams: function parseParams(str) {
-	        var pieces = str.split('&'),
-	            data = {},
-	            i = undefined,
-	            parts = undefined;
-	        // process each query pair
-	        for (i = 0; i < pieces.length; i++) {
-	            parts = pieces[i].split('=');
-	            if (parts.length < 2) {
-	                parts.push('');
-	            }
-	            data[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
-	        }
-	        return data;
-	    },
-
-	    /**
-	     * returns an object with all the URL goodies you need
-	     * based on this: https://gist.github.com/jlong/2428561
-	     * @param url
-	     * @returns {HTMLElement}
-	     */
-	    parseUrl: function parseUrl() {
-	        var parser = document.createElement('a');
-	        parser.href = window.location.href;
-
-	        return {
-	            protocol: parser.protocol,
-	            hostname: parser.hostname,
-	            port: parser.port,
-	            pathname: parser.pathname,
-	            search: parser.search,
-	            hash: this.parseParams(parser.hash),
-	            host: parser.host
-	        };
-	    },
-
-	    /**
-	    * Returns a function, that, as long as it continues to be invoked, will not
-	    * be triggered. The function will be called after it stops being called for
-	    * N milliseconds. If `immediate` is passed, trigger the function on the
-	    * leading edge, instead of the trailing.
-	    * @param  {Function} func - the function you want to debounce
-	    * @param  {Number} wait - the time to wait
-	    * @param  {Boolean} immediate - trigger the function on the leading edge
-	    * @return {Function} the new debounces function
-	    */
-	    debounce: function debounce(func, wait, immediate) {
-	        var timeout = undefined;
-	        return function () {
-	            var context = this,
-	                args = arguments;
-	            var later = function later() {
-	                timeout = null;
-	                if (!immediate) {
-	                    func.apply(context, args);
-	                }
-	            };
-	            var callNow = immediate && !timeout;
-	            clearTimeout(timeout);
-	            timeout = setTimeout(later, wait);
-	            if (callNow) {
-	                func.apply(context, args);
-	            }
-	        };
-	    },
-
-	    /**
-	     * used just like jquery's parents() method
-	     * from here: http://stackoverflow.com/questions/15329167/closest-ancestor-matching-selector-using-native-dom
-	     * @param element
-	     * @param selector
-	     * @returns {HTML element}
-	     */
-	    closest: function closest(elem, selector) {
-	        var matchesSelector = elem.matches || elem.webkitMatchesSelector || elem.mozMatchesSelector || elem.msMatchesSelector;
-	        while (elem) {
-	            if (matchesSelector.bind(elem)(selector)) {
-	                return elem;
-	            } else {
-	                elem = elem.parentElement;
-	            }
-	        }
-	        return false;
-	    }
-	};
-
-/***/ },
-/* 175 */
-/***/ function(module, exports) {
-
-	module.exports = "@import 'neat-helpers';\n\n/// sets desktop visual grid to be 960 pixels wide\n/// @group visual-grid\n$max-width: rem(940);\n\n/// mobile breakpoint with 6 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($mobile){\n///     [stuff]\n///   }\n$mobile: new-breakpoint(max-width 767px 6);\n\n/// tablet breakpoint with 9 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($tablet){\n///     [stuff]\n///   }\n$tablet: new-breakpoint(min-width 768px max-width 979px 9);\n\n/// tablet breakpoint with 12 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($desktop){\n///     [stuff]\n///   }\n$desktop: new-breakpoint(min-width 980px 12);\n\n/// pass in the number of columns to kill the right margin on the last element\n/// @group breakpoints\n/// @example use:\n///   @include kill-last-margin(6);\n@mixin kill-last-margin($columnNumbers) {\n    &:nth-of-type(#{$columnNumbers}) {\n        margin-right: 0;\n    }\n}\n\n#resp-element {\n    content : \"MOBILE\";\n\n    @include media($tablet) {\n        content : \"TABLET\";\n    }\n\n    @include media($desktop) {\n        content : \"DESKTOP\";\n    }\n}\n"
-
-/***/ },
-/* 176 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	  mixin.js - Mixin in constructors in JavaScript.
-
-	  Copyright 2011, Lee Iverson <leei@sociologi.ca>.
-	  See LICENSE for terms.
-	  */
-
-	var util = __webpack_require__(177);
-
-	/**
-	 * Mix the {mixin} constructor into the {base} constructor.  Ensures that the
-	 * all properties of {mixin} are available in {ctor} both for the constructor
-	 * and its prototype.
-	 *
-	 * The following are guaranteed consequences of the mixin:
-	 * * Will not mixin the same constructor twice.
-	 * * More than one constructor may be mixed in to the same {base}.
-	 * * Invokes the function {mixin.included(base)} after the mixin, if it is defined.
-	 * * {new ctor(...)} will invoke the constructors of all mixed in constructors and
-	 *   the original constructor in reverse order of their being mixed in.
-	 * * Properties of the {base} constructor and all previous mixins have priority over
-	 *   those of the {mixin}.
-	 *
-	 * @param {Function} base  The constructor that {mixin} will be added to.
-	 * @param {Function} mixin The constructor that will be mixed in to {base}.
-	 *
-	 */
-	function mixin(base, mixin) {
-	  var ctor = base;
-	  if (base.constructors) {
-	    // Don't mixin the same constructor twice.
-	    for (var i in base.constructors) {
-	      if (base.constructors[i] === mixin)
-	        return base;
-	    }
-	    // Remember this new one.
-	    base.constructors.unshift(mixin);
-	  } else {
-	    // Remember all mixed in classes
-	    base.constructors = [mixin, base];
-	    // Create a function with the same name, that calls both functions...
-	    ctor = base.prototype.constructor = mixin_constructor(base.name, base);
-	    ctor.__proto__ = base;
-	  }
-
-	  // Inject the mixin prototype at the top of the chain
-	  ctor.prototype = insert_proto(base.prototype, mixin.prototype);
-	  //inspect_protos(ctor.prototype, "ctor.prototype");
-
-	  insert_proto(ctor.__proto__, mixin);
-	  //inspect_protos(ctor, "ctor");
-
-	  // Inform mixin that it has been included
-	  if (mixin.hasOwnProperty('included')) {
-	    var incl = mixin.included.call(mixin, ctor);
-	    if (incl) { ctor = incl; }
-	  }
-
-	  return ctor;
-	}
-
-	function mixin_constructor(name, ctor) {
-	  var str = "function __ctor() { var c = ctor.constructors; for (var i in c) { c[i].apply(this, arguments); } }";
-	  eval(str.replace(/__ctor/, name));
-	  return eval(name);
-	}
-
-	function insert_proto(base, mixin) {
-	  //inspect_protos(base,  "inserting: base ");
-	  //inspect_protos(mixin, "inserting: mixin");
-	  var copy = copyInto({}, mixin);
-	  copy.__mixed_in = true;
-	  // Find
-	  for (var p = base, prev = base; p.__mixed_in; prev = p, p = p.__proto__) {}
-	  if (p == base) { p.__mixed_in = true; } // Mark this as mixed in
-	  //inspect_protos(copy, "inserting: copy");
-	  copy.__proto__ = prev.__proto__;
-	  prev.__proto__ = copy;
-	  //inspect_protos(base, "inserted: base");
-	  return base;
-	}
-
-	function copyInto(copy, obj) {
-	  var names = Object.getOwnPropertyNames(obj);
-	  for (var i in names) {
-	    var p = names[i];
-	    if (p !== 'prototype') {
-	      var descr = Object.getOwnPropertyDescriptor(obj, p);
-	      //console.log("obj." + p + " = " + util.inspect(descr));
-	      Object.defineProperty(copy, p, descr);
-	    }
-	  }
-	  return copy;
-	}
-	mixin.copyInto = copyInto;
-
-	function inspect_protos(obj, name) {
-	  console.log(name + " = " + util.inspect(obj));
-	  var i = 0;
-	  while (obj.__proto__) {
-	    obj = obj.__proto__;
-	    console.log("  __proto__[" + i + "] = " + util.inspect(obj));
-	    ++i;
-	  }
-	}
-
-	/**
-	 * Alias a property that is already defined for this Object. Moves the existing
-	 * property definition on {obj[method]} to {method}_without_{suffix} and
-	 * assigns {f} to both {method}_with_{suffix} and {method}.
-	 *
-	 * For example, the following code will override the "save" method of the
-	 * {ctor.prototype} with {my_save} and make the old version available as
-	 * {save_without_timestamp}.
-	 *
-	 *     Mixin.included = function(ctor) {
-	 *       mixin.alias(ctor.prototype, "save", "timestamp", my_save);
-	 *     }
-	 *
-	 * @param {Object} obj    The target object.
-	 * @param {String} method The base method name.
-	 * @param {String} suffix A suffix that will be added to the method name(s).
-	 * @param {Function} f    The function to use to override the method.
-	 * @api public
-	 */
-	function alias(obj, method, suffix, f) {
-	  if (obj[method + "_without_" + suffix]) {
-	    throw(method + "_without_" + suffix + " already defined.");
-	  }
-
-	  var was = obj[method];
-	  obj[method + "_without_" + suffix] = was;
-	  obj[method + "_with_" + suffix] = obj[method] = f;
-	}
-
-	mixin.alias = alias;
-
-	module.exports = mixin;
-
-
-/***/ },
-/* 177 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
-	//
-	// Permission is hereby granted, free of charge, to any person obtaining a
-	// copy of this software and associated documentation files (the
-	// "Software"), to deal in the Software without restriction, including
-	// without limitation the rights to use, copy, modify, merge, publish,
-	// distribute, sublicense, and/or sell copies of the Software, and to permit
-	// persons to whom the Software is furnished to do so, subject to the
-	// following conditions:
-	//
-	// The above copyright notice and this permission notice shall be included
-	// in all copies or substantial portions of the Software.
-	//
-	// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-	// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-	// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-	// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-	// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-	// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-	var formatRegExp = /%[sdj%]/g;
-	exports.format = function(f) {
-	  if (!isString(f)) {
-	    var objects = [];
-	    for (var i = 0; i < arguments.length; i++) {
-	      objects.push(inspect(arguments[i]));
-	    }
-	    return objects.join(' ');
-	  }
-
-	  var i = 1;
-	  var args = arguments;
-	  var len = args.length;
-	  var str = String(f).replace(formatRegExp, function(x) {
-	    if (x === '%%') return '%';
-	    if (i >= len) return x;
-	    switch (x) {
-	      case '%s': return String(args[i++]);
-	      case '%d': return Number(args[i++]);
-	      case '%j':
-	        try {
-	          return JSON.stringify(args[i++]);
-	        } catch (_) {
-	          return '[Circular]';
-	        }
-	      default:
-	        return x;
-	    }
-	  });
-	  for (var x = args[i]; i < len; x = args[++i]) {
-	    if (isNull(x) || !isObject(x)) {
-	      str += ' ' + x;
-	    } else {
-	      str += ' ' + inspect(x);
-	    }
-	  }
-	  return str;
-	};
-
-
-	// Mark that a method should not be used.
-	// Returns a modified function which warns once by default.
-	// If --no-deprecation is set, then it is a no-op.
-	exports.deprecate = function(fn, msg) {
-	  // Allow for deprecating things in the process of starting up.
-	  if (isUndefined(global.process)) {
-	    return function() {
-	      return exports.deprecate(fn, msg).apply(this, arguments);
-	    };
-	  }
-
-	  if (process.noDeprecation === true) {
-	    return fn;
-	  }
-
-	  var warned = false;
-	  function deprecated() {
-	    if (!warned) {
-	      if (process.throwDeprecation) {
-	        throw new Error(msg);
-	      } else if (process.traceDeprecation) {
-	        console.trace(msg);
-	      } else {
-	        console.error(msg);
-	      }
-	      warned = true;
-	    }
-	    return fn.apply(this, arguments);
-	  }
-
-	  return deprecated;
-	};
-
-
-	var debugs = {};
-	var debugEnviron;
-	exports.debuglog = function(set) {
-	  if (isUndefined(debugEnviron))
-	    debugEnviron = process.env.NODE_DEBUG || '';
-	  set = set.toUpperCase();
-	  if (!debugs[set]) {
-	    if (new RegExp('\\b' + set + '\\b', 'i').test(debugEnviron)) {
-	      var pid = process.pid;
-	      debugs[set] = function() {
-	        var msg = exports.format.apply(exports, arguments);
-	        console.error('%s %d: %s', set, pid, msg);
-	      };
-	    } else {
-	      debugs[set] = function() {};
-	    }
-	  }
-	  return debugs[set];
-	};
-
-
-	/**
-	 * Echos the value of a value. Trys to print the value out
-	 * in the best way possible given the different types.
-	 *
-	 * @param {Object} obj The object to print out.
-	 * @param {Object} opts Optional options object that alters the output.
-	 */
-	/* legacy: obj, showHidden, depth, colors*/
-	function inspect(obj, opts) {
-	  // default options
-	  var ctx = {
-	    seen: [],
-	    stylize: stylizeNoColor
-	  };
-	  // legacy...
-	  if (arguments.length >= 3) ctx.depth = arguments[2];
-	  if (arguments.length >= 4) ctx.colors = arguments[3];
-	  if (isBoolean(opts)) {
-	    // legacy...
-	    ctx.showHidden = opts;
-	  } else if (opts) {
-	    // got an "options" object
-	    exports._extend(ctx, opts);
-	  }
-	  // set default options
-	  if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
-	  if (isUndefined(ctx.depth)) ctx.depth = 2;
-	  if (isUndefined(ctx.colors)) ctx.colors = false;
-	  if (isUndefined(ctx.customInspect)) ctx.customInspect = true;
-	  if (ctx.colors) ctx.stylize = stylizeWithColor;
-	  return formatValue(ctx, obj, ctx.depth);
-	}
-	exports.inspect = inspect;
-
-
-	// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
-	inspect.colors = {
-	  'bold' : [1, 22],
-	  'italic' : [3, 23],
-	  'underline' : [4, 24],
-	  'inverse' : [7, 27],
-	  'white' : [37, 39],
-	  'grey' : [90, 39],
-	  'black' : [30, 39],
-	  'blue' : [34, 39],
-	  'cyan' : [36, 39],
-	  'green' : [32, 39],
-	  'magenta' : [35, 39],
-	  'red' : [31, 39],
-	  'yellow' : [33, 39]
-	};
-
-	// Don't use 'blue' not visible on cmd.exe
-	inspect.styles = {
-	  'special': 'cyan',
-	  'number': 'yellow',
-	  'boolean': 'yellow',
-	  'undefined': 'grey',
-	  'null': 'bold',
-	  'string': 'green',
-	  'date': 'magenta',
-	  // "name": intentionally not styling
-	  'regexp': 'red'
-	};
-
-
-	function stylizeWithColor(str, styleType) {
-	  var style = inspect.styles[styleType];
-
-	  if (style) {
-	    return '\u001b[' + inspect.colors[style][0] + 'm' + str +
-	           '\u001b[' + inspect.colors[style][1] + 'm';
-	  } else {
-	    return str;
-	  }
-	}
-
-
-	function stylizeNoColor(str, styleType) {
-	  return str;
-	}
-
-
-	function arrayToHash(array) {
-	  var hash = {};
-
-	  array.forEach(function(val, idx) {
-	    hash[val] = true;
-	  });
-
-	  return hash;
-	}
-
-
-	function formatValue(ctx, value, recurseTimes) {
-	  // Provide a hook for user-specified inspect functions.
-	  // Check that value is an object with an inspect function on it
-	  if (ctx.customInspect &&
-	      value &&
-	      isFunction(value.inspect) &&
-	      // Filter out the util module, it's inspect function is special
-	      value.inspect !== exports.inspect &&
-	      // Also filter out any prototype objects using the circular check.
-	      !(value.constructor && value.constructor.prototype === value)) {
-	    var ret = value.inspect(recurseTimes, ctx);
-	    if (!isString(ret)) {
-	      ret = formatValue(ctx, ret, recurseTimes);
-	    }
-	    return ret;
-	  }
-
-	  // Primitive types cannot have properties
-	  var primitive = formatPrimitive(ctx, value);
-	  if (primitive) {
-	    return primitive;
-	  }
-
-	  // Look up the keys of the object.
-	  var keys = Object.keys(value);
-	  var visibleKeys = arrayToHash(keys);
-
-	  if (ctx.showHidden) {
-	    keys = Object.getOwnPropertyNames(value);
-	  }
-
-	  // IE doesn't make error fields non-enumerable
-	  // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
-	  if (isError(value)
-	      && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
-	    return formatError(value);
-	  }
-
-	  // Some type of object without properties can be shortcutted.
-	  if (keys.length === 0) {
-	    if (isFunction(value)) {
-	      var name = value.name ? ': ' + value.name : '';
-	      return ctx.stylize('[Function' + name + ']', 'special');
-	    }
-	    if (isRegExp(value)) {
-	      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
-	    }
-	    if (isDate(value)) {
-	      return ctx.stylize(Date.prototype.toString.call(value), 'date');
-	    }
-	    if (isError(value)) {
-	      return formatError(value);
-	    }
-	  }
-
-	  var base = '', array = false, braces = ['{', '}'];
-
-	  // Make Array say that they are Array
-	  if (isArray(value)) {
-	    array = true;
-	    braces = ['[', ']'];
-	  }
-
-	  // Make functions say that they are functions
-	  if (isFunction(value)) {
-	    var n = value.name ? ': ' + value.name : '';
-	    base = ' [Function' + n + ']';
-	  }
-
-	  // Make RegExps say that they are RegExps
-	  if (isRegExp(value)) {
-	    base = ' ' + RegExp.prototype.toString.call(value);
-	  }
-
-	  // Make dates with properties first say the date
-	  if (isDate(value)) {
-	    base = ' ' + Date.prototype.toUTCString.call(value);
-	  }
-
-	  // Make error with message first say the error
-	  if (isError(value)) {
-	    base = ' ' + formatError(value);
-	  }
-
-	  if (keys.length === 0 && (!array || value.length == 0)) {
-	    return braces[0] + base + braces[1];
-	  }
-
-	  if (recurseTimes < 0) {
-	    if (isRegExp(value)) {
-	      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
-	    } else {
-	      return ctx.stylize('[Object]', 'special');
-	    }
-	  }
-
-	  ctx.seen.push(value);
-
-	  var output;
-	  if (array) {
-	    output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
-	  } else {
-	    output = keys.map(function(key) {
-	      return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
-	    });
-	  }
-
-	  ctx.seen.pop();
-
-	  return reduceToSingleString(output, base, braces);
-	}
-
-
-	function formatPrimitive(ctx, value) {
-	  if (isUndefined(value))
-	    return ctx.stylize('undefined', 'undefined');
-	  if (isString(value)) {
-	    var simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '')
-	                                             .replace(/'/g, "\\'")
-	                                             .replace(/\\"/g, '"') + '\'';
-	    return ctx.stylize(simple, 'string');
-	  }
-	  if (isNumber(value))
-	    return ctx.stylize('' + value, 'number');
-	  if (isBoolean(value))
-	    return ctx.stylize('' + value, 'boolean');
-	  // For some reason typeof null is "object", so special case here.
-	  if (isNull(value))
-	    return ctx.stylize('null', 'null');
-	}
-
-
-	function formatError(value) {
-	  return '[' + Error.prototype.toString.call(value) + ']';
-	}
-
-
-	function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
-	  var output = [];
-	  for (var i = 0, l = value.length; i < l; ++i) {
-	    if (hasOwnProperty(value, String(i))) {
-	      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
-	          String(i), true));
-	    } else {
-	      output.push('');
-	    }
-	  }
-	  keys.forEach(function(key) {
-	    if (!key.match(/^\d+$/)) {
-	      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
-	          key, true));
-	    }
-	  });
-	  return output;
-	}
-
-
-	function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
-	  var name, str, desc;
-	  desc = Object.getOwnPropertyDescriptor(value, key) || { value: value[key] };
-	  if (desc.get) {
-	    if (desc.set) {
-	      str = ctx.stylize('[Getter/Setter]', 'special');
-	    } else {
-	      str = ctx.stylize('[Getter]', 'special');
-	    }
-	  } else {
-	    if (desc.set) {
-	      str = ctx.stylize('[Setter]', 'special');
-	    }
-	  }
-	  if (!hasOwnProperty(visibleKeys, key)) {
-	    name = '[' + key + ']';
-	  }
-	  if (!str) {
-	    if (ctx.seen.indexOf(desc.value) < 0) {
-	      if (isNull(recurseTimes)) {
-	        str = formatValue(ctx, desc.value, null);
-	      } else {
-	        str = formatValue(ctx, desc.value, recurseTimes - 1);
-	      }
-	      if (str.indexOf('\n') > -1) {
-	        if (array) {
-	          str = str.split('\n').map(function(line) {
-	            return '  ' + line;
-	          }).join('\n').substr(2);
-	        } else {
-	          str = '\n' + str.split('\n').map(function(line) {
-	            return '   ' + line;
-	          }).join('\n');
-	        }
-	      }
-	    } else {
-	      str = ctx.stylize('[Circular]', 'special');
-	    }
-	  }
-	  if (isUndefined(name)) {
-	    if (array && key.match(/^\d+$/)) {
-	      return str;
-	    }
-	    name = JSON.stringify('' + key);
-	    if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
-	      name = name.substr(1, name.length - 2);
-	      name = ctx.stylize(name, 'name');
-	    } else {
-	      name = name.replace(/'/g, "\\'")
-	                 .replace(/\\"/g, '"')
-	                 .replace(/(^"|"$)/g, "'");
-	      name = ctx.stylize(name, 'string');
-	    }
-	  }
-
-	  return name + ': ' + str;
-	}
-
-
-	function reduceToSingleString(output, base, braces) {
-	  var numLinesEst = 0;
-	  var length = output.reduce(function(prev, cur) {
-	    numLinesEst++;
-	    if (cur.indexOf('\n') >= 0) numLinesEst++;
-	    return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
-	  }, 0);
-
-	  if (length > 60) {
-	    return braces[0] +
-	           (base === '' ? '' : base + '\n ') +
-	           ' ' +
-	           output.join(',\n  ') +
-	           ' ' +
-	           braces[1];
-	  }
-
-	  return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
-	}
-
-
-	// NOTE: These type checking functions intentionally don't use `instanceof`
-	// because it is fragile and can be easily faked with `Object.create()`.
-	function isArray(ar) {
-	  return Array.isArray(ar);
-	}
-	exports.isArray = isArray;
-
-	function isBoolean(arg) {
-	  return typeof arg === 'boolean';
-	}
-	exports.isBoolean = isBoolean;
-
-	function isNull(arg) {
-	  return arg === null;
-	}
-	exports.isNull = isNull;
-
-	function isNullOrUndefined(arg) {
-	  return arg == null;
-	}
-	exports.isNullOrUndefined = isNullOrUndefined;
-
-	function isNumber(arg) {
-	  return typeof arg === 'number';
-	}
-	exports.isNumber = isNumber;
-
-	function isString(arg) {
-	  return typeof arg === 'string';
-	}
-	exports.isString = isString;
-
-	function isSymbol(arg) {
-	  return typeof arg === 'symbol';
-	}
-	exports.isSymbol = isSymbol;
-
-	function isUndefined(arg) {
-	  return arg === void 0;
-	}
-	exports.isUndefined = isUndefined;
-
-	function isRegExp(re) {
-	  return isObject(re) && objectToString(re) === '[object RegExp]';
-	}
-	exports.isRegExp = isRegExp;
-
-	function isObject(arg) {
-	  return typeof arg === 'object' && arg !== null;
-	}
-	exports.isObject = isObject;
-
-	function isDate(d) {
-	  return isObject(d) && objectToString(d) === '[object Date]';
-	}
-	exports.isDate = isDate;
-
-	function isError(e) {
-	  return isObject(e) &&
-	      (objectToString(e) === '[object Error]' || e instanceof Error);
-	}
-	exports.isError = isError;
-
-	function isFunction(arg) {
-	  return typeof arg === 'function';
-	}
-	exports.isFunction = isFunction;
-
-	function isPrimitive(arg) {
-	  return arg === null ||
-	         typeof arg === 'boolean' ||
-	         typeof arg === 'number' ||
-	         typeof arg === 'string' ||
-	         typeof arg === 'symbol' ||  // ES6 symbol
-	         typeof arg === 'undefined';
-	}
-	exports.isPrimitive = isPrimitive;
-
-	exports.isBuffer = __webpack_require__(178);
-
-	function objectToString(o) {
-	  return Object.prototype.toString.call(o);
-	}
-
-
-	function pad(n) {
-	  return n < 10 ? '0' + n.toString(10) : n.toString(10);
-	}
-
-
-	var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
-	              'Oct', 'Nov', 'Dec'];
-
-	// 26 Feb 16:19:34
-	function timestamp() {
-	  var d = new Date();
-	  var time = [pad(d.getHours()),
-	              pad(d.getMinutes()),
-	              pad(d.getSeconds())].join(':');
-	  return [d.getDate(), months[d.getMonth()], time].join(' ');
-	}
-
-
-	// log is just a thin wrapper to console.log that prepends a timestamp
-	exports.log = function() {
-	  console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
-	};
-
-
-	/**
-	 * Inherit the prototype methods from one constructor into another.
-	 *
-	 * The Function.prototype.inherits from lang.js rewritten as a standalone
-	 * function (not on Function.prototype). NOTE: If this file is to be loaded
-	 * during bootstrapping this function needs to be rewritten using some native
-	 * functions as prototype setup using normal JavaScript does not work as
-	 * expected during bootstrapping (see mirror.js in r114903).
-	 *
-	 * @param {function} ctor Constructor function which needs to inherit the
-	 *     prototype.
-	 * @param {function} superCtor Constructor function to inherit prototype from.
-	 */
-	exports.inherits = __webpack_require__(179);
-
-	exports._extend = function(origin, add) {
-	  // Don't do anything if add isn't an object
-	  if (!add || !isObject(add)) return origin;
-
-	  var keys = Object.keys(add);
-	  var i = keys.length;
-	  while (i--) {
-	    origin[keys[i]] = add[keys[i]];
-	  }
-	  return origin;
-	};
-
-	function hasOwnProperty(obj, prop) {
-	  return Object.prototype.hasOwnProperty.call(obj, prop);
-	}
-
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(16)))
-
-/***/ },
-/* 178 */
-/***/ function(module, exports) {
-
-	module.exports = function isBuffer(arg) {
-	  return arg && typeof arg === 'object'
-	    && typeof arg.copy === 'function'
-	    && typeof arg.fill === 'function'
-	    && typeof arg.readUInt8 === 'function';
-	}
-
-/***/ },
-/* 179 */
-/***/ function(module, exports) {
-
-	if (typeof Object.create === 'function') {
-	  // implementation from standard node.js 'util' module
-	  module.exports = function inherits(ctor, superCtor) {
-	    ctor.super_ = superCtor
-	    ctor.prototype = Object.create(superCtor.prototype, {
-	      constructor: {
-	        value: ctor,
-	        enumerable: false,
-	        writable: true,
-	        configurable: true
-	      }
-	    });
-	  };
-	} else {
-	  // old school shim for old browsers
-	  module.exports = function inherits(ctor, superCtor) {
-	    ctor.super_ = superCtor
-	    var TempCtor = function () {}
-	    TempCtor.prototype = superCtor.prototype
-	    ctor.prototype = new TempCtor()
-	    ctor.prototype.constructor = ctor
-	  }
-	}
-
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _dispatcher = __webpack_require__(181);
+	var _dispatcher = __webpack_require__(173);
 
 	var _dispatcher2 = _interopRequireDefault(_dispatcher);
 
-	var _events = __webpack_require__(186);
+	var _events = __webpack_require__(178);
 
 	var _events2 = _interopRequireDefault(_events);
 
-	var _objectAssign = __webpack_require__(185);
+	var _objectAssign = __webpack_require__(177);
 
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
-	var _immutable = __webpack_require__(187);
+	var _immutable = __webpack_require__(179);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -21538,17 +20361,6 @@
 	        throw 'there is no ' + action.actionType + ' method in the store';
 	    }
 
-	    //switch (action.actionType) {
-
-	    //case Constants.LOAD_TEST_RESPONSE:
-
-	    //loadTestResponse(action.data);
-	    //break;
-
-	    //default:
-	    //return true;
-	    //}
-
 	    // This often goes in each case that should trigger a UI change. This store
 	    // needs to trigger a UI change after every view action, so we can make the
 	    // code less repetitive by putting it here.  We need the default case,
@@ -21561,7 +20373,7 @@
 	module.exports = store;
 
 /***/ },
-/* 181 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21579,8 +20391,8 @@
 	 * A singleton that operates as the central hub for application updates.
 	 */
 
-	var Dispatcher = __webpack_require__(182).Dispatcher;
-	var assign = __webpack_require__(185);
+	var Dispatcher = __webpack_require__(174).Dispatcher;
+	var assign = __webpack_require__(177);
 
 	var AppDispatcher = assign(new Dispatcher(), {
 
@@ -21608,7 +20420,7 @@
 	module.exports = AppDispatcher;
 
 /***/ },
-/* 182 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21620,11 +20432,11 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 */
 
-	module.exports.Dispatcher = __webpack_require__(183);
+	module.exports.Dispatcher = __webpack_require__(175);
 
 
 /***/ },
-/* 183 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -21646,7 +20458,7 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	var invariant = __webpack_require__(184);
+	var invariant = __webpack_require__(176);
 
 	var _prefix = 'ID_';
 
@@ -21861,7 +20673,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ },
-/* 184 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -21916,7 +20728,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ },
-/* 185 */
+/* 177 */
 /***/ function(module, exports) {
 
 	/* eslint-disable no-unused-vars */
@@ -21961,7 +20773,7 @@
 
 
 /***/ },
-/* 186 */
+/* 178 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -22265,7 +21077,7 @@
 
 
 /***/ },
-/* 187 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -27252,7 +26064,7 @@
 	}));
 
 /***/ },
-/* 188 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27261,15 +26073,15 @@
 	    value: true
 	});
 
-	var _dispatcher = __webpack_require__(181);
+	var _dispatcher = __webpack_require__(173);
 
 	var _dispatcher2 = _interopRequireDefault(_dispatcher);
 
-	var _Request = __webpack_require__(189);
+	var _Request = __webpack_require__(181);
 
 	var _Request2 = _interopRequireDefault(_Request);
 
-	var _Store = __webpack_require__(180);
+	var _Store = __webpack_require__(172);
 
 	var _Store2 = _interopRequireDefault(_Store);
 
@@ -27302,7 +26114,7 @@
 	};
 
 /***/ },
-/* 189 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27311,7 +26123,7 @@
 	    value: true
 	});
 
-	var _utils = __webpack_require__(174);
+	var _utils = __webpack_require__(182);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -27348,7 +26160,201 @@
 	};
 
 /***/ },
-/* 190 */
+/* 182 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = {
+
+	    /**
+	     * Capitalizes the first letter of a string based on this perf:
+	     * http://jsperf.com/capitalize-javascript-string
+	     * @param str
+	     * @returns {string}
+	     */
+
+	    capitalize: function capitalize(s) {
+	        return s[0].toUpperCase() + s.slice(1);
+	    },
+
+
+	    /**
+	     * Checks if a given element has a class
+	     * @param  {object} element - the html element to check
+	     * @param  {string} class - the class to check for
+	     * @return {Boolean} - True if user the element has the class.
+	     */
+	    hasClass: function hasClass(element, cls) {
+	        return element.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+	    },
+
+
+	    /**
+	     * Removes a given class from a given element.
+	     * @param  {object} el - the html element to remove class from
+	     * @param  {string} cls - the class to remove from the element
+	     */
+	    removeClass: function removeClass(el, cls) {
+	        if (el.classList) {
+	            el.classList.remove(cls);
+	        } else {
+	            el.className = el.className.replace(new RegExp('(^|\\b)' + cls.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+	        }
+	    },
+
+
+	    /**
+	     * Adds a given class from a given element.
+	     * @param  {object} el - the html element to add class to
+	     * @param  {string} cls - the class to add to the element
+	     */
+	    addClass: function addClass(el, cls) {
+	        if (el.classList) {
+	            el.classList.add(cls);
+	        } else {
+	            el.className += ' ' + cls;
+	        }
+	    },
+
+
+	    /**
+	     * IE detection
+	     * @returns {*}
+	     * @private
+	     */
+	    detectIE: function detectIE() {
+	        var ua = window.navigator.userAgent,
+	            msie = ua.indexOf('MSIE '),
+	            trident = ua.indexOf('Trident/'),
+	            edge = ua.indexOf('Edge/');
+
+	        if (msie > 0) {
+	            // IE 10 or older => return version number
+	            return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+	        }
+
+	        if (trident > 0) {
+	            // IE 11 => return version number
+	            var rv = ua.indexOf('rv:');
+	            return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+	        }
+
+	        if (edge > 0) {
+	            // IE 12 => return version number
+	            return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+	        }
+
+	        // other browser
+	        return false;
+	    },
+	    params: function params(obj) {
+	        return Object.keys(obj).map(function (key) {
+	            return key + '=' + obj[key];
+	        }).join('&');
+	    },
+
+
+	    /**
+	     * returns parsed query string.
+	     * @param str
+	     * @returns {object}
+	     */
+	    parseParams: function parseParams(str) {
+	        var pieces = str.split('&'),
+	            data = {},
+	            i = undefined,
+	            parts = undefined;
+	        // process each query pair
+	        for (i = 0; i < pieces.length; i++) {
+	            parts = pieces[i].split('=');
+	            if (parts.length < 2) {
+	                parts.push('');
+	            }
+	            data[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
+	        }
+	        return data;
+	    },
+
+
+	    /**
+	     * returns an object with all the URL goodies you need
+	     * based on this: https://gist.github.com/jlong/2428561
+	     * @param url
+	     * @returns {HTMLElement}
+	     */
+	    parseUrl: function parseUrl() {
+	        var parser = document.createElement('a');
+	        parser.href = window.location.href;
+
+	        return {
+	            protocol: parser.protocol,
+	            hostname: parser.hostname,
+	            port: parser.port,
+	            pathname: parser.pathname,
+	            search: parser.search,
+	            hash: this.parseParams(parser.hash),
+	            host: parser.host
+	        };
+	    },
+
+
+	    /**
+	    * Returns a function, that, as long as it continues to be invoked, will not
+	    * be triggered. The function will be called after it stops being called for
+	    * N milliseconds. If `immediate` is passed, trigger the function on the
+	    * leading edge, instead of the trailing.
+	    * @param  {Function} func - the function you want to debounce
+	    * @param  {Number} wait - the time to wait
+	    * @param  {Boolean} immediate - trigger the function on the leading edge
+	    * @return {Function} the new debounces function
+	    */
+	    debounce: function debounce(func, wait, immediate) {
+	        var timeout = undefined;
+	        return function () {
+	            var context = this,
+	                args = arguments;
+	            var later = function later() {
+	                timeout = null;
+	                if (!immediate) {
+	                    func.apply(context, args);
+	                }
+	            };
+	            var callNow = immediate && !timeout;
+	            clearTimeout(timeout);
+	            timeout = setTimeout(later, wait);
+	            if (callNow) {
+	                func.apply(context, args);
+	            }
+	        };
+	    },
+
+
+	    /**
+	     * used just like jquery's parents() method
+	     * from here: http://stackoverflow.com/questions/15329167/closest-ancestor-matching-selector-using-native-dom
+	     * @param element
+	     * @param selector
+	     * @returns {HTML element}
+	     */
+	    closest: function closest(elem, selector) {
+	        var matchesSelector = elem.matches || elem.webkitMatchesSelector || elem.mozMatchesSelector || elem.msMatchesSelector;
+	        while (elem) {
+	            if (matchesSelector.bind(elem)(selector)) {
+	                return elem;
+	            } else {
+	                elem = elem.parentElement;
+	            }
+	        }
+	        return false;
+	    }
+	};
+
+/***/ },
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27357,7 +26363,7 @@
 	    value: true
 	});
 
-	var _keymirror = __webpack_require__(191);
+	var _keymirror = __webpack_require__(184);
 
 	var _keymirror2 = _interopRequireDefault(_keymirror);
 
@@ -27368,7 +26374,7 @@
 	});
 
 /***/ },
-/* 191 */
+/* 184 */
 /***/ function(module, exports) {
 
 	/**
@@ -27425,6 +26431,194 @@
 
 	module.exports = keyMirror;
 
+
+/***/ },
+/* 185 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _utils = __webpack_require__(182);
+
+	var _utils2 = _interopRequireDefault(_utils);
+
+	var _breakPoints = __webpack_require__(186);
+
+	var _breakPoints2 = _interopRequireDefault(_breakPoints);
+
+	var _react = __webpack_require__(13);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var RespState = function () {
+	    function RespState(updateCallback) {
+	        var _this = this;
+
+	        _classCallCheck(this, RespState);
+
+	        this.updateCallback = updateCallback;
+	        this.isRetina = window.devicePixelRatio > 1;
+
+	        this.windowWidth = window.innerWidth;
+
+	        this.useMatchMedia = window.matchMedia !== null;
+
+	        this.createRespElement();
+
+	        this.getBreakPoints();
+
+	        // An array of all the breakpoint names
+	        this.breakNames = Object.keys(this.breakPoints);
+
+	        // Builds the media query object from the breakpoint object so you only
+	        // need to update the breakpoint object
+	        this.mediaQueries = {};
+
+	        this.breakNames.map(function (name) {
+	            _this.mediaQueries[name] = '(min-width: ' + _this.breakPoints[name] + 'px)';
+	        });
+
+	        this.currentBreak = null;
+
+	        // These must be called after load so that the force updates are called
+	        // after the component is mounted.
+	        window.addEventListener('load', function () {
+	            _this.getCurrentBreak();
+	            _this.getOrientation();
+	        }, false);
+
+	        if (this.useMatchMedia) {
+	            this.breakNames.map(function (name) {
+	                window.matchMedia(_this.mediaQueries[name]).addListener(_this.getCurrentBreak.bind(_this));
+	            });
+	        } else {
+	            window.addEventListener('resize', function () {
+	                _utils2.default.debounce(function () {
+	                    _this.getCurrentBreak();
+	                }, 250)();
+	            }, false);
+	        }
+
+	        if ('onorientationchange' in window) {
+	            window.addEventListener('orientationchange', this.getOrientation.bind(this), false);
+	        }
+
+	        // public methods
+	        this.bpLT = this._bpLT;
+	        this.bpLTE = this._bpLTE;
+	        this.bpGT = this._bpGT;
+	        this.bpGTE = this._bpGTE;
+	        this.bpE = this._bpE;
+	    }
+
+	    _createClass(RespState, [{
+	        key: 'createRespElement',
+	        value: function createRespElement() {
+	            var el = document.createElement('div');
+	            el.id = 'resp-element';
+	            document.body.appendChild(el);
+	        }
+	    }, {
+	        key: 'getBreakPoints',
+	        value: function getBreakPoints() {
+	            var _this2 = this;
+
+	            var keys = _breakPoints2.default.match(/"(.*)"/g);
+	            var values = _breakPoints2.default.match(/min-width(.*?)px/g);
+	            this.breakPoints = {};
+
+	            keys.map(function (key, i) {
+	                if (i === 0) {
+	                    _this2.breakPoints[key.replace(/"/g, '')] = 0;
+	                } else {
+	                    _this2.breakPoints[key.replace(/"/g, '')] = parseInt(values[i - 1].replace('min-width ', '').replace('px', ''));
+	                }
+	            });
+	        }
+	    }, {
+	        key: 'getOrientation',
+	        value: function getOrientation() {
+	            var cachedOrientation = this.currentOrientation ? this.currentOrientation : null;
+
+	            if (window.innerWidth > window.innerHeight) {
+	                this.currentOrientation = 'LANDSCAPE';
+	            } else {
+	                this.currentOrientation = 'PORTRAIT';
+	            }
+
+	            // forces an update if the orientation has changed
+	            if (cachedOrientation !== this.currentOrientation) {
+	                if (this.updateCallback) {
+	                    this.updateCallback();
+	                }
+	            }
+	        }
+	    }, {
+	        key: 'getCurrentBreak',
+	        value: function getCurrentBreak() {
+	            var el = document.getElementById('resp-element');
+	            var currentBreak = window.getComputedStyle(el).getPropertyValue('content');
+
+	            this.currentBreak = currentBreak.replace(/"/g, '');
+
+	            if (this.updateCallback) {
+	                this.updateCallback();
+	            }
+	        }
+	    }, {
+	        key: '_bpLT',
+	        value: function _bpLT(name) {
+	            return this.breakPoints[this.currentBreak] < this.breakPoints[name];
+	        }
+	    }, {
+	        key: '_bpLTE',
+	        value: function _bpLTE(name) {
+	            return this.breakPoints[this.currentBreak] <= this.breakPoints[name];
+	        }
+	    }, {
+	        key: '_bpGT',
+	        value: function _bpGT(name) {
+	            return this.breakPoints[this.currentBreak] > this.breakPoints[name];
+	        }
+	    }, {
+	        key: '_bpGTE',
+	        value: function _bpGTE(name) {
+	            return this.breakPoints[this.currentBreak] >= this.breakPoints[name];
+	        }
+	    }, {
+	        key: '_bpE',
+	        value: function _bpE(name) {
+	            return this.currentBreak === name;
+	        }
+	    }, {
+	        key: 'updateWindowWidth',
+	        value: function updateWindowWidth() {
+	            this.windowWidth = window.innerWidth;
+	        }
+	    }]);
+
+	    return RespState;
+	}();
+
+	RespState.displayName = 'respState';
+
+	exports.default = RespState;
+
+/***/ },
+/* 186 */
+/***/ function(module, exports) {
+
+	module.exports = "@import 'neat-helpers';\n\n/// sets desktop visual grid to be 960 pixels wide\n/// @group visual-grid\n$max-width: rem(940);\n\n/// mobile breakpoint with 6 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($mobile){\n///     [stuff]\n///   }\n$mobile: new-breakpoint(max-width 767px 6);\n\n/// tablet breakpoint with 9 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($tablet){\n///     [stuff]\n///   }\n$tablet: new-breakpoint(min-width 768px max-width 979px 9);\n\n/// tablet breakpoint with 12 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($desktop){\n///     [stuff]\n///   }\n$desktop: new-breakpoint(min-width 980px 12);\n\n/// pass in the number of columns to kill the right margin on the last element\n/// @group breakpoints\n/// @example use:\n///   @include kill-last-margin(6);\n@mixin kill-last-margin($columnNumbers) {\n    &:nth-of-type(#{$columnNumbers}) {\n        margin-right: 0;\n    }\n}\n\n#resp-element {\n    content : \"MOBILE\";\n\n    @include media($tablet) {\n        content : \"TABLET\";\n    }\n\n    @include media($desktop) {\n        content : \"DESKTOP\";\n    }\n}\n"
 
 /***/ }
 /******/ ]);
