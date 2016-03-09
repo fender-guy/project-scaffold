@@ -47,10 +47,10 @@ module.exports = {
 
         ]
     },
+    devtool: 'source-maps',
     resolve: {
         alias: {
-            'keyMirror' : path.join(__dirname, 'node_modules/keymirror/index.js'),
-            'appHOC' : path.join(__dirname, 'dev/components/appHOC.js')
+            'keyMirror' : path.join(__dirname, 'node_modules/keymirror/index.js')
         },
         extensions: ['', '.js', '.jsx', '.json', '.css'],
         root: [
@@ -61,8 +61,7 @@ module.exports = {
     plugins: [ 
         new ExtractTextPlugin(path.resolve(__dirname + '/prod/[name].css')),
         new webpack.ProvidePlugin({
-            keyMirror : 'keyMirror',
-            appHOC : 'appHOC'
+            keyMirror : 'keyMirror'
         })
     ]
 };
