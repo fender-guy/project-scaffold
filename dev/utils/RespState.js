@@ -2,6 +2,9 @@ import utils from 'utils.js';
 import breakPointsCSS from '-!raw!../globalStyles/breakPoints.scss';
 import React from 'react';
 
+/**
+ * Class to pass the responsive state passed through the props
+ */
 class RespState {
     constructor(updateCallback) {
 
@@ -69,13 +72,14 @@ class RespState {
     getBreakPoints() {
         let keys = breakPointsCSS.match(/"(.*)"/g);
         let values = breakPointsCSS.match(/min-width(.*?)px/g);
+
         this.breakPoints = {};
 
         keys.map((key, i) => {
             if(i === 0) {
                 this.breakPoints[key.replace(/"/g, '')] = 0;
             } else {
-                this.breakPoints[key.replace(/"/g, '')] = parseInt(values[i - 1].replace('min-width ', '').replace('px', ''));
+                this.breakPoints[key.replace(/"/g, '')] = parseInt(values[i].replace('min-width ', '').replace('px', ''));
             }
         });
     }
