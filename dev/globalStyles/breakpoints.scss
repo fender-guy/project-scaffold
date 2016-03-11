@@ -10,7 +10,8 @@ $max-width: rem(940);
 ///   @include media($mobile){
 ///     [stuff]
 ///   }
-$mobile: new-breakpoint(max-width 767px 6);
+$mobile: new-breakpoint(min-width 0px 6);
+$grid_columns: 6;
 
 /// tablet breakpoint with 9 columns
 /// @group breakpoints
@@ -18,7 +19,7 @@ $mobile: new-breakpoint(max-width 767px 6);
 ///   @include media($tablet){
 ///     [stuff]
 ///   }
-$tablet: new-breakpoint(min-width 768px max-width 979px 9);
+$tablet: new-breakpoint(min-width 768px 9);
 
 /// tablet breakpoint with 12 columns
 /// @group breakpoints
