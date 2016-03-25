@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Store from '../stores/Store';
-import actions from '../actions/actions';
-import Constants from './../constants/Constants.js';
+import FAD from 'flux-a-duck';
 import Immutable from 'immutable';
 import RespState from '../utils/RespState';
+import Grid from './utils/Grid';
 
 class app extends React.Component {
 
@@ -17,13 +16,12 @@ class app extends React.Component {
     }
 
     _testAction() {
-        actions({
-            url    : '/testGet',
-            type   : Constants.LOAD_TEST_RESPONSE,
-            method : (data, store) => {
-                let _store = store.getAll();
-                store.replace(_store.setIn(['testGetResponse'], Immutable.fromJS(data.testResponse)));
-            }
+        FAD.action({
+            url : '/testGet'
+        },
+        (store, data) => {
+            let _store = store.getAll();
+            store.replace(_store.setIn(['testGetResponse'], Immutable.fromJS(data.testResponse)));
         }).then(() => {
             console.log('post action works');
         });
@@ -34,13 +32,12 @@ class app extends React.Component {
     }
 
     componentDidMount() {
-        Store.addChangeListener(this._onChange.bind(this));
-        //this._onChange(); //comment out later
+        FAD.addChangeListener(this._onChange.bind(this));
         this._testAction();
     }
 
     componentWillUnmount() {
-        Store.removeChangeListener(this._onChange.bind(this));
+        FAD.removeChangeListener(this._onChange.bind(this));
     }
 
     render() {
@@ -57,12 +54,13 @@ class app extends React.Component {
                     <p>{this.state.testData}</p>
                     <p>{this.state.testGetResponse}</p>
                 </div>
+                <Grid {...this.state}/>
             </div>
         );
     }
 
     _onChange() {
-        this.setState(Store.getAllJS());
+        this.setState(FAD.getAllJS());
     }
 }
 

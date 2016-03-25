@@ -31,7 +31,7 @@ module.exports = {
                     "&includePaths[]=" + neat[1]
 
             },
-            { test: /\.css$/, include: path.resolve(__dirname + '/dev'), loader: "style-loader!css-loader" },
+            { test: /\.css$/, include: path.resolve(__dirname + '/dev'), loader: ExtractTextPlugin.extract("style-loader","css-loader") },
             { test: /\.js$/, include: path.resolve(__dirname + '/dev'), loader: 'babel-loader', query: {
                 presets: [
                     'react', 
@@ -59,7 +59,7 @@ module.exports = {
         ]
     },
     plugins: [ 
-        new ExtractTextPlugin(path.resolve(__dirname + '/prod/[name].css')),
+        new ExtractTextPlugin(path.resolve('/prod/[name].css')),
         new webpack.ProvidePlugin({
             keyMirror : 'keyMirror'
         })

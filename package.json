@@ -42,6 +42,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.1",
     "flux": "^2.0.1",
+    "flux-a-duck": "^1.0.0",
     "immutable": "^3.7.5",
     "keymirror": "^0.1.1",
     "mixin": "^0.2.0",
