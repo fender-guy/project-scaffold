@@ -1,9 +1,15 @@
+import './styles/App.scss';
+
 import React from 'react';
-import ReactDOM from 'react-dom';
 import FAD from 'flux-a-duck';
-import Immutable from 'immutable';
 import RespState from '../utils/RespState';
 import Grid from './utils/Grid';
+
+import defaultState from './defaultState';
+
+import Canvas from './Canvas/Canvas';
+import RightMenu from './Menus/RightMenu';
+import LeftMenu from './Menus/LeftMenu';
 
 class app extends React.Component {
 
@@ -15,25 +21,13 @@ class app extends React.Component {
         };
     }
 
-    _testAction() {
-        FAD.action({
-            url : '/testGet'
-        },
-        (store, data) => {
-            let _store = store.getAll();
-            store.replace(_store.setIn(['testGetResponse'], Immutable.fromJS(data.testResponse)));
-        }).then(() => {
-            console.log('post action works');
-        });
-    }
-
     _updateCallback() {
         this.forceUpdate();
     }
 
     componentDidMount() {
         FAD.addChangeListener(this._onChange.bind(this));
-        this._testAction();
+        defaultState();
     }
 
     componentWillUnmount() {
@@ -42,18 +36,10 @@ class app extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Hello App</h1>
-                <div>
-                    <h2>Current Breakpoint: {this.state.rs.currentBreak}</h2>
-                    <h3>{'<='} Desktop: {this.state.rs.bpLTE('DESKTOP') ? 'true' : 'false'}</h3>
-                    <h3>{'<'} Desktop: {this.state.rs.bpLT('DESKTOP') ? 'true' : 'false'}</h3>
-                    <h3>{'==='} Desktop: {this.state.rs.bpE('DESKTOP') ? 'true' : 'false'}</h3>
-                    <h3>{'>'} Tablet: {this.state.rs.bpGT('TABLET') ? 'true' : 'false'}</h3>
-                    <h3>{'>='} Tablet: {this.state.rs.bpGTE('TABLET') ? 'true' : 'false'}</h3>
-                    <p>{this.state.testData}</p>
-                    <p>{this.state.testGetResponse}</p>
-                </div>
+            <div className="app-container">
+                <LeftMenu {...this.state} />
+                <Canvas {...this.state} />
+                <RightMenu {...this.state} />
                 <Grid {...this.state}/>
             </div>
         );

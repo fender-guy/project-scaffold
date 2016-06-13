@@ -410,8 +410,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?sourceMap!./../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/Sites/project-scaffold/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/Sites/project-scaffold/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./global.scss", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?sourceMap!./../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/Sites/project-scaffold/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/Sites/project-scaffold/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./global.scss");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?sourceMap!./../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./global.scss", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?sourceMap!./../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./global.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -20047,21 +20047,15 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	__webpack_require__(194);
+	
 	var _react = __webpack_require__(13);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(170);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
 	var _fluxADuck = __webpack_require__(172);
 	
 	var _fluxADuck2 = _interopRequireDefault(_fluxADuck);
-	
-	var _immutable = __webpack_require__(182);
-	
-	var _immutable2 = _interopRequireDefault(_immutable);
 	
 	var _RespState = __webpack_require__(183);
 	
@@ -20070,6 +20064,22 @@
 	var _Grid = __webpack_require__(186);
 	
 	var _Grid2 = _interopRequireDefault(_Grid);
+	
+	var _defaultState = __webpack_require__(189);
+	
+	var _defaultState2 = _interopRequireDefault(_defaultState);
+	
+	var _Canvas = __webpack_require__(190);
+	
+	var _Canvas2 = _interopRequireDefault(_Canvas);
+	
+	var _RightMenu = __webpack_require__(191);
+	
+	var _RightMenu2 = _interopRequireDefault(_RightMenu);
+	
+	var _LeftMenu = __webpack_require__(198);
+	
+	var _LeftMenu2 = _interopRequireDefault(_LeftMenu);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -20095,18 +20105,6 @@
 	    }
 	
 	    _createClass(app, [{
-	        key: '_testAction',
-	        value: function _testAction() {
-	            _fluxADuck2.default.action({
-	                url: '/testGet'
-	            }, function (store, data) {
-	                var _store = store.getAll();
-	                store.replace(_store.setIn(['testGetResponse'], _immutable2.default.fromJS(data.testResponse)));
-	            }).then(function () {
-	                console.log('post action works');
-	            });
-	        }
-	    }, {
 	        key: '_updateCallback',
 	        value: function _updateCallback() {
 	            this.forceUpdate();
@@ -20115,7 +20113,7 @@
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            _fluxADuck2.default.addChangeListener(this._onChange.bind(this));
-	            this._testAction();
+	            (0, _defaultState2.default)();
 	        }
 	    }, {
 	        key: 'componentWillUnmount',
@@ -20127,67 +20125,10 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Hello App'
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    _react2.default.createElement(
-	                        'h2',
-	                        null,
-	                        'Current Breakpoint: ',
-	                        this.state.rs.currentBreak
-	                    ),
-	                    _react2.default.createElement(
-	                        'h3',
-	                        null,
-	                        '<=',
-	                        ' Desktop: ',
-	                        this.state.rs.bpLTE('DESKTOP') ? 'true' : 'false'
-	                    ),
-	                    _react2.default.createElement(
-	                        'h3',
-	                        null,
-	                        '<',
-	                        ' Desktop: ',
-	                        this.state.rs.bpLT('DESKTOP') ? 'true' : 'false'
-	                    ),
-	                    _react2.default.createElement(
-	                        'h3',
-	                        null,
-	                        '===',
-	                        ' Desktop: ',
-	                        this.state.rs.bpE('DESKTOP') ? 'true' : 'false'
-	                    ),
-	                    _react2.default.createElement(
-	                        'h3',
-	                        null,
-	                        '>',
-	                        ' Tablet: ',
-	                        this.state.rs.bpGT('TABLET') ? 'true' : 'false'
-	                    ),
-	                    _react2.default.createElement(
-	                        'h3',
-	                        null,
-	                        '>=',
-	                        ' Tablet: ',
-	                        this.state.rs.bpGTE('TABLET') ? 'true' : 'false'
-	                    ),
-	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        this.state.testData
-	                    ),
-	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        this.state.testGetResponse
-	                    )
-	                ),
+	                { className: 'app-container' },
+	                _react2.default.createElement(_LeftMenu2.default, this.state),
+	                _react2.default.createElement(_Canvas2.default, this.state),
+	                _react2.default.createElement(_RightMenu2.default, this.state),
 	                _react2.default.createElement(_Grid2.default, this.state)
 	            );
 	        }
@@ -26767,8 +26708,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/Sites/project-scaffold/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/Sites/project-scaffold/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./grid.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/Sites/project-scaffold/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/Sites/project-scaffold/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./grid.scss");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./grid.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./grid.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -26787,6 +26728,533 @@
 	
 	// module
 	exports.push([module.id, "html {\n  box-sizing: border-box; }\n\n*, *::after, *::before {\n  box-sizing: inherit; }\n\n#resp-element {\n  content: \"MOBILE\"; }\n  @media screen and (min-width: 768px) {\n    #resp-element {\n      content: \"TABLET\"; } }\n  @media screen and (min-width: 980px) {\n    #resp-element {\n      content: \"DESKTOP\"; } }\n\n.grid-container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 100%;\n  max-width: 58.75rem;\n  margin-left: auto;\n  margin-right: auto; }\n  .grid-container::after {\n    clear: both;\n    content: \"\";\n    display: table; }\n  @media screen and (min-width: 980px) {\n    .grid-container {\n      max-width: inherit; } }\n  @media screen and (min-width: 980px) {\n    .grid-container > div {\n      width: 980px;\n      margin: 0 auto; } }\n  .grid-container .grid {\n    height: 900px;\n    background: #f600f6;\n    opacity: 0.5;\n    float: left;\n    display: block;\n    margin-right: 4.82916%;\n    width: 12.64237%; }\n    .grid-container .grid:last-child {\n      margin-right: 0; }\n    @media screen and (min-width: 768px) {\n      .grid-container .grid {\n        float: left;\n        display: block;\n        margin-right: 3.16844%;\n        width: 8.29472%; }\n        .grid-container .grid:last-child {\n          margin-right: 0; } }\n    @media screen and (min-width: 980px) {\n      .grid-container .grid {\n        float: left;\n        display: block;\n        margin-right: 2.35765%;\n        width: 6.17215%; }\n        .grid-container .grid:last-child {\n          margin-right: 0; } }\n", "", {"version":3,"sources":["/./dev/components/utils/styles/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_box-sizing.scss","/./dev/components/utils/styles/dev/globalStyles/breakpoints.scss","/./dev/components/utils/styles/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_media.scss","/./dev/components/utils/styles/dev/components/utils/styles/grid.scss","/./dev/components/utils/styles/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_outer-container.scss","/./dev/components/utils/styles/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/functions/_px-to-rem.scss","/./dev/components/utils/styles/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets/addons/_clearfix.scss","/./dev/components/utils/styles/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_span-columns.scss","/./dev/components/utils/styles/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_private.scss"],"names":[],"mappings":"AAGE;EACE,uBAAuB,EACxB;;AAED;EAII,oBAAoB,EACrB;;AC6BL;EACI,kBAAmB,EAStB;ECmCG;ID7CJ;MAIQ,kBAAmB,EAM1B,EAAA;ECmCG;ID7CJ;MAQQ,mBAAoB,EAE3B,EAAA;;AEjDD;EACI,mBAAmB;EACnB,OAAO;EACP,QAAQ;EACR,aAAa;EACb,YAAY;ECyBd,oBCnBe;EDoBf,kBACa;EADb,mBAEc,EDCf;EAlCD;IGkBI,YAAY;IACZ,YAAY;IACZ,eAAe,EAChB;EJ+DC;ICpFJ;MASQ,mBAAmB,EAyB1B,EAAA;EDkDG;ICpFJ;MAcY,aAAa;MACb,eAAe,EAEtB,EAAA;EAjBL;IAqBQ,cAAc;IACd,oBAAoB;IACpB,aAAa;II0CjB,YAAO;IAGL,eAAe;IAef,uBCtEc;IDuEd,iBC5Ec,ELyBf;IAjCL;MIuFQ,gBAA+B,EAChC;ILJH;MCpFJ;QIiEI,YAAO;QAGL,eAAe;QAef,uBCtEc;QDuEd,gBC5Ec,ELyBf;QAjCL;UIuFQ,gBAA+B,EAChC,EAAA;ILJH;MCpFJ;QIiEI,YAAO;QAGL,eAAe;QAef,uBCtEc;QDuEd,gBC5Ec,ELyBf;QAjCL;UIuFQ,gBAA+B,EAChC,EAAA","file":"grid.scss","sourcesContent":["@charset \"UTF-8\";\n\n@if $border-box-sizing == true {\n  html { // http://bit.ly/1qk2tVR\n    box-sizing: border-box;\n  }\n\n  * {\n    &,\n    &::after,\n    &::before {\n      box-sizing: inherit;\n    }\n  }\n}\n","@import 'neat-helpers';\n\n/// sets desktop visual grid to be 960 pixels wide\n/// @group visual-grid\n$max-width: rem(940);\n\n/// mobile breakpoint with 6 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($mobile){\n///     [stuff]\n///   }\n$mobile: new-breakpoint(min-width 0px 6);\n$grid_columns: 6;\n\n/// tablet breakpoint with 9 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($tablet){\n///     [stuff]\n///   }\n$tablet: new-breakpoint(min-width 768px 9);\n\n/// tablet breakpoint with 12 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($desktop){\n///     [stuff]\n///   }\n$desktop: new-breakpoint(min-width 980px 12);\n\n/// pass in the number of columns to kill the right margin on the last element\n/// @group breakpoints\n/// @example use:\n///   @include kill-last-margin(6);\n@mixin kill-last-margin($columnNumbers) {\n    &:nth-of-type(#{$columnNumbers}) {\n        margin-right: 0;\n    }\n}\n\n#resp-element {\n    content : \"MOBILE\";\n\n    @include media($tablet) {\n        content : \"TABLET\";\n    }\n\n    @include media($desktop) {\n        content : \"DESKTOP\";\n    }\n}\n","@charset \"UTF-8\";\n\n/// Outputs a media-query block with an optional grid context (the total number of columns used in the grid).\n///\n/// @param {List} $query\n///   A list of media query features and values, where each `$feature` should have a corresponding `$value`.\n///   For a list of valid values for `$feature`, click [here](http://www.w3.org/TR/css3-mediaqueries/#media1).\n///\n///   If there is only a single `$value` in `$query`, `$default-feature` is going to be used.\n///\n///   The number of total columns in the grid can be set by passing `$columns` at the end of the list (overrides `$total-columns`).\n///\n///\n/// @param {Number (unitless)} $total-columns [$grid-columns]\n///   - Number of columns to use in the new grid context. Can be set as a shorthand in the first parameter.\n///\n/// @example scss - Usage\n///   .responsive-element {\n///      @include media(769px) {\n///        @include span-columns(6);\n///      }\n///   }\n///\n///  .new-context-element {\n///    @include media(min-width 320px max-width 480px, 6) {\n///      @include span-columns(6);\n///    }\n///  }\n///\n/// @example css - CSS Output\n///  @media screen and (min-width: 769px) {\n///    .responsive-element {\n///      display: block;\n///      float: left;\n///      margin-right: 2.35765%;\n///      width: 48.82117%;\n///    }\n///\n///    .responsive-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n///\n///  @media screen and (min-width: 320px) and (max-width: 480px) {\n///    .new-context-element {\n///      display: block;\n///      float: left;\n///      margin-right: 4.82916%;\n///      width: 100%;\n///    }\n///\n///    .new-context-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n\n@mixin media($query: $feature $value $columns, $total-columns: $grid-columns) {\n  @if length($query) == 1 {\n    @media screen and ($default-feature: nth($query, 1)) {\n      $default-grid-columns: $grid-columns;\n      $grid-columns: $total-columns !global;\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  } @else {\n    $loop-to: length($query);\n    $media-query: \"screen and \";\n    $default-grid-columns: $grid-columns;\n    $grid-columns: $total-columns !global;\n\n    @if is-not(is-even(length($query))) {\n      $grid-columns: nth($query, $loop-to) !global;\n      $loop-to: $loop-to - 1;\n    }\n\n    $i: 1;\n    @while $i <= $loop-to {\n      $media-query: $media-query + \"(\" + nth($query, $i) + \": \" + nth($query, $i + 1) + \") \";\n\n      @if ($i + 1) != $loop-to {\n        $media-query: $media-query + \"and \";\n      }\n\n      $i: $i + 2;\n    }\n\n    @media #{$media-query} {\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  }\n}\n","@import 'global-imports';\n\n.grid-container {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n    @include outer-container;\n\n    @include media($desktop) {\n        max-width: inherit;\n    }\n\n    > div {\n        @include media($desktop) {\n            width: 980px;\n            margin: 0 auto;\n        }\n    }\n\n\n    .grid {\n        height: 900px;\n        background: #f600f6;\n        opacity: 0.5;\n        @include span-columns(1 of 6);\n\n        @include media($tablet) {\n            @include span-columns(1 of 9);\n        }\n\n        @include media($desktop) {\n            @include span-columns(1 of 12);\n        }\n    }\n}\n","@charset \"UTF-8\";\n\n/// Makes an element a outer container by centring it in the viewport, clearing its floats, and setting its `max-width`.\n/// Although optional, using `outer-container` is recommended. The mixin can be called on more than one element per page, as long as they are not nested.\n///\n/// @param {Number [unit]} $local-max-width [$max-width]\n///   Max width to be applied to the element. Can be a percentage or a measure.\n///\n/// @example scss - Usage\n///   .element {\n///     @include outer-container(100%);\n///   }\n///\n/// @example css - CSS Output\n///   .element {\n///     *zoom: 1;\n///     max-width: 100%;\n///     margin-left: auto;\n///     margin-right: auto;\n///   }\n///\n///   .element:before, .element:after {\n///     content: \" \";\n///     display: table;\n///   }\n///\n///   .element:after {\n///     clear: both;\n///   }\n\n@mixin outer-container($local-max-width: $max-width) {\n  @include clearfix;\n  max-width: $local-max-width;\n  margin: {\n    left: auto;\n    right: auto;\n  }\n}\n","// Convert pixels to rems\n// eg. for a relational value of 12px write rem(12)\n// Assumes $em-base is the font-size of <html>\n\n@function rem($pxval) {\n  @if not unitless($pxval) {\n    $pxval: strip-units($pxval);\n  }\n\n  $base: $em-base;\n  @if not unitless($base) {\n    $base: strip-units($base);\n  }\n  @return ($pxval / $base) * 1rem;\n}\n","@charset \"UTF-8\";\n\n/// Provides an easy way to include a clearfix for containing floats.\n///\n/// @link http://cssmojo.com/latest_new_clearfix_so_far/\n///\n/// @example scss - Usage\n///   .element {\n///     @include clearfix;\n///   }\n///\n/// @example css - CSS Output\n///   .element::after {\n///     clear: both;\n///     content: \"\";\n///     display: table;\n///   }\n\n@mixin clearfix {\n  &::after {\n    clear: both;\n    content: \"\";\n    display: table;\n  }\n}\n","@charset \"UTF-8\";\n\n/// Specifies the number of columns an element should span. If the selector is nested the number of columns of its parent element should be passed as an argument as well.\n///\n/// @param {List} $span\n///   A list containing `$columns`, the unitless number of columns the element spans (required), and `$container-columns`, the number of columns the parent element spans (optional).\n///\n///   If only one value is passed, it is assumed that it's `$columns` and that that `$container-columns` is equal to `$grid-columns`, the total number of columns in the grid.\n///\n///   The values can be separated with any string such as `of`, `/`, etc.\n///\n///   `$columns` also accepts decimals for when it's necessary to break out of the standard grid. E.g. Passing `2.4` in a standard 12 column grid will divide the row into 5 columns.\n///\n/// @param {String} $display [block]\n///   Sets the display property of the element. By default it sets the display propert of the element to `block`.\n///\n///   If passed `block-collapse`, it also removes the margin gutter by adding it to the element width.\n///\n///   If passed `table`, it sets the display property to `table-cell` and calculates the width of the element without taking gutters into consideration. The result does not align with the block-based grid.\n///\n/// @example scss - Usage\n///   .element {\n///     @include span-columns(6);\n///\n///    .nested-element {\n///      @include span-columns(2 of 6);\n///    }\n///  }\n///\n/// @example css - CSS Output\n///   .element {\n///     display: block;\n///     float: left;\n///     margin-right: 2.35765%;\n///     width: 48.82117%;\n///   }\n///\n///   .element:last-child {\n///     margin-right: 0;\n///   }\n///\n///   .element .nested-element {\n///     display: block;\n///     float: left;\n///     margin-right: 4.82916%;\n///     width: 30.11389%;\n///   }\n///\n///   .element .nested-element:last-child {\n///     margin-right: 0;\n///   }\n\n@mixin span-columns($span: $columns of $container-columns, $display: block) {\n  $columns: nth($span, 1);\n  $container-columns: container-span($span);\n\n  $parent-columns: get-parent-columns($container-columns) !global;\n\n  $direction: get-direction($layout-direction, $default-layout-direction);\n  $opposite-direction: get-opposite-direction($direction);\n\n  $display-table: is-display-table($container-display-table, $display);\n\n  @if $display-table  {\n    display: table-cell;\n    width: percentage($columns / $container-columns);\n  } @else {\n    float: #{$opposite-direction};\n\n    @if $display != no-display {\n      display: block;\n    }\n\n    @if $display == collapse {\n      @include -neat-warn(\"The 'collapse' argument will be deprecated. Use 'block-collapse' instead.\");\n    }\n\n    @if $display == collapse or $display == block-collapse {\n      width: flex-grid($columns, $container-columns) + flex-gutter($container-columns);\n\n      &:last-child {\n        width: flex-grid($columns, $container-columns);\n      }\n\n    } @else {\n      margin-#{$direction}: flex-gutter($container-columns);\n      width: flex-grid($columns, $container-columns);\n\n      &:last-child {\n        margin-#{$direction}: 0;\n      }\n    }\n  }\n}\n","$parent-columns: $grid-columns !default;\n$fg-column: $column;\n$fg-gutter: $gutter;\n$fg-max-columns: $grid-columns;\n$container-display-table: false !default;\n$layout-direction: LTR !default;\n\n@function flex-grid($columns, $container-columns: $fg-max-columns) {\n  $width: $columns * $fg-column + ($columns - 1) * $fg-gutter;\n  $container-width: $container-columns * $fg-column + ($container-columns - 1) * $fg-gutter;\n  @return percentage($width / $container-width);\n}\n\n@function flex-gutter($container-columns: $fg-max-columns, $gutter: $fg-gutter) {\n  $container-width: $container-columns * $fg-column + ($container-columns - 1) * $fg-gutter;\n  @return percentage($gutter / $container-width);\n}\n\n@function grid-width($n) {\n  @return $n * $gw-column + ($n - 1) * $gw-gutter;\n}\n\n@function get-parent-columns($columns) {\n  @if $columns != $grid-columns {\n    $parent-columns: $columns !global;\n  } @else {\n    $parent-columns: $grid-columns !global;\n  }\n\n  @return $parent-columns;\n}\n\n@function is-display-table($container-is-display-table, $display) {\n  @return $container-is-display-table == true or $display == table;\n}\n"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 189 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _fluxADuck = __webpack_require__(172);
+	
+	var _fluxADuck2 = _interopRequireDefault(_fluxADuck);
+	
+	var _immutable = __webpack_require__(182);
+	
+	var _immutable2 = _interopRequireDefault(_immutable);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = function () {
+	    _fluxADuck2.default.action(function (store, data) {
+	        store.replace(_immutable2.default.fromJS({
+	            rightMenu: [{
+	                type: 'tools'
+	            }, {
+	                type: 'elements'
+	            }],
+	            leftMenu: [],
+	            canvasElements: []
+	        }));
+	    });
+	};
+
+/***/ },
+/* 190 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	__webpack_require__(201);
+	
+	var _react = __webpack_require__(13);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// Canvas just reads the props and dumps all the elements with their attributes into the dom.
+	
+	var Canvas = function (_React$Component) {
+	    _inherits(Canvas, _React$Component);
+	
+	    function Canvas(props) {
+	        _classCallCheck(this, Canvas);
+	
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Canvas).call(this, props));
+	    }
+	
+	    _createClass(Canvas, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'canvas' },
+	                'Canvas'
+	            );
+	        }
+	    }]);
+	
+	    return Canvas;
+	}(_react2.default.Component);
+	
+	Canvas.propTypes = {};
+	
+	Canvas.displayName = 'Canvas';
+	
+	exports.default = Canvas;
+
+/***/ },
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	__webpack_require__(196);
+	
+	var _react = __webpack_require__(13);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _ToolsMenu = __webpack_require__(192);
+	
+	var _ToolsMenu2 = _interopRequireDefault(_ToolsMenu);
+	
+	var _ElementsMenu = __webpack_require__(193);
+	
+	var _ElementsMenu2 = _interopRequireDefault(_ElementsMenu);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var RightMenu = function (_React$Component) {
+	    _inherits(RightMenu, _React$Component);
+	
+	    function RightMenu(props) {
+	        _classCallCheck(this, RightMenu);
+	
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(RightMenu).call(this, props));
+	    }
+	
+	    _createClass(RightMenu, [{
+	        key: '_renderMenus',
+	        value: function _renderMenus() {
+	            var _this2 = this;
+	
+	            if (this.props.rightMenu) {
+	                return this.props.rightMenu.map(function (menu, i) {
+	                    switch (menu.type) {
+	                        case 'tools':
+	                            return _react2.default.createElement(_ToolsMenu2.default, _extends({ key: i }, _this2.state));
+	                            break;
+	                        case 'elements':
+	                            return _react2.default.createElement(_ElementsMenu2.default, _extends({ key: i }, _this2.state));
+	                            break;
+	                    }
+	                });
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'right-Menu' },
+	                this._renderMenus()
+	            );
+	        }
+	    }]);
+	
+	    return RightMenu;
+	}(_react2.default.Component);
+	
+	RightMenu.propTypes = {
+	    rightMenu: _react2.default.PropTypes.array
+	};
+	
+	RightMenu.displayName = 'RightMenu';
+	
+	exports.default = RightMenu;
+
+/***/ },
+/* 192 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(13);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ToolsMenu = function (_React$Component) {
+	    _inherits(ToolsMenu, _React$Component);
+	
+	    function ToolsMenu(props) {
+	        _classCallCheck(this, ToolsMenu);
+	
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(ToolsMenu).call(this, props));
+	    }
+	
+	    _createClass(ToolsMenu, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                'Tools Menu'
+	            );
+	        }
+	    }]);
+	
+	    return ToolsMenu;
+	}(_react2.default.Component);
+	
+	ToolsMenu.propTypes = {};
+	
+	ToolsMenu.displayName = 'ToolsMenu';
+	
+	exports.default = ToolsMenu;
+
+/***/ },
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(13);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ElementsMenu = function (_React$Component) {
+	    _inherits(ElementsMenu, _React$Component);
+	
+	    function ElementsMenu(props) {
+	        _classCallCheck(this, ElementsMenu);
+	
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(ElementsMenu).call(this, props));
+	    }
+	
+	    _createClass(ElementsMenu, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                'Elements Menu'
+	            );
+	        }
+	    }]);
+	
+	    return ElementsMenu;
+	}(_react2.default.Component);
+	
+	ElementsMenu.propTypes = {};
+	
+	ElementsMenu.displayName = 'ElementsMenu';
+	
+	exports.default = ElementsMenu;
+
+/***/ },
+/* 194 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(195);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./App.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./App.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 195 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "html {\n  box-sizing: border-box; }\n\n*, *::after, *::before {\n  box-sizing: inherit; }\n\n#resp-element {\n  content: \"MOBILE\"; }\n  @media screen and (min-width: 768px) {\n    #resp-element {\n      content: \"TABLET\"; } }\n  @media screen and (min-width: 980px) {\n    #resp-element {\n      content: \"DESKTOP\"; } }\n\n.app-container {\n  display: flex;\n  flex-direction: row; }\n", "", {"version":3,"sources":["/./dev/components/styles/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_box-sizing.scss","/./dev/components/styles/dev/globalStyles/breakpoints.scss","/./dev/components/styles/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_media.scss","/./dev/components/styles/dev/components/styles/App.scss"],"names":[],"mappings":"AAGE;EACE,uBAAuB,EACxB;;AAED;EAII,oBAAoB,EACrB;;AC6BL;EACI,kBAAmB,EAStB;ECmCG;ID7CJ;MAIQ,kBAAmB,EAM1B,EAAA;ECmCG;ID7CJ;MAQQ,mBAAoB,EAE3B,EAAA;;AEjDD;EACI,cAAc;EACd,oBAAoB,EACvB","file":"App.scss","sourcesContent":["@charset \"UTF-8\";\n\n@if $border-box-sizing == true {\n  html { // http://bit.ly/1qk2tVR\n    box-sizing: border-box;\n  }\n\n  * {\n    &,\n    &::after,\n    &::before {\n      box-sizing: inherit;\n    }\n  }\n}\n","@import 'neat-helpers';\n\n/// sets desktop visual grid to be 960 pixels wide\n/// @group visual-grid\n$max-width: rem(940);\n\n/// mobile breakpoint with 6 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($mobile){\n///     [stuff]\n///   }\n$mobile: new-breakpoint(min-width 0px 6);\n$grid_columns: 6;\n\n/// tablet breakpoint with 9 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($tablet){\n///     [stuff]\n///   }\n$tablet: new-breakpoint(min-width 768px 9);\n\n/// tablet breakpoint with 12 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($desktop){\n///     [stuff]\n///   }\n$desktop: new-breakpoint(min-width 980px 12);\n\n/// pass in the number of columns to kill the right margin on the last element\n/// @group breakpoints\n/// @example use:\n///   @include kill-last-margin(6);\n@mixin kill-last-margin($columnNumbers) {\n    &:nth-of-type(#{$columnNumbers}) {\n        margin-right: 0;\n    }\n}\n\n#resp-element {\n    content : \"MOBILE\";\n\n    @include media($tablet) {\n        content : \"TABLET\";\n    }\n\n    @include media($desktop) {\n        content : \"DESKTOP\";\n    }\n}\n","@charset \"UTF-8\";\n\n/// Outputs a media-query block with an optional grid context (the total number of columns used in the grid).\n///\n/// @param {List} $query\n///   A list of media query features and values, where each `$feature` should have a corresponding `$value`.\n///   For a list of valid values for `$feature`, click [here](http://www.w3.org/TR/css3-mediaqueries/#media1).\n///\n///   If there is only a single `$value` in `$query`, `$default-feature` is going to be used.\n///\n///   The number of total columns in the grid can be set by passing `$columns` at the end of the list (overrides `$total-columns`).\n///\n///\n/// @param {Number (unitless)} $total-columns [$grid-columns]\n///   - Number of columns to use in the new grid context. Can be set as a shorthand in the first parameter.\n///\n/// @example scss - Usage\n///   .responsive-element {\n///      @include media(769px) {\n///        @include span-columns(6);\n///      }\n///   }\n///\n///  .new-context-element {\n///    @include media(min-width 320px max-width 480px, 6) {\n///      @include span-columns(6);\n///    }\n///  }\n///\n/// @example css - CSS Output\n///  @media screen and (min-width: 769px) {\n///    .responsive-element {\n///      display: block;\n///      float: left;\n///      margin-right: 2.35765%;\n///      width: 48.82117%;\n///    }\n///\n///    .responsive-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n///\n///  @media screen and (min-width: 320px) and (max-width: 480px) {\n///    .new-context-element {\n///      display: block;\n///      float: left;\n///      margin-right: 4.82916%;\n///      width: 100%;\n///    }\n///\n///    .new-context-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n\n@mixin media($query: $feature $value $columns, $total-columns: $grid-columns) {\n  @if length($query) == 1 {\n    @media screen and ($default-feature: nth($query, 1)) {\n      $default-grid-columns: $grid-columns;\n      $grid-columns: $total-columns !global;\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  } @else {\n    $loop-to: length($query);\n    $media-query: \"screen and \";\n    $default-grid-columns: $grid-columns;\n    $grid-columns: $total-columns !global;\n\n    @if is-not(is-even(length($query))) {\n      $grid-columns: nth($query, $loop-to) !global;\n      $loop-to: $loop-to - 1;\n    }\n\n    $i: 1;\n    @while $i <= $loop-to {\n      $media-query: $media-query + \"(\" + nth($query, $i) + \": \" + nth($query, $i + 1) + \") \";\n\n      @if ($i + 1) != $loop-to {\n        $media-query: $media-query + \"and \";\n      }\n\n      $i: $i + 2;\n    }\n\n    @media #{$media-query} {\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  }\n}\n","@import 'global-imports';\n\n.app-container {\n    display: flex;\n    flex-direction: row;\n}\n"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 196 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(197);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./RightMenu.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./RightMenu.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 197 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "html {\n  box-sizing: border-box; }\n\n*, *::after, *::before {\n  box-sizing: inherit; }\n\n#resp-element {\n  content: \"MOBILE\"; }\n  @media screen and (min-width: 768px) {\n    #resp-element {\n      content: \"TABLET\"; } }\n  @media screen and (min-width: 980px) {\n    #resp-element {\n      content: \"DESKTOP\"; } }\n\n.right-menu {\n  flex: none;\n  width: 200px;\n  background: black;\n  color: #fff;\n  height: 100%; }\n", "", {"version":3,"sources":["/./dev/components/Menus/styles/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_box-sizing.scss","/./dev/components/Menus/styles/dev/globalStyles/breakpoints.scss","/./dev/components/Menus/styles/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_media.scss","/./dev/components/Menus/styles/dev/components/Menus/styles/RightMenu.scss"],"names":[],"mappings":"AAGE;EACE,uBAAuB,EACxB;;AAED;EAII,oBAAoB,EACrB;;AC6BL;EACI,kBAAmB,EAStB;ECmCG;ID7CJ;MAIQ,kBAAmB,EAM1B,EAAA;ECmCG;ID7CJ;MAQQ,mBAAoB,EAE3B,EAAA;;AEjDD;EACI,WAAW;EACX,aAAa;EACb,kBAAkB;EAClB,YAAY;EACZ,aAAa,EAChB","file":"RightMenu.scss","sourcesContent":["@charset \"UTF-8\";\n\n@if $border-box-sizing == true {\n  html { // http://bit.ly/1qk2tVR\n    box-sizing: border-box;\n  }\n\n  * {\n    &,\n    &::after,\n    &::before {\n      box-sizing: inherit;\n    }\n  }\n}\n","@import 'neat-helpers';\n\n/// sets desktop visual grid to be 960 pixels wide\n/// @group visual-grid\n$max-width: rem(940);\n\n/// mobile breakpoint with 6 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($mobile){\n///     [stuff]\n///   }\n$mobile: new-breakpoint(min-width 0px 6);\n$grid_columns: 6;\n\n/// tablet breakpoint with 9 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($tablet){\n///     [stuff]\n///   }\n$tablet: new-breakpoint(min-width 768px 9);\n\n/// tablet breakpoint with 12 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($desktop){\n///     [stuff]\n///   }\n$desktop: new-breakpoint(min-width 980px 12);\n\n/// pass in the number of columns to kill the right margin on the last element\n/// @group breakpoints\n/// @example use:\n///   @include kill-last-margin(6);\n@mixin kill-last-margin($columnNumbers) {\n    &:nth-of-type(#{$columnNumbers}) {\n        margin-right: 0;\n    }\n}\n\n#resp-element {\n    content : \"MOBILE\";\n\n    @include media($tablet) {\n        content : \"TABLET\";\n    }\n\n    @include media($desktop) {\n        content : \"DESKTOP\";\n    }\n}\n","@charset \"UTF-8\";\n\n/// Outputs a media-query block with an optional grid context (the total number of columns used in the grid).\n///\n/// @param {List} $query\n///   A list of media query features and values, where each `$feature` should have a corresponding `$value`.\n///   For a list of valid values for `$feature`, click [here](http://www.w3.org/TR/css3-mediaqueries/#media1).\n///\n///   If there is only a single `$value` in `$query`, `$default-feature` is going to be used.\n///\n///   The number of total columns in the grid can be set by passing `$columns` at the end of the list (overrides `$total-columns`).\n///\n///\n/// @param {Number (unitless)} $total-columns [$grid-columns]\n///   - Number of columns to use in the new grid context. Can be set as a shorthand in the first parameter.\n///\n/// @example scss - Usage\n///   .responsive-element {\n///      @include media(769px) {\n///        @include span-columns(6);\n///      }\n///   }\n///\n///  .new-context-element {\n///    @include media(min-width 320px max-width 480px, 6) {\n///      @include span-columns(6);\n///    }\n///  }\n///\n/// @example css - CSS Output\n///  @media screen and (min-width: 769px) {\n///    .responsive-element {\n///      display: block;\n///      float: left;\n///      margin-right: 2.35765%;\n///      width: 48.82117%;\n///    }\n///\n///    .responsive-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n///\n///  @media screen and (min-width: 320px) and (max-width: 480px) {\n///    .new-context-element {\n///      display: block;\n///      float: left;\n///      margin-right: 4.82916%;\n///      width: 100%;\n///    }\n///\n///    .new-context-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n\n@mixin media($query: $feature $value $columns, $total-columns: $grid-columns) {\n  @if length($query) == 1 {\n    @media screen and ($default-feature: nth($query, 1)) {\n      $default-grid-columns: $grid-columns;\n      $grid-columns: $total-columns !global;\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  } @else {\n    $loop-to: length($query);\n    $media-query: \"screen and \";\n    $default-grid-columns: $grid-columns;\n    $grid-columns: $total-columns !global;\n\n    @if is-not(is-even(length($query))) {\n      $grid-columns: nth($query, $loop-to) !global;\n      $loop-to: $loop-to - 1;\n    }\n\n    $i: 1;\n    @while $i <= $loop-to {\n      $media-query: $media-query + \"(\" + nth($query, $i) + \": \" + nth($query, $i + 1) + \") \";\n\n      @if ($i + 1) != $loop-to {\n        $media-query: $media-query + \"and \";\n      }\n\n      $i: $i + 2;\n    }\n\n    @media #{$media-query} {\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  }\n}\n","@import 'global-imports';\n\n.right-menu {\n    flex: none;\n    width: 200px;\n    background: black;\n    color: #fff;\n    height: 100%;\n}"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	__webpack_require__(199);
+	
+	var _react = __webpack_require__(13);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _ToolsMenu = __webpack_require__(192);
+	
+	var _ToolsMenu2 = _interopRequireDefault(_ToolsMenu);
+	
+	var _ElementsMenu = __webpack_require__(193);
+	
+	var _ElementsMenu2 = _interopRequireDefault(_ElementsMenu);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var LeftMenu = function (_React$Component) {
+	    _inherits(LeftMenu, _React$Component);
+	
+	    function LeftMenu(props) {
+	        _classCallCheck(this, LeftMenu);
+	
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(LeftMenu).call(this, props));
+	    }
+	
+	    _createClass(LeftMenu, [{
+	        key: '_renderMenus',
+	        value: function _renderMenus() {
+	            var _this2 = this;
+	
+	            if (this.props.leftMenu) {
+	                return this.props.leftMenu.map(function (menu, i) {
+	                    switch (menu.type) {
+	                        case 'tools':
+	                            return _react2.default.createElement(_ToolsMenu2.default, _extends({ key: i }, _this2.state));
+	                            break;
+	                        case 'elements':
+	                            return _react2.default.createElement(_ElementsMenu2.default, _extends({ key: i }, _this2.state));
+	                            break;
+	                    }
+	                });
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'left-Menu' },
+	                this._renderMenus()
+	            );
+	        }
+	    }]);
+	
+	    return LeftMenu;
+	}(_react2.default.Component);
+	
+	LeftMenu.propTypes = {
+	    leftMenu: _react2.default.PropTypes.array
+	};
+	
+	LeftMenu.displayName = 'LeftMenu';
+	
+	exports.default = LeftMenu;
+
+/***/ },
+/* 199 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(200);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./LeftMenu.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./LeftMenu.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "html {\n  box-sizing: border-box; }\n\n*, *::after, *::before {\n  box-sizing: inherit; }\n\n#resp-element {\n  content: \"MOBILE\"; }\n  @media screen and (min-width: 768px) {\n    #resp-element {\n      content: \"TABLET\"; } }\n  @media screen and (min-width: 980px) {\n    #resp-element {\n      content: \"DESKTOP\"; } }\n\n.left-menu {\n  flex: none;\n  width: 100px;\n  background: black;\n  color: #fff;\n  height: 100%; }\n", "", {"version":3,"sources":["/./dev/components/Menus/styles/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_box-sizing.scss","/./dev/components/Menus/styles/dev/globalStyles/breakpoints.scss","/./dev/components/Menus/styles/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_media.scss","/./dev/components/Menus/styles/dev/components/Menus/styles/LeftMenu.scss"],"names":[],"mappings":"AAGE;EACE,uBAAuB,EACxB;;AAED;EAII,oBAAoB,EACrB;;AC6BL;EACI,kBAAmB,EAStB;ECmCG;ID7CJ;MAIQ,kBAAmB,EAM1B,EAAA;ECmCG;ID7CJ;MAQQ,mBAAoB,EAE3B,EAAA;;AEjDD;EACI,WAAW;EACX,aAAa;EACb,kBAAkB;EAClB,YAAY;EACZ,aAAa,EAChB","file":"LeftMenu.scss","sourcesContent":["@charset \"UTF-8\";\n\n@if $border-box-sizing == true {\n  html { // http://bit.ly/1qk2tVR\n    box-sizing: border-box;\n  }\n\n  * {\n    &,\n    &::after,\n    &::before {\n      box-sizing: inherit;\n    }\n  }\n}\n","@import 'neat-helpers';\n\n/// sets desktop visual grid to be 960 pixels wide\n/// @group visual-grid\n$max-width: rem(940);\n\n/// mobile breakpoint with 6 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($mobile){\n///     [stuff]\n///   }\n$mobile: new-breakpoint(min-width 0px 6);\n$grid_columns: 6;\n\n/// tablet breakpoint with 9 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($tablet){\n///     [stuff]\n///   }\n$tablet: new-breakpoint(min-width 768px 9);\n\n/// tablet breakpoint with 12 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($desktop){\n///     [stuff]\n///   }\n$desktop: new-breakpoint(min-width 980px 12);\n\n/// pass in the number of columns to kill the right margin on the last element\n/// @group breakpoints\n/// @example use:\n///   @include kill-last-margin(6);\n@mixin kill-last-margin($columnNumbers) {\n    &:nth-of-type(#{$columnNumbers}) {\n        margin-right: 0;\n    }\n}\n\n#resp-element {\n    content : \"MOBILE\";\n\n    @include media($tablet) {\n        content : \"TABLET\";\n    }\n\n    @include media($desktop) {\n        content : \"DESKTOP\";\n    }\n}\n","@charset \"UTF-8\";\n\n/// Outputs a media-query block with an optional grid context (the total number of columns used in the grid).\n///\n/// @param {List} $query\n///   A list of media query features and values, where each `$feature` should have a corresponding `$value`.\n///   For a list of valid values for `$feature`, click [here](http://www.w3.org/TR/css3-mediaqueries/#media1).\n///\n///   If there is only a single `$value` in `$query`, `$default-feature` is going to be used.\n///\n///   The number of total columns in the grid can be set by passing `$columns` at the end of the list (overrides `$total-columns`).\n///\n///\n/// @param {Number (unitless)} $total-columns [$grid-columns]\n///   - Number of columns to use in the new grid context. Can be set as a shorthand in the first parameter.\n///\n/// @example scss - Usage\n///   .responsive-element {\n///      @include media(769px) {\n///        @include span-columns(6);\n///      }\n///   }\n///\n///  .new-context-element {\n///    @include media(min-width 320px max-width 480px, 6) {\n///      @include span-columns(6);\n///    }\n///  }\n///\n/// @example css - CSS Output\n///  @media screen and (min-width: 769px) {\n///    .responsive-element {\n///      display: block;\n///      float: left;\n///      margin-right: 2.35765%;\n///      width: 48.82117%;\n///    }\n///\n///    .responsive-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n///\n///  @media screen and (min-width: 320px) and (max-width: 480px) {\n///    .new-context-element {\n///      display: block;\n///      float: left;\n///      margin-right: 4.82916%;\n///      width: 100%;\n///    }\n///\n///    .new-context-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n\n@mixin media($query: $feature $value $columns, $total-columns: $grid-columns) {\n  @if length($query) == 1 {\n    @media screen and ($default-feature: nth($query, 1)) {\n      $default-grid-columns: $grid-columns;\n      $grid-columns: $total-columns !global;\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  } @else {\n    $loop-to: length($query);\n    $media-query: \"screen and \";\n    $default-grid-columns: $grid-columns;\n    $grid-columns: $total-columns !global;\n\n    @if is-not(is-even(length($query))) {\n      $grid-columns: nth($query, $loop-to) !global;\n      $loop-to: $loop-to - 1;\n    }\n\n    $i: 1;\n    @while $i <= $loop-to {\n      $media-query: $media-query + \"(\" + nth($query, $i) + \": \" + nth($query, $i + 1) + \") \";\n\n      @if ($i + 1) != $loop-to {\n        $media-query: $media-query + \"and \";\n      }\n\n      $i: $i + 2;\n    }\n\n    @media #{$media-query} {\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  }\n}\n","@import 'global-imports';\n\n.left-menu {\n    flex: none;\n    width: 100px;\n    background: black;\n    color: #fff;\n    height: 100%;\n}"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 201 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(202);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./Canvas.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/sass-loader/index.js?sourceMap&&includePaths[]=./dev/globalStyles&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-bourbon/node_modules/bourbon/app/assets/stylesheets&includePaths[]=/Users/jhitchco/sites/art/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets!./Canvas.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "html {\n  box-sizing: border-box; }\n\n*, *::after, *::before {\n  box-sizing: inherit; }\n\n#resp-element {\n  content: \"MOBILE\"; }\n  @media screen and (min-width: 768px) {\n    #resp-element {\n      content: \"TABLET\"; } }\n  @media screen and (min-width: 980px) {\n    #resp-element {\n      content: \"DESKTOP\"; } }\n\n.canvas {\n  flex: 1; }\n", "", {"version":3,"sources":["/./dev/components/Canvas/styles/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_box-sizing.scss","/./dev/components/Canvas/styles/dev/globalStyles/breakpoints.scss","/./dev/components/Canvas/styles/node_modules/node-neat/node_modules/bourbon-neat/app/assets/stylesheets/grid/_media.scss","/./dev/components/Canvas/styles/dev/components/Canvas/styles/Canvas.scss"],"names":[],"mappings":"AAGE;EACE,uBAAuB,EACxB;;AAED;EAII,oBAAoB,EACrB;;AC6BL;EACI,kBAAmB,EAStB;ECmCG;ID7CJ;MAIQ,kBAAmB,EAM1B,EAAA;ECmCG;ID7CJ;MAQQ,mBAAoB,EAE3B,EAAA;;AEjDD;EACI,QAAQ,EACX","file":"Canvas.scss","sourcesContent":["@charset \"UTF-8\";\n\n@if $border-box-sizing == true {\n  html { // http://bit.ly/1qk2tVR\n    box-sizing: border-box;\n  }\n\n  * {\n    &,\n    &::after,\n    &::before {\n      box-sizing: inherit;\n    }\n  }\n}\n","@import 'neat-helpers';\n\n/// sets desktop visual grid to be 960 pixels wide\n/// @group visual-grid\n$max-width: rem(940);\n\n/// mobile breakpoint with 6 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($mobile){\n///     [stuff]\n///   }\n$mobile: new-breakpoint(min-width 0px 6);\n$grid_columns: 6;\n\n/// tablet breakpoint with 9 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($tablet){\n///     [stuff]\n///   }\n$tablet: new-breakpoint(min-width 768px 9);\n\n/// tablet breakpoint with 12 columns\n/// @group breakpoints\n/// @example use:\n///   @include media($desktop){\n///     [stuff]\n///   }\n$desktop: new-breakpoint(min-width 980px 12);\n\n/// pass in the number of columns to kill the right margin on the last element\n/// @group breakpoints\n/// @example use:\n///   @include kill-last-margin(6);\n@mixin kill-last-margin($columnNumbers) {\n    &:nth-of-type(#{$columnNumbers}) {\n        margin-right: 0;\n    }\n}\n\n#resp-element {\n    content : \"MOBILE\";\n\n    @include media($tablet) {\n        content : \"TABLET\";\n    }\n\n    @include media($desktop) {\n        content : \"DESKTOP\";\n    }\n}\n","@charset \"UTF-8\";\n\n/// Outputs a media-query block with an optional grid context (the total number of columns used in the grid).\n///\n/// @param {List} $query\n///   A list of media query features and values, where each `$feature` should have a corresponding `$value`.\n///   For a list of valid values for `$feature`, click [here](http://www.w3.org/TR/css3-mediaqueries/#media1).\n///\n///   If there is only a single `$value` in `$query`, `$default-feature` is going to be used.\n///\n///   The number of total columns in the grid can be set by passing `$columns` at the end of the list (overrides `$total-columns`).\n///\n///\n/// @param {Number (unitless)} $total-columns [$grid-columns]\n///   - Number of columns to use in the new grid context. Can be set as a shorthand in the first parameter.\n///\n/// @example scss - Usage\n///   .responsive-element {\n///      @include media(769px) {\n///        @include span-columns(6);\n///      }\n///   }\n///\n///  .new-context-element {\n///    @include media(min-width 320px max-width 480px, 6) {\n///      @include span-columns(6);\n///    }\n///  }\n///\n/// @example css - CSS Output\n///  @media screen and (min-width: 769px) {\n///    .responsive-element {\n///      display: block;\n///      float: left;\n///      margin-right: 2.35765%;\n///      width: 48.82117%;\n///    }\n///\n///    .responsive-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n///\n///  @media screen and (min-width: 320px) and (max-width: 480px) {\n///    .new-context-element {\n///      display: block;\n///      float: left;\n///      margin-right: 4.82916%;\n///      width: 100%;\n///    }\n///\n///    .new-context-element:last-child {\n///      margin-right: 0;\n///    }\n///  }\n\n@mixin media($query: $feature $value $columns, $total-columns: $grid-columns) {\n  @if length($query) == 1 {\n    @media screen and ($default-feature: nth($query, 1)) {\n      $default-grid-columns: $grid-columns;\n      $grid-columns: $total-columns !global;\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  } @else {\n    $loop-to: length($query);\n    $media-query: \"screen and \";\n    $default-grid-columns: $grid-columns;\n    $grid-columns: $total-columns !global;\n\n    @if is-not(is-even(length($query))) {\n      $grid-columns: nth($query, $loop-to) !global;\n      $loop-to: $loop-to - 1;\n    }\n\n    $i: 1;\n    @while $i <= $loop-to {\n      $media-query: $media-query + \"(\" + nth($query, $i) + \": \" + nth($query, $i + 1) + \") \";\n\n      @if ($i + 1) != $loop-to {\n        $media-query: $media-query + \"and \";\n      }\n\n      $i: $i + 2;\n    }\n\n    @media #{$media-query} {\n      @content;\n      $grid-columns: $default-grid-columns !global;\n    }\n  }\n}\n","@import 'global-imports';\n\n.canvas {\n    flex: 1;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 

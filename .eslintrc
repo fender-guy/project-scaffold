@@ -42,7 +42,7 @@
       // use the triple compares
       "eqeqeq": 1,
       // 4 spaces indent is enforced
-      "indent": [2, 4],
+      "indent": [1, 4],
 
       // allow space before and after colon of object literals, and allow aligning to the colon
       "key-spacing": [1, {
