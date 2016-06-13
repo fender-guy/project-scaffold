@@ -1,7 +1,7 @@
 {
-  "name": "art",
+  "name": "project-scaffold",
   "version": "1.0.0",
-  "description": "The holy grail of HTML/CSS development",
+  "description": "Project Scaffold",
   "main": "/dev/index.html",
   "scripts": {
     "setup": "",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fender-guy/art.git"
+    "url": "https://github.com/fender-guy/project-scaffold.git"
   },
   "keywords": [
     "webpack",
@@ -20,9 +20,9 @@
   "author": "Jeremy Hitchcock",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fender-guy/art/issues"
+    "url": "https://github.com/fender-guy/project-scaffold/issues"
   },
-  "homepage": "https://github.com/fender-guy/art",
+  "homepage": "https://github.com/fender-guy/project-scaffold",
   "devDependencies": {
     "JSONStream": "^1.0.7",
     "babel-core": "^6.5.0",
