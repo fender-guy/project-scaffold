@@ -30,7 +30,7 @@ class app extends React.Component {
 
   componentDidMount() {
     FAD.addChangeListener(this.onChange.bind(this));
-    app.testAction();
+    // app.testAction();
   }
 
   componentWillUnmount() {

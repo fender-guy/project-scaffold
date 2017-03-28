@@ -7,8 +7,9 @@ const path = require('path');
 module.exports = {
   entry:  path.resolve(__dirname + '/dev/app.js'),
   output: {
-    path: __dirname,
-    filename: "./prod/bundle.js",
+    path: path.join(__dirname, 'prod/'),
+    publicPath: path.join(__dirname, 'prod/'),
+    filename: "bundle.js",
     sourceMapFilename: "[file].map"
   },
   module: {
@@ -60,5 +61,14 @@ module.exports = {
   devtool: 'source-maps',
   plugins: [ 
     new ExtractTextPlugin(path.resolve('/prod/[name].css'))
-  ]
+  ],
+  watchOptions: {
+    poll: true
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "prod"),
+    watchContentBase: true,
+    compress: true,
+    port: 9000,
+  }
 };
