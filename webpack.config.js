@@ -1,67 +1,64 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var webpack = require('webpack');
-var bourbon = require('node-bourbon').includePaths;
-var neat = require('node-neat').includePaths;
-var path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
+const bourbon = require('node-bourbon').includePaths;
+const neat = require('node-neat').includePaths;
+const path = require('path');
 
 module.exports = {
-    entry: {
-        index: path.resolve(__dirname + '/dev/app.js')
-    },
-    output: {
-        path: __dirname,
-        filename: "./prod/bundle.js",
-        sourceMapFilename: "[file].map"
-    },
-    module: {
-        preLoaders: [
-            {
-                test: /\.jsx?$/,
-                include: path.resolve(__dirname + '/dev'),
-                loader: 'eslint-loader'
+  entry:  path.resolve(__dirname + '/dev/app.js'),
+  output: {
+    path: __dirname,
+    filename: "./prod/bundle.js",
+    sourceMapFilename: "[file].map"
+  },
+  module: {
+    rules: [
+      { 
+        test: /\.scss$/,
+        include: path.resolve(__dirname + '/dev'),
+        use: [
+          'style-loader',
+          {
+            loader : 'css-loader',
+            options : { 
+              sourceMap : true
             }
-        ],
-        loaders: [
-            { test: /\.scss$/, include: path.resolve(__dirname + '/dev'),
-                loader:
-                    'style-loader!css?sourceMap!' +
-                    'sass?sourceMap&' +
-                    "&includePaths[]=" + './dev/globalStyles' +
-                    "&includePaths[]=" + bourbon[0] +
-                    "&includePaths[]=" + neat[1]
-
-            },
-            { test: /\.css$/, include: path.resolve(__dirname + '/dev'), loader: ExtractTextPlugin.extract("style-loader","css-loader") },
-            { test: /\.js$/, include: path.resolve(__dirname + '/dev'), loader: 'babel-loader', query: {
-                presets: [
-                    'react', 
-                    'es2015'
-                ],
-                plugins: [
-                    "transform-decorators-legacy",
-                    "transform-decorators",
-                    "syntax-decorators"
-                ] 
-            }},
-            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
-
+          },
+          {
+            loader : 'sass-loader',
+            options : { 
+              sourceMap : true,
+              includePaths : ['./dev/globalStyles', bourbon[0], neat[0]]
+            }
+          }
         ]
-    },
-    devtool: 'source-maps',
-    resolve: {
-        alias: {
-            'keyMirror' : path.join(__dirname, 'node_modules/keymirror/index.js')
-        },
-        extensions: ['', '.js', '.jsx', '.json', '.css'],
-        root: [
-            path.resolve(__dirname + '/dev'),
-            path.resolve(__dirname + '/dev/components')
-        ]
-    },
-    plugins: [ 
-        new ExtractTextPlugin(path.resolve('/prod/[name].css')),
-        new webpack.ProvidePlugin({
-            keyMirror : 'keyMirror'
+      },
+      { 
+        test: /\.css$/,
+        include: path.resolve(__dirname + '/dev'),
+        use: ExtractTextPlugin.extract({ 
+          fallback: "style-loader",
+          use: "css-loader"
         })
+      },
+      {
+        test: /\.js$/,
+        include: path.resolve(__dirname + '/dev'),
+        exclude: /node_modules/,
+        loader: [
+          'babel-loader?cacheDirectory=true,presets[]=es2015,presets[]=react,presets[]=stage-2',
+          'eslint-loader'
+        ]
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        use: 'url-loader?limit=100000'
+      }
+
     ]
+  },
+  devtool: 'source-maps',
+  plugins: [ 
+    new ExtractTextPlugin(path.resolve('/prod/[name].css'))
+  ]
 };

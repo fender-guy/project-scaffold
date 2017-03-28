@@ -6,14 +6,13 @@
     left: 0;
     height: 100%;
     width: 100%;
-    @include outer-container;
 
-    @include media($desktop) {
+    @include grid-media($desktop) {
         max-width: inherit;
     }
 
     > div {
-        @include media($desktop) {
+        @include grid-media($desktop) {
             width: 980px;
             margin: 0 auto;
         }
@@ -24,14 +23,11 @@
         height: 900px;
         background: #f600f6;
         opacity: 0.5;
-        @include span-columns(1 of 6);
 
-        @include media($tablet) {
-            @include span-columns(1 of 9);
+        @include grid-media($tablet) {
         }
 
-        @include media($desktop) {
-            @include span-columns(1 of 12);
+        @include grid-media($desktop) {
         }
     }
 }
