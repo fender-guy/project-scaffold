@@ -3,12 +3,15 @@ const webpack = require('webpack');
 const bourbon = require('node-bourbon').includePaths;
 const neat = require('node-neat').includePaths;
 const path = require('path');
+const isProduction = process.env.NODE_ENV === "production";
 
-module.exports = {
-  entry:  path.resolve(__dirname + '/dev/app.js'),
+config = {
+  context: __dirname + '/src',
+  entry:  {
+    app: './app.js'
+  },
   output: {
-    path: path.join(__dirname, 'prod/'),
-    publicPath: path.join(__dirname, 'prod/'),
+    path: __dirname + '/dev',
     filename: "bundle.js",
     sourceMapFilename: "[file].map"
   },
@@ -16,7 +19,7 @@ module.exports = {
     rules: [
       { 
         test: /\.scss$/,
-        include: path.resolve(__dirname + '/dev'),
+        include: path.resolve(__dirname + '/src'),
         use: [
           'style-loader',
           {
@@ -29,14 +32,14 @@ module.exports = {
             loader : 'sass-loader',
             options : { 
               sourceMap : true,
-              includePaths : ['./dev/globalStyles', bourbon[0], neat[0]]
+              includePaths : ['./src/globalStyles', bourbon[0], neat[0]]
             }
           }
         ]
       },
       { 
         test: /\.css$/,
-        include: path.resolve(__dirname + '/dev'),
+        include: path.resolve(__dirname + '/src'),
         use: ExtractTextPlugin.extract({ 
           fallback: "style-loader",
           use: "css-loader"
@@ -44,7 +47,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        include: path.resolve(__dirname + '/dev'),
+        include: path.resolve(__dirname + '/src'),
         exclude: /node_modules/,
         loader: [
           'babel-loader?cacheDirectory=true,presets[]=es2015,presets[]=react,presets[]=stage-2',
@@ -58,17 +61,21 @@ module.exports = {
 
     ]
   },
-  devtool: 'source-maps',
   plugins: [ 
-    new ExtractTextPlugin(path.resolve('/prod/[name].css'))
+    new ExtractTextPlugin('[name].css')
   ],
-  watchOptions: {
-    poll: true
-  },
+  devtool: 'eval-source-map',
   devServer: {
-    contentBase: path.join(__dirname, "prod"),
-    watchContentBase: true,
-    compress: true,
-    port: 9000,
+    contentBase: __dirname + '/dev',
   }
 };
+
+if (isProduction) {
+  config.output = {
+    path: __dirname + '/dist',
+    filename: "bundle.js"
+  };
+  config.devtool = ""; 
+}
+
+module.exports = config;

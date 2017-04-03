@@ -2,10 +2,11 @@
   "name": "project-scaffold",
   "version": "1.0.0",
   "description": "Project Scaffold",
-  "main": "/dev/index.html",
+  "main": "/dist/index.html",
   "scripts": {
     "setup": "",
-    "start": "webpack-dev-server",
+    "build": "NODE_ENV=production webpack -p",
+    "start": "webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

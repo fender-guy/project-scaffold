@@ -23,8 +23,6 @@ class app extends React.Component {
     (store, data) => {
       const newStore = store.getAll();
       store.replace(newStore.setIn(['testGetResponse'], Immutable.fromJS(data.testResponse)));
-    }).then(() => {
-      console.log('post action works');
     });
   }
 
@@ -48,7 +46,7 @@ class app extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello App</h1>
+        <h1>Hello Apps</h1>
         <div>
           {/** }
           <h2>Current Breakpoint: {this.state.rs.currentBreak}</h2>
