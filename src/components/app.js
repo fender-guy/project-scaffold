@@ -1,6 +1,7 @@
 import React from 'react';
 import FAD from 'flux-a-duck';
 import Immutable from 'immutable';
+import styles from './../globalStyles/test.css';
 // import RespState from '../utils/RespState';
 // import Grid from './utils/Grid';
 
@@ -46,7 +47,7 @@ class app extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello Apps</h1>
+        <h1 className={styles.title} style={{ margin: '50px 0 0 0' }}>Hello Apps</h1>
         <div>
           {/** }
           <h2>Current Breakpoint: {this.state.rs.currentBreak}</h2>

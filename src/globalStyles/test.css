@@ -1,0 +1,13 @@
+:root {
+    --mainColor: red;
+}
+
+body {
+    background-color: var(--mainColor);
+}
+
+.title {
+    font-size: 12px;
+    font-weight: bold;
+    color: green;
+}

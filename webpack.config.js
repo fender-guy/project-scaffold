@@ -17,32 +17,23 @@ config = {
   },
   module: {
     rules: [
-      { 
-        test: /\.scss$/,
-        include: path.resolve(__dirname + '/src'),
-        use: [
-          'style-loader',
-          {
-            loader : 'css-loader',
-            options : { 
-              sourceMap : true
-            }
-          },
-          {
-            loader : 'sass-loader',
-            options : { 
-              sourceMap : true,
-              includePaths : ['./src/globalStyles', bourbon[0], neat[0]]
-            }
-          }
-        ]
-      },
-      { 
+      {
         test: /\.css$/,
         include: path.resolve(__dirname + '/src'),
-        use: ExtractTextPlugin.extract({ 
+        use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: "css-loader"
+          use: [
+            {
+              loader: "css-loader",
+              options: {
+                modules: true,
+                importLoaders: 1
+              }
+            },
+            {
+              loader: 'postcss-loader'
+            }
+          ]
         })
       },
       {
@@ -61,7 +52,7 @@ config = {
 
     ]
   },
-  plugins: [ 
+  plugins: [
     new ExtractTextPlugin('[name].css')
   ],
   devtool: 'eval-source-map',
