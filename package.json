@@ -41,13 +41,11 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "express": "^4.12.3",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "immutable": "^3.7.5",
     "keymirror": "^0.1.1",
     "mixin": "^0.2.0",
-    "mongodb": "^2.0.25",
     "normalize.css": "^6.0.0",
     "object-assign": "^4.0.1",
     "postcss-cssnext": "^2.10.0",
@@ -60,16 +58,13 @@
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.5",
     "webpack": "^2.3.2",
-    "webpack-dev-server": "^2.4.2",
-    "whatwg-fetch": "^2.0.3"
+    "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
-    "flux-a-duck": "^1.0.0",
     "immutable": "^3.8.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-redux": "^5.0.4",
-    "redux": "^3.6.0"
+    "react-hot-loader": "^3.0.0-beta.7"
   }
 }

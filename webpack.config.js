@@ -1,18 +1,17 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
-const bourbon = require('node-bourbon').includePaths;
-const neat = require('node-neat').includePaths;
 const path = require('path');
 const isProduction = process.env.NODE_ENV === "production";
 
 config = {
   context: __dirname + '/src',
   entry:  {
-    app: './app.js'
+    app: './app.js',
+    vendor: 'react'
   },
   output: {
-    path: __dirname + '/dev',
-    filename: "bundle.js",
+    path: isProduction ? __dirname + '/dist' : __dirname + '/dev',
+    filename: "[name].js",
     sourceMapFilename: "[file].map"
   },
   module: {
@@ -53,20 +52,19 @@ config = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('[name].css')
+    new ExtractTextPlugin('[name].css'),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function (module) {
+        // this assumes your vendor imports exist in the node_modules directory
+        return module.context && module.context.indexOf('node_modules') !== -1;
+      }    
+    })
   ],
-  devtool: 'eval-source-map',
+  devtool: isProduction ? '' : 'eval-source-map',
   devServer: {
     contentBase: __dirname + '/dev',
   }
 };
-
-if (isProduction) {
-  config.output = {
-    path: __dirname + '/dist',
-    filename: "bundle.js"
-  };
-  config.devtool = ""; 
-}
 
 module.exports = config;
