@@ -25,12 +25,11 @@ config = {
             {
               loader: "css-loader",
               options: {
-                modules: true,
                 importLoaders: 1
               }
             },
             {
-              loader: 'postcss-loader'
+              loader: 'postcss-loader',
             }
           ]
         })
@@ -59,6 +58,9 @@ config = {
         // this assumes your vendor imports exist in the node_modules directory
         return module.context && module.context.indexOf('node_modules') !== -1;
       }    
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': process.env.NODE_ENV
     })
   ],
   devtool: isProduction ? '' : 'eval-source-map',

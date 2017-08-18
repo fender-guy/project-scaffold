@@ -1,7 +1,8 @@
+import './test-style.css';
 import React from 'react';
 
 const app = () => (
-  <div>
+  <div className="app-main">
     <h1>Hello Apps</h1>
   </div>
 );
