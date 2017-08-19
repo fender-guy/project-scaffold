@@ -1,0 +1,31 @@
+@import '../../globalStyles/globalVariables';
+
+.counter-container {
+    background: var(--counter-container-background);
+    height: 50vh;
+    width: 50vw;
+    margin: 50px auto 0;
+    overflow: auto;
+
+    & h2 {
+        width: 200px;
+        text-align: center;
+        color: var(--counter-header-color);
+        margin: 30px auto 0;
+    }
+
+    & .button-container {
+        width: 50vw;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    & button {
+        background: var(--counter-button-color);
+        color: var(--counter-button-text-color);
+        font-weight: bold;
+        padding: 1vw 2vw;
+        margin: .5vw;
+        border: none;
+    }
+}

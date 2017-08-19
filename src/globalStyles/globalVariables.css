@@ -1,3 +1,6 @@
 :root {
-    --mainColor: yellow;
+    --counter-container-background: silver;
+    --counter-header-color: brown;
+    --counter-button-color: grey;
+    --counter-button-text-color: white;
   }
