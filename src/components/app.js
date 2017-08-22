@@ -1,12 +1,10 @@
 import React from 'react';
-import TestComponent from './TestComponent/TestComponent'
+import CounterComponent from './CounterComponent';
 
-const app = () => (
+const App = (props) => (
   <div className="app-main">
-    <TestComponent />
+    <CounterComponent />
   </div>
 );
 
-app.displayName = 'App';
-
-export default app;
+export default App;

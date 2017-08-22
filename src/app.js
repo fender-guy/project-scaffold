@@ -1,9 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import 'babel-polyfill';
 import './globalStyles/normalize.css';
 import './globalStyles/glyphs.css';
-import app from './components/app';
+import App from './components/App';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import appReducer from './ducks';
 
-ReactDOM.render(React.createElement(app), document.getElementById('app-container'));
+const store = createStore(appReducer, {counter: 0});
+
+render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('app-container')
+);
 
