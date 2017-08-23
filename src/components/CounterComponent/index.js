@@ -1,16 +1,12 @@
 import './test-style.css';
 import CounterComponent from './CounterComponent.js';
 import {connect} from 'react-redux';
-import * as counterActions from '../../ducks/counter'
+import {decrementCounter, incrementCounter, clearCounter} from '../../ducks/counter'
 
 const mapStateToProps = (state) => {
     return {
-        counter: state.counter
+        counter: state.get('counter')
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return{};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CounterComponent);
+export default connect(mapStateToProps, {decrementCounter, incrementCounter, clearCounter})(CounterComponent);

@@ -1,6 +1,7 @@
-import { combineReducers } from "redux";
+import { combineReducers } from "redux-immutable";
 import counterReducer from './counter';
 
 export default combineReducers({
-    counter: counterReducer
+    counter: counterReducer,
+    dogs: () => 'bark'
 });

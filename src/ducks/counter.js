@@ -2,34 +2,35 @@ const INCREMENT = 'project-scaffold/counter/INCREMENT';
 const DECREMENT = 'project-scaffold/counter/DECREMENT';
 const CLEAR = 'project-scaffold/counter/CLEAR';
 
-const counterReducer = (state = {}, action) => {
+const counterReducer = (state = Immutable.map(), action) => {
     const {type} = action;
 
     switch(type) {
         case INCREMENT: 
-            return state.app.counter + action.value;
+        console.log('state: ', state);
+            return state + action.value;
         case DECREMENT:
-            return state.app.counter - action.value;
+            return state - action.value;
         case CLEAR:
-            return state.app.counter = 0;
+            return state = 0;
         default:
             return state;
     }
 };
 
-const incrementCounter = (value) => {
-    type: COUNTER_INCREMENT,
+const incrementCounter = (value) => ({
+    type: INCREMENT,
     value
-};
+});
 
-const decrementCounter = (value) => {
+const decrementCounter = (value) => ({
     type: DECREMENT,
     value
-};
+});
 
-const clearCounter = () => {
+const clearCounter = () => ({
     type: CLEAR
-};
+});
 
 export default counterReducer;
 
