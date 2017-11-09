@@ -35,13 +35,20 @@ config = {
         })
       },
       {
+        enforce: 'pre',
         test: /\.js$/,
         include: path.resolve(__dirname + '/src'),
         exclude: /node_modules/,
-        loader: [
-          'babel-loader?cacheDirectory=true,presets[]=es2015,presets[]=react,presets[]=stage-2',
-          'eslint-loader'
-        ]
+        loader: 'eslint-loader',
+        options: {
+          fix: true
+        }
+      },
+      {
+        test: /\.js$/,
+        include: path.resolve(__dirname + '/src'),
+        exclude: /node_modules/,
+        loader: 'babel-loader?cacheDirectory=true,presets[]=es2015,presets[]=react,presets[]=stage-2',
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,

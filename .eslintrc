@@ -1,4 +1,7 @@
 {
+  "extends": [
+  "prettier"
+  ],
   "parserOptions": {
     "ecmaVersion": 7,
       "sourceType": "module",
@@ -7,16 +10,18 @@
         "modules": true
       }
   },
-    "globals": {
-      "document": true,
-      "window": true
-    },
-    "plugins": [
-      "react"
-    ],
-    "rules": {
-      "react/jsx-uses-react": 0,
-      "react/jsx-filename-extension": 0,
-      "no-unused-vars": 0
-    }
+  "globals": {
+    "document": true,
+    "window": true
+  },
+  "plugins": [
+    "react",
+    "prettier"
+  ],
+  "rules": {
+    "react/jsx-uses-react": 0,
+    "react/jsx-filename-extension": 0,
+    "no-unused-vars": 0,
+    "prettier/prettier": "error"
+  }
 }

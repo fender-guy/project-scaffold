@@ -1,7 +1,7 @@
-import React from 'react';
-import CounterComponent from './CounterComponent';
+import React from "react";
+import CounterComponent from "./CounterComponent";
 
-const App = (props) => (
+const App = props => (
   <div className="app-main">
     <CounterComponent />
   </div>

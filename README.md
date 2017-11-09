@@ -1,6 +1,7 @@
 # Project Scaffold 
 
 webpack
-node 
-express
 react
+redux
+post-css
+
