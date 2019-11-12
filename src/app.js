@@ -1,9 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'babel-polyfill';
-import './globalStyles/normalize.css';
-import './globalStyles/glyphs.css';
-import app from './components/app';
+import React, { useEffect } from "react";
+import logo from "./logo.svg";
+import { connect } from "react-redux";
+import "./App.css";
+import { testAction } from "./redux/main";
 
-ReactDOM.render(React.createElement(app), document.getElementById('app-container'));
+export const App = props => {
+  useEffect(() => {
+    props.testAction();
+  });
 
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+};
+
+export default connect(() => ({}), { testAction })(App);
