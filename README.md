@@ -1,10 +1,7 @@
-# Ingredient-search
-
-A quick project to search by ingredients
-
 ### Initial Setup
 `
 yarn install
+
 yarn start
 `
 
