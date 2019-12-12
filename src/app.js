@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import logo from "./logo.svg";
 import { connect } from "react-redux";
 import "./App.css";
-import { testAction } from "./redux/main";
+import { addTestData } from "./redux/main";
 
 export const App = props => {
   useEffect(() => {
-    props.testAction();
+    props.addTestData('test action text');
   });
 
   return (
@@ -29,4 +29,4 @@ export const App = props => {
   );
 };
 
-export default connect(() => ({}), { testAction })(App);
+export default connect(() => ({}), { addTestData })(App);
