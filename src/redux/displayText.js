@@ -1,10 +1,10 @@
-import { createReducer, createAction } from '@reduxjs/toolkit'
+import { createReducer } from '@reduxjs/toolkit'
+
+export const setDisplayText = 'SET_DISPLAY_TEXT';
 
 const defaultState = {
   value: ""
 };
-
-export const setDisplayText = createAction('SET_DISPLAY_TEXT');
 
 export default createReducer(defaultState, {
   [setDisplayText]: (state, action) => {

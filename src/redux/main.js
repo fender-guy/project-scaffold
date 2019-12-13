@@ -1,10 +1,10 @@
-import { createReducer, createAction } from '@reduxjs/toolkit'
+import { createReducer } from '@reduxjs/toolkit'
+
+export const addTestData = 'ADD_TEST_DATA';
 
 const defaultState = {
   test: "state goes here"
 };
-
-export const addTestData = createAction('ADD_TEST_DATA');
 
 export default createReducer(defaultState, {
   [addTestData]: (state, action) => {

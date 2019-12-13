@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
-import { connect, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./App.css";
 import { addTestData } from "./redux/main";
 import { setDisplayText } from "./redux/displayText";
@@ -8,14 +8,14 @@ import { setDisplayText } from "./redux/displayText";
 export const App = props => {
   const [inputValue, setInputValue] = useState('');
   const displayValue = useSelector(state => state.displayText.value);
-  const testData = useSelector(state => state.main.test);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    props.addTestData('test action text');
-  }, [testData]);
+    dispatch({ type: addTestData, payload: 'farts'});
+  }, [dispatch]);
 
   const onClick = () => {
-    props.setDisplayText(inputValue);
+    dispatch({type: setDisplayText, payload: inputValue});
   };
 
   const onChange = (e) => {
@@ -45,4 +45,4 @@ export const App = props => {
   );
 };
 
-export default connect(() => ({}), { addTestData, setDisplayText })(App);
+export default App;
